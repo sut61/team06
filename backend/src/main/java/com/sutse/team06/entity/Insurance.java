@@ -1,4 +1,4 @@
-package com.project.demo.entity;
+package com.sutse.team06.entity;
 
 import lombok.*;
 

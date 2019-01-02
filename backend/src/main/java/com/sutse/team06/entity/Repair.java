@@ -1,4 +1,4 @@
-package com.okta.developer.demo;
+package com.sutse.team06.entity;
 
 import lombok.*;
 
@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Getter @Setter
 @NoArgsConstructor
 @ToString @EqualsAndHashCode
-public class RepairController {
+public class Repair {
     @Id @GeneratedValue
     private Long id;
     private @NonNull String name;

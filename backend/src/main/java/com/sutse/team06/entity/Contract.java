@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.sutse.team06.entity;
 import lombok.*;
 
 import javax.persistence.*;
