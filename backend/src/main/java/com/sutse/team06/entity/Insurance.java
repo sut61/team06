@@ -1,5 +1,6 @@
 package com.sutse.team06.entity;
 
+<<<<<<< HEAD
 
 import lombok.*;
 
@@ -12,12 +13,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+=======
+import lombok.*;
+
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Entity;
+>>>>>>> parent of 2458509... clean project backend
 
 @Entity
 @Getter @Setter
 @NoArgsConstructor
 @ToString @EqualsAndHashCode
 public class Insurance {
+<<<<<<< HEAD
     @Id
     @SequenceGenerator(name = "Insurance_seq", sequenceName = "Insurance_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Insurance_seq")
@@ -34,4 +43,8 @@ public class Insurance {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Cid")
     private Client Client;
+=======
+    @Id @GeneratedValue
+    private Long id;
+>>>>>>> parent of 2458509... clean project backend
 }
