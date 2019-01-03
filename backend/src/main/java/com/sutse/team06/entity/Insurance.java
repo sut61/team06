@@ -34,4 +34,5 @@ public class Insurance {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Cid")
     private Client Client;
+    
 }
