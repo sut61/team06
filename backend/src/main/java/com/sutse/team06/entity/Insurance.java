@@ -23,5 +23,15 @@ public class Insurance {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Insurance_seq")
     private @NonNull Long Iid;
 
-    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "Type")
+    private Type Type;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "Price")
+    private Price Price;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "Cid")
+    private Client Client;
 }
