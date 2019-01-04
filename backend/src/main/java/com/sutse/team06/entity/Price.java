@@ -20,8 +20,10 @@ public class Price {
     @Id
     @SequenceGenerator(name = "Price_seq", sequenceName = "Price_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Price_seq")
-    private @NonNull Long Pid;
-    private @NonNull Long price;
+    private @NonNull Long pid;
+    private @NonNull String price1;
+    private @NonNull String price2;
+    private @NonNull String price3;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Type")
