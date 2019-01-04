@@ -26,4 +26,5 @@ class RentHouseController {
     public List<RentHouse> RentHouse(){
         return rentHouseRepository.findAll().stream().collect(Collectors.toList());
     }
+    
 }
