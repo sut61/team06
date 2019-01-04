@@ -17,7 +17,7 @@ public class Client {
     @Id
     @SequenceGenerator(name = "Client_seq", sequenceName = "Client_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Client_seq")
-    private @NonNull Long Cid;
+    private @NonNull Long cid;
     private @NonNull String name;
     private @NonNull String username;
     private @NonNull String password;

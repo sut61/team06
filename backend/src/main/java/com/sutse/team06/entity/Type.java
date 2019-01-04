@@ -18,5 +18,5 @@ public class Type {
     @SequenceGenerator(name = "Type_seq", sequenceName = "Type_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Type_seq")
     private @NonNull Long Tid;
-    private @NonNull String Type;
+    private @NonNull String type;
 }

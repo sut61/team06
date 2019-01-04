@@ -18,5 +18,5 @@ public class Price {
     @SequenceGenerator(name = "Price_seq", sequenceName = "Price_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Price_seq")
     private @NonNull Long Pid;
-    private @NonNull Long Price;
+    private @NonNull Long price;
 }

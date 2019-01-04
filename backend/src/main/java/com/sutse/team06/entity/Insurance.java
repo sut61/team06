@@ -21,7 +21,7 @@ public class Insurance {
     @Id
     @SequenceGenerator(name = "Insurance_seq", sequenceName = "Insurance_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Insurance_seq")
-    private @NonNull Long Iid;
+    private @NonNull Long iid;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Type")
