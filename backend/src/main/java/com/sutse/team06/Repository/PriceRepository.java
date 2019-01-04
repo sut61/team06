@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
 public interface PriceRepository extends JpaRepository<Price, Long> {
-    Price findByPrice(Long price);
+    Price findByPid(Long pid);
 }
