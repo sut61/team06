@@ -1,4 +1,4 @@
-package com.sutse.team06.Repository;
+package com.sutse.team06.repository;
 
 
 import com.sutse.team06.entity.Price;
