@@ -8,7 +8,7 @@ import com.sutse.team06.entity.*;
 
 import java.util.stream.Stream;
 
-import com.sutse.team06.Repository.*;
+import com.sutse.team06.repository.*;
 import org.springframework.boot.ApplicationRunner;
 
 @SpringBootApplication
