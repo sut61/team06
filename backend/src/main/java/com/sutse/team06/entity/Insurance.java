@@ -25,11 +25,11 @@ public class Insurance {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Type")
-    private Type Type;
+    private InsuranceType Type;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Price")
-    private Price Price;
+    private InsurancePrice Price;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Cid")
