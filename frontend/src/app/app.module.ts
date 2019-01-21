@@ -7,9 +7,14 @@ import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolb
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+// import rourting
+import {RoutingMainModule} from './routing-main/routing-main.module';
+import { IndexComponent } from './index/index.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatInputModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    RoutingMainModule
   ],
   providers: [],
   bootstrap: [AppComponent]
