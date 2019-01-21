@@ -16,14 +16,13 @@ import javax.persistence.FetchType;
 
 @Entity
 @Data
-public class ManagePackage {
+public class ManagePackageIn {
     @Id
-    @SequenceGenerator(name = "ManagePackage_seq", sequenceName = "ManagePackage_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ManagePackage_seq")
-    private @NonNull Long mpId;
+    @SequenceGenerator(name = "ManagePackageIn_seq", sequenceName = "ManagePackageIn_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ManagePackageIn_seq")
+    private @NonNull Long mpInId;
     private @NonNull String packageId;
-    private @NonNull Date dateOut;
-    private @NonNull Date dateIn;
+    private @NonNull Date date;
 
     @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
     @JoinColumn(name="houseId")
