@@ -4,11 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.sutse.team06.Repository.ClientRepository;
+import com.sutse.team06.Repository.InsurancePriceRepository;
+import com.sutse.team06.Repository.InsuranceTypeRepository;
 import com.sutse.team06.entity.*;
 
 import java.util.stream.Stream;
 
-import com.sutse.team06.repository.*;
 import org.springframework.boot.ApplicationRunner;
 
 @SpringBootApplication

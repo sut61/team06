@@ -1,15 +1,15 @@
-package com.sutse.team06.controller;
+package com.sutse.team06.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.Collection;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.sutse.team06.repository.*;
+
+import com.sutse.team06.Repository.HouseRepository;
+import com.sutse.team06.Repository.RentHouseRepository;
 import com.sutse.team06.entity.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 class RentHouseController {
