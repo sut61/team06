@@ -19,4 +19,7 @@ public class House {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "House_seq")
     private @NonNull Long houseId;
     private @NonNull Integer  houseNumber;
+
+    
+
 }
