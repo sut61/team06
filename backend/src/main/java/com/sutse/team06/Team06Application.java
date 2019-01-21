@@ -18,7 +18,7 @@ public class Team06Application {
 		SpringApplication.run(Team06Application.class, args);
 	}
 	@Bean
-	ApplicationRunner init(ClientRepository clientRepository,TypeRepository typeRepository,PriceRepository priceRepository){
+	ApplicationRunner init(ClientRepository clientRepository,InsuranceTypeRepository insurancetypeRepository,InsurancePriceRepository insurancepriceRepository){
 
 		return args ->{
 
@@ -38,43 +38,43 @@ public class Team06Application {
 			});
 			//type
 			Stream.of("Car","Motorcycle","Bike","Labtop").forEach(Type_of_insuance ->{
-				Type type = new Type();
+				InsuranceType type = new InsuranceType();
 				type.setType(Type_of_insuance);
-				typeRepository.save(type);
-				Price price = new Price();
+				insurancetypeRepository.save(type);
+				InsurancePrice price = new InsurancePrice();
 				if(Type_of_insuance=="Car"){
 					price.setPrice1("3000 bath / 3 months");
 					price.setPrice2("5500 bath / 6 months");
 					price.setPrice3("11000 bath / 12 months");
-					price.setType(typeRepository.getOne(1L));
-					typeRepository.save(type);
-					priceRepository.save(price);
+					price.setType(insurancetypeRepository.getOne(1L));
+					insurancetypeRepository.save(type);
+					insurancepriceRepository.save(price);
 				} 
 				else if(Type_of_insuance=="Motorcycle"){
 					price.setPrice1("1500 bath / 3 months");
 					price.setPrice2("2750 bath / 6 months");
 					price.setPrice3("5500 bath / 12 months");
-					price.setType(typeRepository.getOne(2L));
-					typeRepository.save(type);
-					priceRepository.save(price);
+					price.setType(insurancetypeRepository.getOne(2L));
+					insurancetypeRepository.save(type);
+					insurancepriceRepository.save(price);
 				}
 				else if(Type_of_insuance=="Bike"){
 					price.setPrice1("750 bath / 3 months");
 					price.setPrice2("1375 bath / 6 months");
 					price.setPrice3("-");
-					price.setType(typeRepository.getOne(3L));
-					typeRepository.save(type);
-					priceRepository.save(price);
+					price.setType(insurancetypeRepository.getOne(3L));
+					insurancetypeRepository.save(type);
+					insurancepriceRepository.save(price);
 				}
 				else if(Type_of_insuance=="Labtop"){
 					price.setPrice1("2000 bath / 3 months");
 					price.setPrice2("3950 bath / 6 months");
 					price.setPrice3("7900 bath / 12 months");
-					price.setType(typeRepository.getOne(4L));
-					typeRepository.save(type);
-					priceRepository.save(price);
+					price.setType(insurancetypeRepository.getOne(4L));
+					insurancetypeRepository.save(type);
+					insurancepriceRepository.save(price);
 				}  
-				priceRepository.save(price);
+				insurancepriceRepository.save(price);
 			});
 				
 			
