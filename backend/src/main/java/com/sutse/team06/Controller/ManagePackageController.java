@@ -11,6 +11,7 @@ import com.sutse.team06.Repository.DeliveryCompanyRepository;
 import com.sutse.team06.Repository.EmployeeRepository;
 import com.sutse.team06.Repository.HouseRepository;
 import com.sutse.team06.Repository.RentHouseRepository;
+import com.sutse.team06.Repository.ManagePackageInRepository;
 import com.sutse.team06.entity.*;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,6 +26,7 @@ public class ManagePackageController {
     @Autowired private RentHouseRepository rentHouseRepository;
     @Autowired private EmployeeRepository employeeRepository;
     @Autowired private DeliveryCompanyRepository deliveryCompanyRepository;
+    @Autowired private ManagePackageInRepository managePackageInRepository;
 
     // house
     @GetMapping("/house/{houseid}")
@@ -54,7 +56,20 @@ public class ManagePackageController {
     public List<DeliveryCompany> getDeliverComAll(){
          return this.deliveryCompanyRepository.findAll().stream().collect(Collectors.toList());
     }
-
+     @PostMapping("/packagein/{empid}/{packageid}/{deliverid}/{homenum}")
+     public ManagePackageIn savePackageIn(    @PathVariable("empid") Long empid,
+                              @PathVariable("packageid") String packageid,
+                              @PathVariable("deliverid") Long deliverid,
+                              @PathVariable("homenum") Integer homenum
+               ){
+             DeliveryCompany delier = this.deliveryCompanyRepository.findByDeliComId(deliverid);
+             Employee emp  = this.employeeRepository.findByEmpId(empid);
+             House house = this.houseRepository.findByhouseNumber(homenum);
+             RentHouse renthouse = this.rentHouseRepository.findByHouse(house);
+             
+             ManagePackageIn mpIn =  new ManagePackageIn(packageid,house,emp,renthouse,delier);
+             return this.managePackageInRepository.save(mpIn);
+     }
 
 
 }

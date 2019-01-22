@@ -40,4 +40,12 @@ public class ManagePackageIn {
     @JoinColumn(name="deliComId")
     private DeliveryCompany deliveryCompany;
     
+    public ManagePackageIn(String packageId,House house,Employee employee, RentHouse rentHouse,DeliveryCompany deliveryCompany){
+            this.packageId = packageId;
+            this.date = new Date();
+            this.house = house;
+            this.employee = employee;
+            this.rentHouse = rentHouse;
+            this.deliveryCompany = deliveryCompany;
+    }
 }
