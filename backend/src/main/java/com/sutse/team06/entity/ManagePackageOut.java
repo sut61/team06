@@ -4,6 +4,7 @@ package com.sutse.team06.entity;
 import lombok.*;
 
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,9 +21,9 @@ public class ManagePackageOut {
     @Id
     @SequenceGenerator(name = "ManagePackageOut_seq", sequenceName = "ManagePackageOut_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ManagePackageOut_seq")
-    private @NonNull Long mpInOut;
-    private @NonNull String receiver;
-    private @NonNull Date date;
+    @NotNull private  Long mpInOut;
+    @NotNull private  String receiver;
+    @NotNull private  Date date;
 
 
     @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)

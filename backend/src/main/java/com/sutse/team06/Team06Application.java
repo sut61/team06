@@ -92,7 +92,7 @@ public class Team06Application {
 				Employee emp = new Employee();
 				emp.setName("emp");
 				emp.setUsername("admin");
-				emp.setPassword("admin");
+				emp.setPassword("admin"); 
 				employeeRepository.save(emp);
 			
 		};

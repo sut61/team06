@@ -8,7 +8,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
-
+import javax.validation.constraints.NotNull;
 @Entity
 @Getter @Setter
 @NoArgsConstructor
@@ -17,8 +17,8 @@ public class Employee {
     @Id
     @SequenceGenerator(name = "Employee_seq", sequenceName = "Employee_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Employee_seq")
-    private @NonNull Long empId;
-    private @NonNull String name;
-    private @NonNull String username;
-    private @NonNull String password;
+    @NotNull private  Long empId;
+    @NotNull private  String name;
+    @NotNull private  String username;
+    @NotNull private  String password;
 }

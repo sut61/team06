@@ -2,7 +2,7 @@ package com.sutse.team06.entity;
 
 
 import lombok.*;
-
+import javax.validation.constraints.NotNull;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.GeneratedValue;
@@ -20,9 +20,9 @@ public class ManagePackageIn {
     @Id
     @SequenceGenerator(name = "ManagePackageIn_seq", sequenceName = "ManagePackageIn_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ManagePackageIn_seq")
-    private @NonNull Long mpInId;
-    private @NonNull String packageId;
-    private @NonNull Date date;
+    @NotNull private  Long mpInId;
+    @NotNull private  String packageId;
+    @NotNull private  Date date;
 
     @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
     @JoinColumn(name="houseId")
