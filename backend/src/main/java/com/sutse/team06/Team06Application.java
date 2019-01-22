@@ -26,7 +26,8 @@ public class Team06Application {
 							InsurancePriceRepository insurancepriceRepository,
 							DeliveryCompanyRepository deliveryCompanyRepository,
 							EmployeeRepository employeeRepository,
-							HouseRepository houseRepository
+							HouseRepository houseRepository,
+							RentHouseTypeRepository rentHouseTypeRepository
 							){
 
 		return args ->{
@@ -103,7 +104,12 @@ public class Team06Application {
 					houseRepository.save(house);
 				});
 
-
+				//RentHouseType
+				Stream.of("1 day","3 days","1 month","3 months").forEach(description ->{
+					RentHouseType rentHouseType = new RentHouseType();
+					rentHouseType.setDescription(description);
+					rentHouseTypeRepository.save(rentHouseType);
+				});
 		};
 	}
 	
