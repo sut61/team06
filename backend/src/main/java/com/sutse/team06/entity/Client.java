@@ -8,7 +8,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
-
+@Data
 @Entity
 @Getter @Setter
 @NoArgsConstructor
