@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import com.sutse.team06.Repository.ClientRepository;
 import com.sutse.team06.Repository.InsurancePriceRepository;
 import com.sutse.team06.Repository.InsuranceTypeRepository;
+import com.sutse.team06.Repository.*;
 import com.sutse.team06.entity.*;
 
 import java.util.stream.Stream;
@@ -20,7 +21,12 @@ public class Team06Application {
 		SpringApplication.run(Team06Application.class, args);
 	}
 	@Bean
-	ApplicationRunner init(ClientRepository clientRepository,InsuranceTypeRepository insurancetypeRepository,InsurancePriceRepository insurancepriceRepository){
+	ApplicationRunner init(	ClientRepository clientRepository,
+							InsuranceTypeRepository insurancetypeRepository,
+							InsurancePriceRepository insurancepriceRepository,
+							DeliveryCompanyRepository deliveryCompanyRepository,
+							EmployeeRepository employeeRepository
+							){
 
 		return args ->{
 
@@ -78,7 +84,16 @@ public class Team06Application {
 				}  
 				insurancepriceRepository.save(price);
 			});
-				
+			Stream.of("Thailand Post", "Kerry Express", "SCG Express", "TNT","DHL Express").forEach(delivername ->{
+				  DeliveryCompany deliver = new DeliveryCompany();
+				  deliver.setName(delivername);
+				  deliveryCompanyRepository.save(deliver);
+			});
+				Employee emp = new Employee();
+				emp.setName("emp");
+				emp.setUsername("admin");
+				emp.setPassword("admin");
+				employeeRepository.save(emp);
 			
 		};
 	}
