@@ -25,7 +25,8 @@ public class Team06Application {
 							InsuranceTypeRepository insurancetypeRepository,
 							InsurancePriceRepository insurancepriceRepository,
 							DeliveryCompanyRepository deliveryCompanyRepository,
-							EmployeeRepository employeeRepository
+							EmployeeRepository employeeRepository,
+							HouseRepository houseRepository
 							){
 
 		return args ->{
@@ -95,6 +96,14 @@ public class Team06Application {
 				emp.setPassword("admin"); 
 				employeeRepository.save(emp);
 			
+				//House
+				Stream.of(1111,2222,3333,4444).forEach(houseNumber ->{
+					House house = new House();	
+					house.setHouseNumber(houseNumber);
+					houseRepository.save(house);
+				});
+
+
 		};
 	}
 	
