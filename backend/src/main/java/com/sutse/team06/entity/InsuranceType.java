@@ -17,6 +17,6 @@ public class InsuranceType {
     @Id
     @SequenceGenerator(name = "InsuranceType_seq", sequenceName = "InsuranceType_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "InsuranceType_seq")
-    private @NonNull Long Tid;
+    private @NonNull Long tid;
     private @NonNull String type;
 }
