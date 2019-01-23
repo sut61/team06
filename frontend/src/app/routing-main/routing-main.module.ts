@@ -6,11 +6,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from '../index/index.component';
 import { ManagePackageInComponent } from '../manage-package-in/manage-package-in.component';
 import { ManagePackageOutComponent } from '../manage-package-out/manage-package-out.component';
+import { ManagePackageDetailComponent } from '../manage-package-detail/manage-package-detail.component';
 // ...
 const routes: Routes = [
   { path: '' , component: IndexComponent },
   { path: 'manage/packagein' , component:  ManagePackageInComponent},
-  { path: 'manage/packageout' , component: ManagePackageOutComponent}
+  { path: 'manage/packageout' , component: ManagePackageOutComponent},
+  { path: 'manage/packagedetail' , component: ManagePackageDetailComponent}
 ];
 
 @NgModule({

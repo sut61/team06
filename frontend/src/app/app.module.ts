@@ -20,13 +20,15 @@ import {RoutingMainModule} from './routing-main/routing-main.module';
 import { IndexComponent } from './index/index.component';
 import { ManagePackageInComponent } from './manage-package-in/manage-package-in.component';
 import { ManagePackageOutComponent } from './manage-package-out/manage-package-out.component';
+import { ManagePackageDetailComponent } from './manage-package-detail/manage-package-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
     ManagePackageInComponent,
-    ManagePackageOutComponent
+    ManagePackageOutComponent,
+    ManagePackageDetailComponent
   ],
   imports: [
     BrowserModule,
