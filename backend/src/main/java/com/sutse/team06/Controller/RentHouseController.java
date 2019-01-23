@@ -17,15 +17,22 @@ class RentHouseController {
     private HouseRepository houseRepository;
     @Autowired
     private RentHouseRepository rentHouseRepository;
+    @Autowired
+    private RentHouseTypeRepository renthousetypeRepository;
 
     @GetMapping("/house")
-    public List<House> House(){
+    public List<House> HouseAll(){
         return houseRepository.findAll().stream().collect(Collectors.toList());
     }
     
     @GetMapping("/renthouse")
-    public List<RentHouse> RentHouse(){
+    public List<RentHouse> RentHouseAll(){
         return rentHouseRepository.findAll().stream().collect(Collectors.toList());
+    }
+
+    @GetMapping("/renthousetype")
+    public List<RentHouseType> RentHouseTypeAll(){
+        return renthousetypeRepository.findAll().stream().collect(Collectors.toList());
     }
     
 }
