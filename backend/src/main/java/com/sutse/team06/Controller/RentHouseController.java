@@ -5,26 +5,32 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.sutse.team06.Repository.HouseRepository;
-import com.sutse.team06.Repository.RentHouseRepository;
+import com.sutse.team06.Repository.*;
 import com.sutse.team06.entity.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 class RentHouseController {
     @Autowired
     private HouseRepository houseRepository;
+    @Autowired
     private RentHouseRepository rentHouseRepository;
 
-    @GetMapping("/House")
+    @GetMapping("/house")
     public List<House> House(){
         return houseRepository.findAll().stream().collect(Collectors.toList());
     }
     
-    @GetMapping("/RentHouse")
+    @GetMapping("/renthouse")
     public List<RentHouse> RentHouse(){
         return rentHouseRepository.findAll().stream().collect(Collectors.toList());
+    }
+    
+    @GetMapping("/renthouse/{renthouseid}")
+    public  RentHouse getRentHouseById(@PathVariable("renthouseid") Long renthouseid){
+         return this.rentHouseRepository.findByRentId(renthouseid);
     }
     
 }
