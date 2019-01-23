@@ -1,3 +1,11 @@
-<p>
-  rent-house works!
-</p>
+<mat-card class="manage-check-form">
+  <div *ngFor="let rent of rents">
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <h3> <a>Contrack number : {{rent.rentId}}</a><br>
+         <a>House number : {{rent.house.houseNumber}}</a><br>
+      <a>Type : {{rent.rentHouseType.description}}</a></h3>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+  </div>
+</mat-card>
