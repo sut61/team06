@@ -11,6 +11,8 @@ import { InsuranceTableComponent } from '../insurance-table/insurance-table.comp
 // jump
 import { MakeRentHouseComponent } from '../make-rent-house/make-rent-house.component';
 import { RentHouseComponent } from '../rent-house/rent-house.component';
+//pheekay
+import { FoodOrderComponent } from '../food-order/food-order.component';
 // ...
 const routes: Routes = [
   { path: '' , component: IndexComponent },
@@ -18,7 +20,8 @@ const routes: Routes = [
   { path: 'makeinsurance' , component: MakeInsuranceComponent},
   { path: 'insurancetable' , component: InsuranceTableComponent},
   { path: 'makerenthouse' , component: MakeRentHouseComponent},
-  { path: 'renthouse' , component: RentHouseComponent}
+  { path: 'renthouse' , component: RentHouseComponent},
+  { path: 'foodorder' , component: FoodOrderComponent} 
 ];
 
 @NgModule({
