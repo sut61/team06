@@ -9,7 +9,8 @@ import { MatButtonModule,
          MatListModule,
          MatToolbarModule,
          MatIconModule,
-         MatDialogModule } from '@angular/material';
+         MatDialogModule,
+         MatTabsModule } from '@angular/material';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +22,7 @@ import { IndexComponent } from './index/index.component';
 import { ManagePackageInComponent } from './manage-package-in/manage-package-in.component';
 import { ManagePackageOutComponent } from './manage-package-out/manage-package-out.component';
 import { ManagePackageDetailComponent } from './manage-package-detail/manage-package-detail.component';
+import { ManagePackageMainComponent } from './manage-package-main/manage-package-main.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ManagePackageDetailComponent } from './manage-package-detail/manage-pac
     IndexComponent,
     ManagePackageInComponent,
     ManagePackageOutComponent,
-    ManagePackageDetailComponent
+    ManagePackageDetailComponent,
+    ManagePackageMainComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { ManagePackageDetailComponent } from './manage-package-detail/manage-pac
     MatTableModule,
     MatSelectModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
