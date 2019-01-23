@@ -28,6 +28,8 @@ import { InsuranceTableComponent } from './insurance-table/insurance-table.compo
 import { MakeInsuranceComponent } from './make-insurance/make-insurance.component';
 
 import { ManagePackageStatusComponent } from './manage-package-status/manage-package-status.component';
+import { MakeRentHouseComponent } from './make-rent-house/make-rent-house.component';
+import { RentHouseComponent } from './rent-house/rent-house.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { ManagePackageStatusComponent } from './manage-package-status/manage-pac
     ManagePackageMainComponent,
     InsuranceTableComponent,
     MakeInsuranceComponent,
-    ManagePackageStatusComponent
+    ManagePackageStatusComponent,
+    MakeRentHouseComponent,
+    RentHouseComponent
 
   ],
   imports: [
