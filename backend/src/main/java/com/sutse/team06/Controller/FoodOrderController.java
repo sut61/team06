@@ -24,7 +24,10 @@ import java.net.URLDecoder;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 class FoodOrderController {
     @Autowired
     private FoodOrderRepository foodOrderRepository;
