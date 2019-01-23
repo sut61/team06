@@ -23,6 +23,7 @@ import { ManagePackageInComponent } from './manage-package-in/manage-package-in.
 import { ManagePackageOutComponent } from './manage-package-out/manage-package-out.component';
 import { ManagePackageDetailComponent } from './manage-package-detail/manage-package-detail.component';
 import { ManagePackageMainComponent } from './manage-package-main/manage-package-main.component';
+import { ManagePackageStatusComponent } from './manage-package-status/manage-package-status.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ManagePackageMainComponent } from './manage-package-main/manage-package
     ManagePackageInComponent,
     ManagePackageOutComponent,
     ManagePackageDetailComponent,
-    ManagePackageMainComponent
+    ManagePackageMainComponent,
+    ManagePackageStatusComponent
   ],
   imports: [
     BrowserModule,
