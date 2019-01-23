@@ -27,7 +27,8 @@ public class Team06Application {
 							DeliveryCompanyRepository deliveryCompanyRepository,
 							EmployeeRepository employeeRepository,
 							HouseRepository houseRepository,
-							RentHouseTypeRepository rentHouseTypeRepository
+							RentHouseTypeRepository rentHouseTypeRepository,
+							RentHouseRepository rentHouseRepository
 							){
 
 		return args ->{
@@ -110,6 +111,12 @@ public class Team06Application {
 					rentHouseType.setDescription(description);
 					rentHouseTypeRepository.save(rentHouseType);
 				});
+
+				//RentHouse
+					RentHouse rentHouse = new RentHouse();
+					rentHouse.setHouse(houseRepository.getOne(2L));
+					rentHouse.setRentHouseType(rentHouseTypeRepository.getOne(3L));
+					rentHouseRepository.save(rentHouse);
 		};
 	}
 	
