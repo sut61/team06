@@ -13,6 +13,7 @@ import { MatButtonModule,
          MatTabsModule } from '@angular/material';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -64,7 +65,9 @@ import { FoodOrderComponent } from './food-order/food-order.component';
     MatSelectModule,
     MatIconModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    MatFormFieldModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
