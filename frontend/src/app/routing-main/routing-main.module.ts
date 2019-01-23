@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-// example
-import {IndexComponent} from '../index/index.component';
+// keng
+import { IndexComponent } from '../index/index.component';
+import { ManagePackageInComponent } from '../manage-package-in/manage-package-in.component';
 
+// ...
 const routes: Routes = [
-  { path: '' , component: IndexComponent }
+  { path: '' , component: IndexComponent },
+  { path: 'manage/packagein' , component:  ManagePackageInComponent}
 ];
+
 @NgModule({
   exports: [ RouterModule ],
   imports: [ RouterModule.forRoot(routes) ]
