@@ -1,0 +1,30 @@
+<div class="bg-manage">
+  <div class="bodylayout">
+  <mat-card class="manage-check-form">
+    <h1>ทำประกัน</h1>
+    <div class="example-container">
+      <mat-form-field  class="matfile">
+        <input matInput placeholder="ชื่อผู้ทำประกัน" name="name"  [(ngModel)]="insu.name" required #name>
+      </mat-form-field>
+      <mat-form-field  class="matfile">
+        <mat-select placeholder="Type of insurance" [(ngModel)]="insu.type">
+          <mat-option >
+
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+      <mat-form-field  class="matfile">
+          <mat-select placeholder="Price of insurance" [(ngModel)]="insu.price">
+            <mat-option >
+
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+        <div>
+          <a    mat-raised-button  class="btn-check" (click)="onSave()"><b>บันทึก</b></a>
+        </div>
+
+    </div>
+  </mat-card>
+</div>
+</div>

@@ -5,10 +5,14 @@ import { RouterModule, Routes } from '@angular/router';
 // keng
 import { IndexComponent } from '../index/index.component';
 import { ManagePackageMainComponent } from '../manage-package-main/manage-package-main.component';
+import { MakeInsuranceComponent } from '../make-insurance/make-insurance.component';
+import { InsuranceTableComponent } from '../insurance-table/insurance-table.component';
 // ...
 const routes: Routes = [
   { path: '' , component: IndexComponent },
-  { path: 'manage/package' , component: ManagePackageMainComponent}
+  { path: 'manage/package' , component: ManagePackageMainComponent},
+  { path: 'makeinsurance' , component: MakeInsuranceComponent},
+  { path: 'insurancetable' , component: InsuranceTableComponent}
 ];
 
 @NgModule({
