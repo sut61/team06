@@ -1,0 +1,19 @@
+<div class="bg-manage">
+    <div class="bodylayout">
+    <mat-card class="manage-check-form">
+      <br/>
+      <h1>ลงทะเบียนส่งพัสดุ</h1>
+      <div class="example-container">
+        <mat-form-field  class="matfile">
+          <input matInput placeholder="House Number" name="packageid"  [(ngModel)]="managepak.houseNumber" required #packageid>
+        </mat-form-field>
+        <mat-form-field  class="matfile">
+          <input matInput placeholder="Receiver" name="housenumber"  [(ngModel)]="managepak.receiver" required #housenumber/>
+        </mat-form-field>
+          <div>
+            <a    mat-raised-button  class="btn-check" (click)="onCheck()"><b>ตรวจสอบ</b></a>
+          </div>
+      </div>
+    </mat-card>
+  </div>
+  </div>

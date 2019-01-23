@@ -19,12 +19,14 @@ import { HttpClientModule } from '@angular/common/http';
 import {RoutingMainModule} from './routing-main/routing-main.module';
 import { IndexComponent } from './index/index.component';
 import { ManagePackageInComponent } from './manage-package-in/manage-package-in.component';
+import { ManagePackageOutComponent } from './manage-package-out/manage-package-out.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
-    ManagePackageInComponent
+    ManagePackageInComponent,
+    ManagePackageOutComponent
   ],
   imports: [
     BrowserModule,
