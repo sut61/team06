@@ -28,9 +28,4 @@ class RentHouseController {
         return rentHouseRepository.findAll().stream().collect(Collectors.toList());
     }
     
-    @GetMapping("/renthouse/{renthouseid}")
-    public  RentHouse getRentHouseById(@PathVariable("renthouseid") Long renthouseid){
-         return this.rentHouseRepository.findByRentId(renthouseid);
-    }
-    
 }
