@@ -30,6 +30,7 @@ import { MakeInsuranceComponent } from './make-insurance/make-insurance.componen
 import { ManagePackageStatusComponent } from './manage-package-status/manage-package-status.component';
 import { MakeRentHouseComponent } from './make-rent-house/make-rent-house.component';
 import { RentHouseComponent } from './rent-house/rent-house.component';
+import { FoodOrderComponent } from './food-order/food-order.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { RentHouseComponent } from './rent-house/rent-house.component';
     MakeInsuranceComponent,
     ManagePackageStatusComponent,
     MakeRentHouseComponent,
-    RentHouseComponent
+    RentHouseComponent,
+    FoodOrderComponent
 
   ],
   imports: [
