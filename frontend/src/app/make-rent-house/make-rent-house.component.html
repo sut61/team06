@@ -1,10 +1,42 @@
-<div class = "bg">
-    <div class="bodylayout">
-        <mat-card class="manage-check-form">
-          <h1>ทำสัญญาการเช่าบ้าน</h1>
-  <mat-form-field>
-    <input matInput placeholder="Example">
+<div class="bg">
+  <div class="bodylayout">
+    <mat-card class="manage-check-form">
+      <h1>ทำสัญญาการเช่าบ้าน</h1>
+        <mat-form-field  class="matfile">
+            <mat-select placeholder="เลือกบ้าน" [(ngModel)]="houseid">
+              <mat-option  *ngFor="let house of houses" [value]="house.houseId">
+                  {{house.houseNumber}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+      <br>
+      <mat-form-field  class="matfile">
+          <mat-select placeholder="เลือกระยะเวลา" [(ngModel)]="housetypesid">
+            <mat-option  *ngFor="let housetype of housetypes" [value]="housetype.renttypeId">
+                {{housetype.description}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+    <br>
+    <mat-form-field  class="matfile">
+        <mat-select placeholder="เลือกพนักงานยืนยัน" [(ngModel)]="employeeid">
+          <mat-option  *ngFor="let employee of employees" [value]="employee.empId">
+              {{employee.name}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+  <br>
+  <mat-form-field  class="matfile">
+      <mat-select placeholder="เลือกผู้อยู่อาศัย" [(ngModel)]="clientid">
+        <mat-option  *ngFor="let client of clients" [value]="client.cid">
+            {{client.name}}
+        </mat-option>
+      </mat-select>
   </mat-form-field>
-</mat-card>
+      <div class="center">
+          <button mat-raised-button color="accent" (click)="save()">บันทึก</button>
+        <button mat-raised-button color="accent" routerLink="/renthouse">ดูสัญญาเช่า</button>
+      </div>
+    </mat-card>
   </div>
 </div>
