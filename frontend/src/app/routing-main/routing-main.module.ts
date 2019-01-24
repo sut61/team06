@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
+//yuu
+
+import { RepairsComponent } from '../repairs/repairs.component' 
+
 // keng
 import { IndexComponent } from '../index/index.component';
 import { ManagePackageMainComponent } from '../manage-package-main/manage-package-main.component';
@@ -21,7 +25,8 @@ const routes: Routes = [
   { path: 'insurancetable' , component: InsuranceTableComponent},
   { path: 'makerenthouse' , component: MakeRentHouseComponent},
   { path: 'renthouse' , component: RentHouseComponent},
-  { path: 'foodorder' , component: FoodOrderComponent}
+  { path: 'foodorder' , component: FoodOrderComponent},
+  { path: 'repairs' , component: RepairsComponent},
 ];
 
 @NgModule({
