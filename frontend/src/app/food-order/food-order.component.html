@@ -1,3 +1,71 @@
-<p>
-  food-order works!
-</p>
+<mat-card class="manage-check-form">
+<p>บริการสั่งอาหาร</p>
+  <mat-tab-group>
+  <mat-tab label="ระบุบ้านเลขที่">
+  <div class="example-container">
+  <mat-form-field>
+  <mat-select [(value)]="selected">
+    <mat-option>None</mat-option>
+    <mat-option value="option1">Option 1</mat-option>
+    <mat-option value="option2">Option 2</mat-option>
+    <mat-option value="option3">Option 3</mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+<p>You selected: {{selected}}</p>
+</mat-tab>
+  <mat-tab label="ระบุชื่อลูกค้า">
+  <div class="example-container">
+  <mat-form-field>
+  <mat-select [(value)]="selected">
+    <mat-option>None</mat-option>
+    <mat-option value="option1">Option 1</mat-option>
+    <mat-option value="option2">Option 2</mat-option>
+    <mat-option value="option3">Option 3</mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+<p>You selected: {{selected}}</p>
+</mat-tab>
+  <mat-tab label="ระบุเมนูอาหาร">
+  <div class="example-container">
+  <mat-form-field>
+  <mat-select [(value)]="selected">
+    <mat-option>None</mat-option>
+    <mat-option value="option1">Option 1</mat-option>
+    <mat-option value="option2">Option 2</mat-option>
+    <mat-option value="option3">Option 3</mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+<p>You selected: {{selected}}</p>
+</mat-tab>
+  <mat-tab label="ระบุชื่อผู้รับรายการ">
+  <div class="example-container">
+  <mat-form-field>
+  <mat-select [(value)]="selected">
+    <mat-option>None</mat-option>
+    <mat-option value="option1">Option 1</mat-option>
+    <mat-option value="option2">Option 2</mat-option>
+    <mat-option value="option3">Option 3</mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+<p>You selected: {{selected}}</p>
+</mat-tab>
+  <mat-tab label="ระบุเวลารับรายการ">
+  <div class="example-container">
+  <mat-form-field>
+  <mat-select [(value)]="selected">
+    <mat-option>None</mat-option>
+    <mat-option value="option1">Option 1</mat-option>
+    <mat-option value="option2">Option 2</mat-option>
+    <mat-option value="option3">Option 3</mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+<p>You selected: {{selected}}</p>
+</mat-tab>
+
+  </mat-tab-group>
+</mat-card>

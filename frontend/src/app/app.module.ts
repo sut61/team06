@@ -13,6 +13,7 @@ import { MatButtonModule,
          MatTabsModule } from '@angular/material';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -31,6 +32,8 @@ import { ManagePackageStatusComponent } from './manage-package-status/manage-pac
 import { MakeRentHouseComponent } from './make-rent-house/make-rent-house.component';
 import { RentHouseComponent } from './rent-house/rent-house.component';
 import { FoodOrderComponent } from './food-order/food-order.component';
+
+import { Team06Service } from './team06.service';
 
 
 @NgModule({
@@ -64,9 +67,11 @@ import { FoodOrderComponent } from './food-order/food-order.component';
     MatSelectModule,
     MatIconModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    MatFormFieldModule
+
   ],
-  providers: [],
+  providers: [Team06Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

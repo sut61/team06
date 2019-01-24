@@ -11,7 +11,7 @@ import { InsuranceTableComponent } from '../insurance-table/insurance-table.comp
 // jump
 import { MakeRentHouseComponent } from '../make-rent-house/make-rent-house.component';
 import { RentHouseComponent } from '../rent-house/rent-house.component';
-//pheekay
+// pheekay
 import { FoodOrderComponent } from '../food-order/food-order.component';
 // ...
 const routes: Routes = [

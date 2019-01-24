@@ -1,4 +1,7 @@
+import { Team06Service } from './../team06.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable, from } from 'rxjs';
+
 
 @Component({
   selector: 'app-rent-house',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RentHouseComponent implements OnInit {
 
-  constructor() { }
-
+  rents: Array<any>;
+  constructor(private data: Team06Service) { }
   ngOnInit() {
+    this.data.RentHouseAll().subscribe(data => {this.rents = data;})
   }
 
 }
