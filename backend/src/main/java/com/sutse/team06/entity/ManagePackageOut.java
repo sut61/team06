@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import java.util.Date;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
@@ -29,5 +30,9 @@ public class ManagePackageOut {
     @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
     @JoinColumn(name="empId")
     private Employee employee;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="mpInId")
+    private ManagePackageIn managePackageIn;
  
 }

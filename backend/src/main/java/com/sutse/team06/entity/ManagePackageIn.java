@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import java.util.Date;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
@@ -39,6 +40,10 @@ public class ManagePackageIn {
     @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
     @JoinColumn(name="deliComId")
     private DeliveryCompany deliveryCompany;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="mpInOut")
+    private ManagePackageOut managePackageOut;
     
     public ManagePackageIn(String packageId,House house,Employee employee, RentHouse rentHouse,DeliveryCompany deliveryCompany){
             this.packageId = packageId;
