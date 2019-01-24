@@ -1,9 +1,13 @@
 <div class="bg-manage">
     <div class="bodylayout">
     <mat-card class="manage-check-form">
+     <div *ngIf="state">
       <br/>
       <h1>ลงทะเบียนส่งพัสดุ</h1>
       <div class="example-container">
+          <span *ngIf="!noti"  >
+              <mat-card>{{notimag}}</mat-card>
+        </span>
         <mat-form-field  class="matfile">
           <input matInput placeholder="House Number" name="packageid"  [(ngModel)]="managepak.houseNumber" required #packageid>
         </mat-form-field>
@@ -14,6 +18,24 @@
             <a    mat-raised-button  class="btn-check" (click)="onCheck()"><b>ตรวจสอบ</b></a>
           </div>
       </div>
+    </div>
+    <div *ngIf="!state">
+        <div class="layout-text-ss">
+            <mat-card class="config-password-valid" >
+            <!-- เเก้ไข้ -clsoe  to -close  -->
+            <p class="password-tltle-1"><b>รายละเอียดพัสดุ</b></p>
+            <p class="password-tltle"><b>เลขพัสดุ: {{datadetail.packageId}}</b></p>
+            <p class="password-tltle"><b>วันรับเข้า: {{datadetail.date | date}}</b></p>
+            <p class="password-tltle"><b>ชื่อพักงานที่รับ: {{datadetail.employee.name}}  </b></p>
+            <p class="password-tltle"><b>บริษัทที่มาสง: {{datadetail.deliveryCompany.name}}</b></p>
+            <div class="example-container">
+                <div>
+                    <a    mat-raised-button  class="btn-check" (click)="onSubmit()"><b>ยืนยัน</b></a>
+                </div>
+            </div>
+        </mat-card>
+        </div>
+    </div>
     </mat-card>
   </div>
   </div>
