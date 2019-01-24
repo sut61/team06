@@ -6,17 +6,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import com.sutse.team06.Repository.DeliveryCompanyRepository;
 import com.sutse.team06.Repository.EmployeeRepository;
 import com.sutse.team06.Repository.HouseRepository;
 import com.sutse.team06.Repository.RentHouseRepository;
 import com.sutse.team06.Repository.ManagePackageInRepository;
 import com.sutse.team06.Repository.ManagePackageOutRepository;
+import com.sutse.team06.Repository.ClientRepository;
 import com.sutse.team06.entity.*;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
+import java.util.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -29,6 +32,7 @@ public class ManagePackageController {
     @Autowired private DeliveryCompanyRepository deliveryCompanyRepository;
     @Autowired private ManagePackageInRepository managePackageInRepository;
     @Autowired private ManagePackageOutRepository managePackageOutRepository;
+    @Autowired private ClientRepository clientRepository;
 
     // house
     @GetMapping("/house/{houseid}")
@@ -46,8 +50,40 @@ public class ManagePackageController {
          return this.employeeRepository.findByEmpId(empid);
     }
     @PostMapping("/employee/auth/{username}/{password}")
-    public  Employee authEmployee(@PathVariable("username") String username,@PathVariable("password") String password){
-         return this.employeeRepository.findByUsernameAndPassword(username,password);
+    public  ResponseEntity<Map<String, Object>> authEmployee(@PathVariable("username") String username,@PathVariable("password") String password){
+         Employee employee =  this.employeeRepository.findByUsernameAndPassword(username,password);
+          Map<String, Object> json = new HashMap<String, Object>();
+              if(employee != null){
+                     json.put("success", true);
+                     json.put("status", "auth");
+                     json.put("employee", employee);
+                     return  (new ResponseEntity<Map<String, Object>>(json, null, HttpStatus.OK));
+                     
+              }else {
+                     json.put("success", false);
+                     json.put("status", "Unauth");
+                     json.put("employee", "");
+                    return  (new ResponseEntity<Map<String, Object>>(json, null, HttpStatus.NOT_FOUND));
+
+              }
+    }
+    @PostMapping("/elient/auth/{username}/{password}")
+    public  ResponseEntity<Map<String, Object>> authClient(@PathVariable("username") String username,@PathVariable("password") String password){
+         Client elient =  this.clientRepository.findByUsernameAndPassword(username,password);
+          Map<String, Object> json = new HashMap<String, Object>();
+              if(elient != null){
+                     json.put("success", true);
+                     json.put("status", "auth");
+                     json.put("employee", elient);
+                     return  (new ResponseEntity<Map<String, Object>>(json, null, HttpStatus.OK));
+                     
+              }else {
+                     json.put("success", false);
+                     json.put("status", "Unauth");
+                     json.put("employee", "");
+                    return  (new ResponseEntity<Map<String, Object>>(json, null, HttpStatus.NOT_FOUND));
+
+              }
     }
     // Divily
     @GetMapping("/delivercom/{deviComId}")
@@ -63,18 +99,38 @@ public class ManagePackageController {
          return this.managePackageInRepository.findAll().stream().collect(Collectors.toList());
     }
      @PostMapping("/packagein/{empid}/{packageid}/{deliverid}/{homenum}")
-     public ManagePackageIn savePackageIn(    @PathVariable("empid") Long empid,
+     public ResponseEntity<Map<String, Object>> savePackageIn(    @PathVariable("empid") Long empid,
                               @PathVariable("packageid") String packageid,
                               @PathVariable("deliverid") Long deliverid,
                               @PathVariable("homenum") Integer homenum
                ){
+          try{
              DeliveryCompany delier = this.deliveryCompanyRepository.findByDeliComId(deliverid);
              Employee emp  = this.employeeRepository.findByEmpId(empid);
              House house = this.houseRepository.findByhouseNumber(homenum);
              RentHouse renthouse = this.rentHouseRepository.findByHouse(house);
              
              ManagePackageIn mpIn =  new ManagePackageIn(packageid,house,emp,renthouse,delier);
-             return this.managePackageInRepository.save(mpIn);
+              ManagePackageIn mpInstatus = this.managePackageInRepository.save(mpIn);
+              Map<String, Object> json = new HashMap<String, Object>();
+              if(mpInstatus != null){
+                     json.put("success", true);
+                     json.put("status", "saved");
+              }else {
+                     json.put("success", true);
+                     json.put("status", "No data");
+              }
+               
+
+              HttpHeaders headers = new HttpHeaders();
+              headers.add("Content-Type", "application/json; charset=UTF-8");
+              return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.OK));
+          } catch(Exception e) {
+               Map<String, Object> json = new HashMap<String, Object>();
+                json.put("success", false);
+                json.put("status", "saved fail");
+               return  (new ResponseEntity<Map<String, Object>>(json, null, HttpStatus.INTERNAL_SERVER_ERROR));
+          }
      }
      @GetMapping("/manapackagein/{hourenum}")
      public ManagePackageIn getPackageIn(@PathVariable("hourenum") Integer hourenum){
@@ -88,17 +144,38 @@ public class ManagePackageController {
           return this.managePackageOutRepository.findByMpInId(mpIn);
      }
      @PostMapping("/packageout/{receiver}/{empid}/{mpInId}")
-     public ManagePackageOut savePackageOut(@PathVariable("receiver") String receiver,@PathVariable("empid") Long empid, @PathVariable("mpInId") Long mpInId){
-          ManagePackageIn managein = this.managePackageInRepository.findByMpInId(mpInId);
-          Employee emp = this.employeeRepository.findByEmpId(empid);
+     public  ResponseEntity<Map<String, Object>> savePackageOut(@PathVariable("receiver") String receiver,@PathVariable("empid") Long empid, @PathVariable("mpInId") Long mpInId){
+           try{
+               ManagePackageIn managein = this.managePackageInRepository.findByMpInId(mpInId);
+               Employee emp = this.employeeRepository.findByEmpId(empid);
 
-          ManagePackageOut manageout = new ManagePackageOut(receiver,emp,managein);
-          ManagePackageOut out = this.managePackageOutRepository.save(manageout);
+               ManagePackageOut manageout = new ManagePackageOut(receiver,emp,managein);
+               ManagePackageOut out = this.managePackageOutRepository.save(manageout);
+               Map<String, Object> json = new HashMap<String, Object>();
+               if(out != null){
+                         json.put("success", true);
+                         json.put("status", "save");
+               }else {
+                          json.put("success", true);
+                          json.put("status", "save");
+               }
+                
+
+              HttpHeaders headers = new HttpHeaders();
+              headers.add("Content-Type", "application/json; charset=UTF-8");
+              return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.OK));
+           }
+           catch(Exception e) {
+               Map<String, Object> json = new HashMap<String, Object>();
+                json.put("success", false);
+                json.put("status", "save fail");
+               return  (new ResponseEntity<Map<String, Object>>(json, null, HttpStatus.INTERNAL_SERVER_ERROR));
+          }
 
           // managein.setManagePackageOut(manageout);
           // this.managePackageInRepository.save(managein);
            
-          return  out;
+         
      }
 
 
