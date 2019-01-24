@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 //yuu
 
-import { RepairsComponent } from '../repairs/repairs.component' 
+import { RepairsComponent } from '../repairs/repairs.component'
 
 // keng
 import { IndexComponent } from '../index/index.component';
-import { ManagePackageMainComponent } from '../manage-package-main/manage-package-main.component';
+import {ManagePackageInComponent} from '../manage-package-in/manage-package-in.component';
+import {ManagePackageOutComponent} from '../manage-package-out/manage-package-out.component';
+import {ManagePackageStatusComponent} from '../manage-package-status/manage-package-status.component';
 // best
 import { MakeInsuranceComponent } from '../make-insurance/make-insurance.component';
 import { InsuranceTableComponent } from '../insurance-table/insurance-table.component';
@@ -17,10 +19,13 @@ import { MakeRentHouseComponent } from '../make-rent-house/make-rent-house.compo
 import { RentHouseComponent } from '../rent-house/rent-house.component';
 // pheekay
 import { FoodOrderComponent } from '../food-order/food-order.component';
+import { from } from 'rxjs';
 // ...
 const routes: Routes = [
   { path: '' , component: IndexComponent },
-  { path: 'manage/package' , component: ManagePackageMainComponent},
+  { path: 'manage/packagein' , component: ManagePackageInComponent},
+  { path: 'manage/packageout' , component: ManagePackageOutComponent},
+  { path: 'manage/packagestatus' , component: ManagePackageStatusComponent},
   { path: 'makeinsurance' , component: MakeInsuranceComponent},
   { path: 'insurancetable' , component: InsuranceTableComponent},
   { path: 'makerenthouse' , component: MakeRentHouseComponent},

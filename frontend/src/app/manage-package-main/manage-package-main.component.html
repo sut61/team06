@@ -1,7 +1,5 @@
 <mat-card class="manage-check-form">
-  <mat-tab-group>
-      <mat-tab label="ลงทะเบียนรับพัสดุ"><app-manage-package-in></app-manage-package-in> </mat-tab>
-      <mat-tab label="ลงทะเบียนส่งพัสดุ"><app-manage-package-out></app-manage-package-out></mat-tab>
-      <mat-tab label="สถานะพัสดุ"><app-manage-package-status></app-manage-package-status> </mat-tab>
-  </mat-tab-group>
+    <button mat-button  routerLink="/manage/packagein"><b>ลงทะเบียนรับพัสดุ</b></button>
+    <button mat-button  routerLink="/manage/packageout"><b>ลงทะเบียนส่งพัสดุ</b></button>
+    <button mat-button  routerLink="/manage/packagestatus"><b>สถานะพัสดุ</b></button>
 </mat-card>

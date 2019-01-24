@@ -9,6 +9,7 @@ import { async } from '@angular/core/testing';
 })
 export class ManagePackageStatusComponent implements OnInit {
   statusList: any = [];
+  statein: boolean;
   constructor(private mangagePackageService: MangagePackageService) { }
   ngOnInit() {
       this.mangagePackageService.getManageAll().subscribe(data => {
