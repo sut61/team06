@@ -1,4 +1,4 @@
-package com.sutse.team06.repository;
+package com.sutse.team06.Repository;
 
 
 import com.sutse.team06.entity.Equipment;
