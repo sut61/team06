@@ -10,6 +10,7 @@ import com.sutse.team06.entity.*;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
@@ -51,4 +52,15 @@ class RentHouseController {
         return employeeRepository.findAll().stream().collect(Collectors.toList());
     }
     
+    @PostMapping("/renthouse/save/{houseid}/{housetypesid}/{employeeid}/{clientid}")
+    public RentHouse createRentHouse(@PathVariable long houseid,@PathVariable long housetypesid,@PathVariable long employeeid,
+                                    @PathVariable long clientid){
+
+       RentHouse rentHouse = new RentHouse();
+       rentHouse.setHouse(houseRepository.getOne(houseid));
+       rentHouse.setRentHouseType(renthousetypeRepository.getOne(housetypesid));
+       rentHouse.setEmployee(employeeRepository.getOne(employeeid));
+       return rentHouseRepository.save(rentHouse);
+       
+    }
 }
