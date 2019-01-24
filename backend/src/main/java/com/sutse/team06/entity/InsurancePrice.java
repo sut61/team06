@@ -21,9 +21,7 @@ public class InsurancePrice {
     @SequenceGenerator(name = "InsurancePrice_seq", sequenceName = "InsurancePrice_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "InsurancePrice_seq")
     private @NonNull Long pid;
-    private @NonNull String price1;
-    private @NonNull String price2;
-    private @NonNull String price3;
+    private @NonNull Integer price;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Type")
