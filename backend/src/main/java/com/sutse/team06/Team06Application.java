@@ -146,6 +146,8 @@ public class Team06Application {
 					RentHouse rentHouse = new RentHouse();
 					rentHouse.setHouse(houseRepository.getOne(2L));
 					rentHouse.setRentHouseType(rentHouseTypeRepository.getOne(3L));
+					rentHouse.setResident("Jump");
+					rentHouse.setEmployee(employeeRepository.getOne(1L));
 					rentHouseRepository.save(rentHouse);
 		};
 	}
