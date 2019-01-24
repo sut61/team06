@@ -31,8 +31,17 @@ public class ManagePackageOut {
     @JoinColumn(name="empId")
     private Employee employee;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name="mpInId")
     private ManagePackageIn managePackageIn;
+
+    private  ManagePackageOut(){}
+
+    public ManagePackageOut(String receiver, Employee employee,ManagePackageIn managePackageIn){
+        this.receiver = receiver;
+        this.date = new Date();
+        this.employee = employee;
+        this.managePackageIn = managePackageIn;
+    }
  
 }
