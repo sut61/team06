@@ -11,7 +11,7 @@ export class ManagePackageInComponent implements OnInit {
   deliverCom: Array<any>;
   noti: boolean;
   notimag: String;
-
+  empid: String;
   constructor(private mangagePackageService: MangagePackageService, private router: Router) {
        this.noti = true;
   }
@@ -27,8 +27,9 @@ export class ManagePackageInComponent implements OnInit {
     // tslint:disable-next-line:no-non-null-assertion
     // console.log((Object.keys(this.managepak).length);
   if (Object.keys(this.managepak).length !== 0) {
+    this.empid = JSON.parse(localStorage.getItem('employee')).empId;
      // tslint:disable-next-line:max-line-length
-        this.mangagePackageService.savePackageIn('1', this.managepak.packageId, this.managepak.deliverId, this.managepak.houseNumber).subscribe(data => {
+        this.mangagePackageService.savePackageIn(this.empid, this.managepak.packageId, this.managepak.deliverId, this.managepak.houseNumber).subscribe(data => {
               console.log(data);
               this.noti = false;
               this.notimag = 'บันทึกพัสดุสำเร็จ';

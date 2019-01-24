@@ -7,6 +7,11 @@ import { Observable } from 'rxjs/Observable';
 })
 export class MangagePackageService {
   public API = '//localhost:8080/api';
+  authenticatedemp = false;
+  authenticatedclient = false;
+  user: any;
+  public name: any = '';
+  public auth: boolean;
   constructor(private http: HttpClient) { }
   getHouseById(houseid: String): Observable<any> {
     return this.http.get(this.API + '/house/' + houseid);
@@ -38,5 +43,11 @@ export class MangagePackageService {
   savePackageOut(empid: String, recive: String, mpInId: String): Observable<any> {
       return this.http.post(this.API + '/packageout/'  + recive + '/' + empid + '/' + mpInId, {});
   }
+  empLogin(username: String, password: String): Observable<any> {
+     return this.http.post(this.API + '/employee/auth/' + username + '/' + password , {});
+  }
+  clientLogin(username: String, password: String): Observable<any> {
+    return this.http.post(this.API + '/elient/auth/' + username + '/' + password , {});
+ }
 
 }

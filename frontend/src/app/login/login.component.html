@@ -1,5 +1,5 @@
 <mat-tab-group class="tabs">
-    <mat-tab label="Member"> <mat-card class="layout-login">
+    <mat-tab label="EMPLOYEE"> <mat-card class="layout-login">
         <h1>EMPLOYEE LOGIN</h1>
         <form role="form" (submit)="LoginSubmit()">
       <div class="example-container">
@@ -15,9 +15,9 @@
       </form>
       </mat-card>
     </mat-tab>
-    <mat-tab label="Admin"><mat-card class="layout-login">
+    <mat-tab label="CLIENT"><mat-card class="layout-login">
         <h1>CLIENT LOGIN</h1>
-        <form role="form" (submit)="LoginSubmitAdmin()">
+        <form role="form" (submit)="LoginSubmitClint()">
       <div class="example-container">
         <mat-form-field>
           <input matInput placeholder="username" [(ngModel)]="credentials.username" required name="username" #username>
