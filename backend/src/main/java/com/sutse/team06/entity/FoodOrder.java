@@ -2,6 +2,7 @@ package com.sutse.team06.entity;
 
 import lombok.*;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,7 +21,7 @@ public class FoodOrder{
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="foodorder_seq")
 	@Column(name="foodOrderId",unique = true, nullable = true)
     private @NonNull Long foodOrderId;
-    
+    private @NonNull Date orderDate ;
     //with Employee
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "empId")
