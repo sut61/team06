@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'insurancetable' , component: InsuranceTableComponent},
   { path: 'makerenthouse' , component: MakeRentHouseComponent},
   { path: 'renthouse' , component: RentHouseComponent},
-  { path: 'foodorder' , component: FoodOrderComponent} 
+  { path: 'foodorder' , component: FoodOrderComponent}
 ];
 
 @NgModule({
