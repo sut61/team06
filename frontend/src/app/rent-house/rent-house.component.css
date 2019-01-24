@@ -1,0 +1,8 @@
+.bg{
+    background-size: cover;
+    background-position: center;
+    height: 45rem;
+    margin: 0;
+    background-color:  rgba(0, 0, 0, 0.7);
+    /* opacity: 0.7; */
+  }
