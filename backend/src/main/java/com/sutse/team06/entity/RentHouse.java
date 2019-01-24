@@ -21,6 +21,7 @@ public class RentHouse {
     @SequenceGenerator(name = "RentHouse_seq", sequenceName = "RentHouse_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RentHouse_seq")
     private @NonNull Long rentId;
+    private @NonNull String resident;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="renttypeId")
