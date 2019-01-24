@@ -10,6 +10,7 @@ import com.sutse.team06.Repository.HouseRepository;
 import com.sutse.team06.Repository.RentHouseRepository;
 import com.sutse.team06.Repository.RepairsRepository;
 import com.sutse.team06.Repository.EquipmentRepository;
+import com.sutse.team06.Repository.EmployeeRepository;
 import com.sutse.team06.entity.*;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,6 +24,8 @@ public class RepairsController {
     @Autowired private HouseRepository houseRepository;
     @Autowired private RentHouseRepository rentHouseRepository;
     @Autowired private EquipmentRepository equipmentRepository;
+    @Autowired private RepairsRepository repairsRepository;
+    @Autowired private EmployeeRepository employeeRepository;
  
 
       @GetMapping("/house")
@@ -41,6 +44,18 @@ public class RepairsController {
         return equipmentRepository.findAll().stream().collect(Collectors.toList());
     }
 
+    @PostMapping("/repair/save/{houseid}/{renthouseid}/{employeeid}/{equipmentid}")
+    public Repairs createRepairs(@PathVariable long houseid,@PathVariable long renthouseid,
+                                    @PathVariable long employeeid,@PathVariable long equipmentid){
+
+      Repairs repairs = new Repairs();
+      repairs.setHouse(houseRepository.getOne(houseid));
+      repairs.setRentHouse(rentHouseRepository.getOne(renthouseid));
+      repairs.setEmployee(employeeRepository.getOne(employeeid));
+      repairs.setEquipment(equipmentRepository.getOne(equipmentid));
+      return repairsRepository.save(repairs);
+       
+    }
 }
 
 

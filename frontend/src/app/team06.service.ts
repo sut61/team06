@@ -27,4 +27,9 @@ export class Team06Service {
   HouseAll(): Observable<any> {
     return this.http.get('//localhost:8080/house');
   }
+
+  EquipmentAll(): Observable<any> {
+    return this.http.get('//localhost:8080/api/equipment');
+  }
+
 }

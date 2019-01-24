@@ -18,14 +18,13 @@ import java.util.Date;
 import java.util.Collection;
 
 @Entity
-@Data
+@Getter @Setter
+@ToString @EqualsAndHashCode
 public class Repairs {
     @Id
     @SequenceGenerator(name = "Repair_seq", sequenceName = "Repair_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Repair_seq")
     private @NonNull Long repairsId;
-    private @NonNull Date dateIn;
-    private @NonNull Date dateOut; 
  
     @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
     @JoinColumn(name="houseId")
@@ -35,12 +34,15 @@ public class Repairs {
     @JoinColumn(name="rentId")
     private RentHouse rentHouse;
 
-    @OneToMany(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
+    @JoinColumn(name="equipmentId")
+    private Equipment equipment;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="empId")
+    private Employee employee;
      
-     
-     private Collection<Equipment> equipment;
-
-     
+    public Repairs(){}
    
  
 }
