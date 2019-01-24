@@ -29,7 +29,10 @@ public class Team06Application {
 							HouseRepository houseRepository,
 							RentHouseTypeRepository rentHouseTypeRepository,
 							RentHouseRepository rentHouseRepository,
-							FoodListRepository foodListRepository
+							FoodListRepository foodListRepository,
+							RepairsRepository repairsRepository,
+							EquipmentRepository equipmentRepository
+
 							){
 
 		return args ->{
@@ -157,6 +160,18 @@ public class Team06Application {
 					foodList.setFoodlistName(foodlistName);
 					foodListRepository.save(foodList);
 				});
+
+			
+
+				//Equipment
+				Stream.of("เตียง","โคมไฟ","ประตู","หน้าต่าง").forEach(equipmentlist ->{
+					Equipment equipment = new Equipment();
+					equipment.setEquipmentName(equipmentlist);
+					// equipment.setHouse(houseRepository.getOne(1L));
+					// equipment.setRepairs(null);
+					equipmentRepository.save(equipment);
+				});
+
 
 		};
 	}

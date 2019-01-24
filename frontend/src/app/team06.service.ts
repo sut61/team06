@@ -30,4 +30,10 @@ export class Team06Service {
   FoodListAll(): Observable<any> {
     return this.http.get('//localhost:8080/FoodList');
   }
+
+
+  EquipmentAll(): Observable<any> {
+    return this.http.get('//localhost:8080/api/equipment');
+  }
+
 }
