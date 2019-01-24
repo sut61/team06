@@ -28,7 +28,8 @@ public class Team06Application {
 							EmployeeRepository employeeRepository,
 							HouseRepository houseRepository,
 							RentHouseTypeRepository rentHouseTypeRepository,
-							RentHouseRepository rentHouseRepository
+							RentHouseRepository rentHouseRepository,
+							FoodListRepository foodListRepository
 							){
 
 		return args ->{
@@ -149,6 +150,14 @@ public class Team06Application {
 					rentHouse.setResident("Jump");
 					rentHouse.setEmployee(employeeRepository.getOne(1L));
 					rentHouseRepository.save(rentHouse);
+
+				//FoodList
+				Stream.of("ข้าวกะเพราไก่","ข้าวกะเพราหมู","ข้าวกะเพรากุ้ง","ข้าวกะเพราเป็ด","ข้าวกะเพราทะเลรวมมิตร").forEach(foodlistName ->{
+					FoodList foodList = new FoodList();
+					foodList.setFoodlistName(foodlistName);
+					foodListRepository.save(foodList);
+				});
+
 		};
 	}
 	
