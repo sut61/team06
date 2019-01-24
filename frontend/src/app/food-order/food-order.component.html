@@ -4,7 +4,7 @@
   <mat-tab label="ระบุบ้านเลขที่">
   <div class="example-container">
   <mat-form-field  class="matfile">
-            <mat-select placeholder="ระบุบ้านเลขที่" [(ngModel)]="houseid">
+            <mat-select placeholder="ระบุบ้านเลขที่" [(ngModel)]="house">
               <mat-option  *ngFor="let house of houses" [value]="house.houseId">
                   {{house.houseNumber}}
               </mat-option>
@@ -19,7 +19,7 @@
   <div class="example-container">
   <mat-form-field  class="matfile">
       <mat-select placeholder="ระบุชื่อลูกค้า" [(ngModel)]="client">
-        <mat-option  *ngFor="let client of clients" [value]="client.name">
+        <mat-option  *ngFor="let client of clients" [value]="client.cid">
             {{client.name}}
         </mat-option>
       </mat-select>
@@ -32,7 +32,7 @@
   <mat-tab label="ระบุเมนูอาหาร">
   <div class="example-container">
    <mat-form-field  class="matfile">
-        <mat-select placeholder="ระบุเมนูอาหาร" [(ngModel)]="foodlistId">
+        <mat-select placeholder="ระบุเมนูอาหาร" [(ngModel)]="foodlist">
           <mat-option  *ngFor="let foodlist of foodlists" [value]="foodlist.foodlistId">
               {{foodlist.foodlistName}}
           </mat-option>
@@ -59,11 +59,12 @@
 </mat-tab>
   <mat-tab label="บันทึกรายการ">
 <div class="example-button-row"><br><br><br><br>
-  <button mat-raised-button color="primary">Save</button>
+<button mat-raised-button color="primary"(click)="save()" >Save</button>
 
 </div>
 
 </mat-tab>
 
   </mat-tab-group>
+
 </mat-card>
