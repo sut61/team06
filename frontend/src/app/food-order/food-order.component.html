@@ -3,68 +3,66 @@
   <mat-tab-group>
   <mat-tab label="ระบุบ้านเลขที่">
   <div class="example-container">
-  <mat-form-field>
-  <mat-select [(value)]="selected">
-    <mat-option>None</mat-option>
-    <mat-option value="option1">Option 1</mat-option>
-    <mat-option value="option2">Option 2</mat-option>
-    <mat-option value="option3">Option 3</mat-option>
-  </mat-select>
-</mat-form-field>
+  <mat-form-field  class="matfile">
+            <mat-select placeholder="ระบุบ้านเลขที่" [(ngModel)]="houseid">
+              <mat-option  *ngFor="let house of houses" [value]="house.houseId">
+                  {{house.houseNumber}}
+              </mat-option>
+            </mat-select>
+
+        </mat-form-field>
+
 </div>
-<p>You selected: {{selected}}</p>
+
 </mat-tab>
   <mat-tab label="ระบุชื่อลูกค้า">
   <div class="example-container">
-  <mat-form-field>
-  <mat-select [(value)]="selected">
-    <mat-option>None</mat-option>
-    <mat-option value="option1">Option 1</mat-option>
-    <mat-option value="option2">Option 2</mat-option>
-    <mat-option value="option3">Option 3</mat-option>
-  </mat-select>
-</mat-form-field>
+  <mat-form-field  class="matfile">
+      <mat-select placeholder="ระบุชื่อลูกค้า" [(ngModel)]="client">
+        <mat-option  *ngFor="let client of clients" [value]="client.name">
+            {{client.name}}
+        </mat-option>
+      </mat-select>
+
+  </mat-form-field>
+
 </div>
-<p>You selected: {{selected}}</p>
+
 </mat-tab>
   <mat-tab label="ระบุเมนูอาหาร">
   <div class="example-container">
-  <mat-form-field>
-  <mat-select [(value)]="selected">
-    <mat-option>None</mat-option>
-    <mat-option value="option1">Option 1</mat-option>
-    <mat-option value="option2">Option 2</mat-option>
-    <mat-option value="option3">Option 3</mat-option>
-  </mat-select>
-</mat-form-field>
+   <mat-form-field  class="matfile">
+        <mat-select placeholder="ระบุเมนูอาหาร" [(ngModel)]="foodlistId">
+          <mat-option  *ngFor="let foodlist of foodlists" [value]="foodlist.foodlistId">
+              {{foodlist.foodlistName}}
+          </mat-option>
+        </mat-select>
+
+    </mat-form-field>
+
 </div>
-<p>You selected: {{selected}}</p>
+
 </mat-tab>
   <mat-tab label="ระบุชื่อผู้รับรายการ">
   <div class="example-container">
-  <mat-form-field>
-  <mat-select [(value)]="selected">
-    <mat-option>None</mat-option>
-    <mat-option value="option1">Option 1</mat-option>
-    <mat-option value="option2">Option 2</mat-option>
-    <mat-option value="option3">Option 3</mat-option>
-  </mat-select>
-</mat-form-field>
+  <mat-form-field  class="matfile">
+        <mat-select placeholder="ระบุชื่อผู้รับรายการ" [(ngModel)]="employeeid">
+          <mat-option  *ngFor="let employee of employees" [value]="employee.empId">
+              {{employee.name}}
+          </mat-option>
+        </mat-select>
+
+    </mat-form-field>
+
 </div>
-<p>You selected: {{selected}}</p>
+
 </mat-tab>
-  <mat-tab label="ระบุเวลารับรายการ">
-  <div class="example-container">
-  <mat-form-field>
-  <mat-select [(value)]="selected">
-    <mat-option>None</mat-option>
-    <mat-option value="option1">Option 1</mat-option>
-    <mat-option value="option2">Option 2</mat-option>
-    <mat-option value="option3">Option 3</mat-option>
-  </mat-select>
-</mat-form-field>
+  <mat-tab label="บันทึกรายการ">
+<div class="example-button-row"><br><br><br><br>
+  <button mat-raised-button color="primary">Save</button>
+
 </div>
-<p>You selected: {{selected}}</p>
+
 </mat-tab>
 
   </mat-tab-group>
