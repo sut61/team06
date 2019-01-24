@@ -62,7 +62,7 @@ class FoodOrderController {
         FoodOrder foodOrder = new FoodOrder();
         foodOrder.setCid(clientRepository.findByCid(cid));
         foodOrder.setEmpId(employeeRepository.findByEmpId(empId));
-        foodOrder.setFoodlist((Set<FoodList>) foodListRepository.findByfoodlistId(foodlistId));
+        // foodOrder.setFoodlist((Set<FoodList>) foodListRepository.findByfoodlistId(foodlistId));
         foodOrder.setHouseId(houseRepository.findByHouseId(houseId));
         return foodOrderRepository.save(foodOrder);
     }
