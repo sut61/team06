@@ -1,10 +1,6 @@
 package com.sutse.team06.entity;
 
 import lombok.*;
-
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.*;
 
 
@@ -23,6 +19,8 @@ public class FoodList{
 	private @NonNull String foodlistName;
 
 	//with FoodOrder
-	@ManyToMany(mappedBy = "foodlist")
-    private Set<FoodOrder> foodorder = new HashSet<>();
+	
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "foodOrderId")
+    private FoodOrder foodOrderId;
 }

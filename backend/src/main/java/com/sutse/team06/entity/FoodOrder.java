@@ -35,13 +35,7 @@ public class FoodOrder{
     @JoinColumn(name = "cid")
     private Client cid;
     
-    //with Foodlist
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-        name = "FoodOrder_FoodList", 
-        joinColumns = { @JoinColumn(name = "foodOrderId") }, 
-        inverseJoinColumns = { @JoinColumn(name = "foodlistId") }
-    )
-    Set<FoodList> foodlist = new HashSet<>();
+    
+    
 	
 }
