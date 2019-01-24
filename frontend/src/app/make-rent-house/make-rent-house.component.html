@@ -27,8 +27,8 @@
     </mat-form-field>
   <br>
   <mat-form-field  class="matfile">
-      <mat-select placeholder="เลือกผู้อยู่อาศัย" [(ngModel)]="clientid">
-        <mat-option  *ngFor="let client of clients" [value]="client.cid">
+      <mat-select placeholder="เลือกผู้อยู่อาศัย" [(ngModel)]="client">
+        <mat-option  *ngFor="let client of clients" [value]="client.name">
             {{client.name}}
         </mat-option>
       </mat-select>

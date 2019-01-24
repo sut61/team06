@@ -18,7 +18,7 @@ export class MakeRentHouseComponent implements OnInit {
   houseid: number;
   housetypesid: number;
   employeeid: number;
-  clientid: number;
+  client: String;
 
   constructor(private data: Team06Service,private httpClient: HttpClient) { }
 
@@ -31,10 +31,10 @@ export class MakeRentHouseComponent implements OnInit {
 
   save(){
     if (this.houseid === undefined || this.housetypesid === undefined
-       || this.employeeid === undefined || this.clientid === undefined ) {   alert('กรุณากรอกข้อมูลให้ครบถ้วน');   }
-    else{  
-        this.httpClient.post('http://localhost:8080/renthouse/save/' 
-        + this.houseid + '/' + this.housetypesid + '/' + this.employeeid + '/' + this.clientid,null).subscribe(
+       || this.employeeid === undefined || this.client === undefined ) {   alert('กรุณากรอกข้อมูลให้ครบถ้วน');   }
+    else{
+        this.httpClient.post('http://localhost:8080/renthouse/save/'
+        + this.houseid + '/' + this.housetypesid + '/' + this.employeeid + '/' + this.client,null).subscribe(
         data => {
                 console.log('PUT Code and renthouse is successful', data);
             },
