@@ -1,6 +1,7 @@
 package com.sutse.team06.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,31 +41,17 @@ class FoodOrderController {
     @Autowired
     private HouseRepository houseRepository;
 
-    @PostMapping("/FoodOrder/{foodOrderId}")
-    public FoodOrder createFoodOrder(@RequestBody String OrderData) throws JsonParseException, IOException {
+    @PostMapping("/FoodOrder/save/{employeeid}/{foodlist}/{client}/{house}")
+    public FoodOrder createFoodOrder(@PathVariable long employeeid,@PathVariable long foodlist,@PathVariable Long client,
+                                    @PathVariable long house){
 
-        final String decoded = URLDecoder.decode(OrderData, "UTF-8");
-        OrderData = decoded;
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode actualObj = mapper.readTree(OrderData);
-
-        JsonNode jsonFoodlistId = actualObj.get("MenuNameSelect");
-        JsonNode jsonEmpId = actualObj.get("MeatIdSelect");
-        JsonNode jsonCid = actualObj.get("CatIdSelect");
-        JsonNode jsonhouseId = actualObj.get("CatIdSelect");
-        
-        Long cid = jsonCid.asLong();
-        Long empId = jsonEmpId.asLong();
-        Long foodlistId = jsonFoodlistId.asLong();
-        Long houseId = jsonhouseId.asLong();
+       FoodOrder foodOrder = new FoodOrder();
+        foodOrder.setHouseId(houseRepository.getOne(house));
+        foodOrder.setCid(clientRepository.getOne(client));
+        foodOrder.setFoodlistId(foodListRepository.getOne(foodlist));
+       foodOrder.setEmpId(employeeRepository.getOne(employeeid));
+       return foodOrderRepository.save(foodOrder);
        
-        FoodOrder foodOrder = new FoodOrder();
-        foodOrder.setCid(clientRepository.findByCid(cid));
-        foodOrder.setEmpId(employeeRepository.findByEmpId(empId));
-        foodOrder.setFoodlist((Set<FoodList>) foodListRepository.findByfoodlistId(foodlistId));
-        foodOrder.setHouseId(houseRepository.findByHouseId(houseId));
-        return foodOrderRepository.save(foodOrder);
     }
     @GetMapping("/FoodOrder")
     public List<FoodOrder> FoodOrder(){

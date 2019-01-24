@@ -24,7 +24,7 @@ public class FoodList{
 
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)  
-	@JoinColumn(name= "foodOrderId")      
-	private FoodOrder foodOrder;
+	// @ManyToOne(fetch = FetchType.LAZY)  
+	// @JoinColumn(name= "foodOrderId")      
+	// private FoodOrder foodOrder;
 }

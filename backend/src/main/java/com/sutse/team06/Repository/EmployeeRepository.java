@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
      Employee findByEmpId(Long empId);
      Employee findByUsernameAndPassword(String  username,String password);
-     Employee findByname(String name); //pheekay
+     Employee findByname(long employeeid); //pheekay
 }

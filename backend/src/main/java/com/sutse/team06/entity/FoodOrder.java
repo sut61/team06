@@ -23,7 +23,7 @@ public class FoodOrder{
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="foodorder_seq")
 	@Column(name="foodOrderId",unique = true, nullable = true)
     private @NonNull Long foodOrderId;
-    private @NonNull Date orderDate ;
+    //private @NonNull Date orderDate ;
     //with Employee
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "empId")
@@ -36,12 +36,17 @@ public class FoodOrder{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cid")
     private Client cid;
-   
-    @OneToMany(
-        mappedBy="foodOrder", 
-        cascade = CascadeType.ALL,
-        orphanRemoval = true) 
-        private List<FoodList> foodLists = new ArrayList<>();
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "foodlistId")
+    private FoodList foodlistId;
+    // @OneToMany(
+    //     mappedBy="foodOrder", 
+    //     cascade = CascadeType.ALL,
+    //     orphanRemoval = true) 
+    //     private List<FoodList> foodLists = new ArrayList<>();
+
+
 
     
 	
