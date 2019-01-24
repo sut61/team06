@@ -34,7 +34,7 @@ import { RentHouseComponent } from './rent-house/rent-house.component';
 import { FoodOrderComponent } from './food-order/food-order.component';
 
 import { Team06Service } from './team06.service';
-
+import { MangagePackageService } from './service/mangage-package.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +71,7 @@ import { Team06Service } from './team06.service';
     MatFormFieldModule
 
   ],
-  providers: [Team06Service],
+  providers: [Team06Service, MangagePackageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

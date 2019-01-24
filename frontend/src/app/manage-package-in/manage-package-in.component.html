@@ -2,17 +2,21 @@
   <div class="bodylayout">
   <mat-card class="manage-check-form">
     <h1>ลงทะเบียนรับพัสดุ</h1>
+
     <div class="example-container">
+      <span *ngIf="!noti"  >
+            <mat-card>{{notimag}}</mat-card>
+      </span>
       <mat-form-field  class="matfile">
-        <input matInput placeholder="Package ID" name="packageid"  [(ngModel)]="managepak.packageId" required #packageid>
+        <input matInput placeholder="Package ID" name="packageid"  [(ngModel)]="managepak.packageId" #packageid>
       </mat-form-field>
       <mat-form-field  class="matfile">
-        <input matInput placeholder="House Number" name="housenumber"  [(ngModel)]="managepak.houseNumber" required #housenumber/>
+        <input matInput placeholder="House Number" name="housenumber"  [(ngModel)]="managepak.houseNumber"  #housenumber/>
       </mat-form-field>
       <mat-form-field  class="matfile">
           <mat-select placeholder="Delivery" [(ngModel)]="managepak.deliverId">
-            <mat-option >
-
+            <mat-option  *ngFor="let delivername of deliverCom" [value]="delivername.deliComId">
+                {{delivername.name}}
             </mat-option>
           </mat-select>
       </mat-form-field>
