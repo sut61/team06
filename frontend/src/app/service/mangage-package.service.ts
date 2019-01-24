@@ -26,4 +26,10 @@ export class MangagePackageService {
   savePackageIn(empid: String, packageid: String, delivercom: String, house: String): Observable<any> {
     return this.http.post(this.API + '/packagein/' + 1 + '/' + packageid + '/' + delivercom + '/' + house, {} );
   }
+  getManageAll(): Observable<any> {
+     return this.http.get(this.API + '/managepackinall' );
+  }
+  checkPackeIn(mpOut: String): Observable<any> {
+      return this.http.get(this.API + '/manageout/' + mpOut);
+  }
 }
