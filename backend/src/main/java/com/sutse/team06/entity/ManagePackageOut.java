@@ -33,7 +33,7 @@ public class ManagePackageOut {
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name="mpInId")
-    private ManagePackageIn managePackageIn;
+    private ManagePackageIn mpInId;
 
     private  ManagePackageOut(){}
 
@@ -41,7 +41,7 @@ public class ManagePackageOut {
         this.receiver = receiver;
         this.date = new Date();
         this.employee = employee;
-        this.managePackageIn = managePackageIn;
+        this.mpInId = managePackageIn;
     }
  
 }

@@ -58,6 +58,10 @@ public class ManagePackageController {
     public List<DeliveryCompany> getDeliverComAll(){
          return this.deliveryCompanyRepository.findAll().stream().collect(Collectors.toList());
     }
+    @GetMapping("/managepackinall")
+    public List<ManagePackageIn> getManageAll(){
+         return this.managePackageInRepository.findAll().stream().collect(Collectors.toList());
+    }
      @PostMapping("/packagein/{empid}/{packageid}/{deliverid}/{homenum}")
      public ManagePackageIn savePackageIn(    @PathVariable("empid") Long empid,
                               @PathVariable("packageid") String packageid,
@@ -77,6 +81,11 @@ public class ManagePackageController {
           House house =  this.houseRepository.findByhouseNumber(hourenum);
           RentHouse renthouse =  this.rentHouseRepository.findByHouse(house);
           return this.managePackageInRepository.findByRentHouse(renthouse);
+     }
+     @GetMapping("/manageout/{mpInId}")
+     public ManagePackageOut checkPackeIn(@PathVariable("mpInId") Long mpInId){
+          ManagePackageIn mpIn = this.managePackageInRepository.findByMpInId(mpInId);
+          return this.managePackageOutRepository.findByMpInId(mpIn);
      }
      @PostMapping("/packageout/{receiver}/{empid}/{mpInId}")
      public ManagePackageOut savePackageOut(@PathVariable("receiver") String receiver,@PathVariable("empid") Long empid, @PathVariable("mpInId") Long mpInId){
