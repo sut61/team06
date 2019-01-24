@@ -1,4 +1,17 @@
-<mat-toolbar color="primary">
-  <span>Welcome to {{title}}!</span>
+<mat-toolbar class="tootbar">
+  <mat-toolbar-row>
+    <button mat-button class="menu-list" routerLink="/">G06 Rent House</button>
+    <button mat-button  class="menu-list"  routerLink="/makerenthouse">ระบบเช่าบ้าน</button>
+    <button mat-button class="menu-list" routerLink="/makeinsurance">ประกันทรัพย์สิน</button>
+    <button mat-button class="menu-list" routerLink="/manage/package" >ระบบจัดการพัสดุ</button>
+    <button mat-button class="menu-list" routerLink="/foodorder">บริการส่งอาหาร</button>
+    <button mat-button class="menu-list"  routerLink="/">ระบบแจ้งซ่อม</button>
+
+    <span class="example-spacer"></span>
+    <!-- <button  *ngIf="!authed()" class="example-icon"  routerLink='/login' mat-button>Login</button> -->
+    <!-- <button  *ngIf="!authed()" class="example-icon" mat-button>Resigter</button> -->
+    <!-- <p  *ngIf="authed()" class="example-icon">Welcome : {{names()}}</p> -->
+    <!-- <button  *ngIf="authed()" class="example-icon" mat-button (click)="logOut()"><b>log Out</b></button> -->
+  </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>
