@@ -32,4 +32,11 @@ export class MangagePackageService {
   checkPackeIn(mpOut: String): Observable<any> {
       return this.http.get(this.API + '/manageout/' + mpOut);
   }
+  getPackageIn(humeid: String): Observable<any>  {
+      return this.http.get(this.API + '/manapackagein/'  + humeid);
+  }
+  savePackageOut(empid: String, recive: String, mpInId: String): Observable<any> {
+      return this.http.post(this.API + '/packageout/'  + recive + '/' + empid + '/' + mpInId, {});
+  }
+
 }
