@@ -1,0 +1,33 @@
+<mat-tab-group class="tabs">
+    <mat-tab label="Member"> <mat-card class="layout-login">
+        <h1>EMPLOYEE LOGIN</h1>
+        <form role="form" (submit)="LoginSubmit()">
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="username" [(ngModel)]="credentials.username" required name="username" #username>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="password" type="password" [(ngModel)]="credentials.password" required name="password" #password>
+        </mat-form-field>
+      </div>
+      <button  type="submit" mat-button class="login-btn" >Log in</button>
+      </form>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Admin"><mat-card class="layout-login">
+        <h1>CLIENT LOGIN</h1>
+        <form role="form" (submit)="LoginSubmitAdmin()">
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="username" [(ngModel)]="credentials.username" required name="username" #username>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="password" type="password" [(ngModel)]="credentials.password" required name="password" #password>
+        </mat-form-field>
+      </div>
+      <button  type="submit" mat-button class="login-btn" >Log in</button>
+      </form>
+      </mat-card></mat-tab>
+  </mat-tab-group>

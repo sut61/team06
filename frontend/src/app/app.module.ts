@@ -36,6 +36,8 @@ import { FoodOrderComponent } from './food-order/food-order.component';
 import { Team06Service } from './team06.service';
 import { MangagePackageService } from './service/mangage-package.service';
 import { RepairsComponent } from './repairs/repairs.component';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { RepairsComponent } from './repairs/repairs.component';
     MakeRentHouseComponent,
     RentHouseComponent,
     FoodOrderComponent,
-    RepairsComponent
+    RepairsComponent,
+    LoginComponent
 
   ],
   imports: [
