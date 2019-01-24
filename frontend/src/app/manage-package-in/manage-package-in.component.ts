@@ -34,7 +34,7 @@ export class ManagePackageInComponent implements OnInit {
               this.notimag = 'บันทึกพัสดุสำเร็จ';
               setTimeout(() => {
                   this.noti = true;
-                  // this.router.navigateByUrl('manage/package');
+                  this.router.navigateByUrl('manage/package');
                   this.managepak = {};
               }, 1000);
         });
