@@ -1,0 +1,10 @@
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.menu-list{
+  float: left;
+  font-size: 15px;
+  /* margin-left: 40px; */
+  font-weight: bold;
+}

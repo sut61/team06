@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-//yuu
+// yuu
 
 import { RepairsComponent } from '../repairs/repairs.component'
 
@@ -21,6 +21,7 @@ import { RentHouseComponent } from '../rent-house/rent-house.component';
 import { FoodOrderComponent } from '../food-order/food-order.component';
 import { from } from 'rxjs';
 // ...
+import {LoginComponent} from '../login/login.component';
 const routes: Routes = [
   { path: '' , component: IndexComponent },
   { path: 'manage/packagein' , component: ManagePackageInComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'renthouse' , component: RentHouseComponent},
   { path: 'foodorder' , component: FoodOrderComponent},
   { path: 'repairs' , component: RepairsComponent},
+  { path: 'login' , component: LoginComponent}
 ];
 
 @NgModule({
