@@ -27,4 +27,7 @@ export class Team06Service {
   HouseAll(): Observable<any> {
     return this.http.get('//localhost:8080/house');
   }
+  FoodListAll(): Observable<any> {
+    return this.http.get('//localhost:8080/FoodList');
+  }
 }

@@ -10,7 +10,7 @@ import { MatButtonModule,
          MatToolbarModule,
          MatIconModule,
          MatDialogModule,
-         MatTabsModule } from '@angular/material';
+         MatTabsModule} from '@angular/material';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -71,6 +71,7 @@ import { RepairsComponent } from './repairs/repairs.component';
     MatDialogModule,
     MatTabsModule,
     MatFormFieldModule
+
 
   ],
   providers: [Team06Service, MangagePackageService],
