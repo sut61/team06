@@ -1,6 +1,10 @@
 package com.sutse.team06.entity;
 
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -18,9 +22,9 @@ public class FoodList{
 	private @NonNull Long foodlistId;
 	private @NonNull String foodlistName;
 
-	//with FoodOrder
 	
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "foodOrderId")
-    private FoodOrder foodOrderId;
+	
+	@ManyToOne(fetch = FetchType.LAZY)  
+	@JoinColumn(name= "foodOrderId")      
+	private FoodOrder foodOrder;
 }

@@ -2,8 +2,10 @@ package com.sutse.team06.entity;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -34,8 +36,13 @@ public class FoodOrder{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cid")
     private Client cid;
-    
-    
+   
+    @OneToMany(
+        mappedBy="foodOrder", 
+        cascade = CascadeType.ALL,
+        orphanRemoval = true) 
+        private List<FoodList> foodLists = new ArrayList<>();
+
     
 	
 }
