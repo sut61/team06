@@ -23,7 +23,7 @@ public class Repairs {
     @Id
     @SequenceGenerator(name = "Repair_seq", sequenceName = "Repair_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Repair_seq")
-    private @NonNull Long repairid;
+    private @NonNull Long repairsId;
     private @NonNull Date dateIn;
     private @NonNull Date dateOut; 
  
@@ -35,7 +35,8 @@ public class Repairs {
     @JoinColumn(name="rentId")
     private RentHouse rentHouse;
 
-     @OneToMany(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
+     
      
      private Collection<Equipment> equipment;
 

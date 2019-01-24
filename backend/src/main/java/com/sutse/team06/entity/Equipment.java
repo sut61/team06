@@ -19,7 +19,7 @@ public class Equipment {
     @Id
     @SequenceGenerator(name = "Equipment_seq", sequenceName = "Equipment_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Equiment_seq")
-    private @NonNull Long equipmentid;
+    private @NonNull Long equipmentId;
     
     @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
     @JoinColumn(name="houseId")
@@ -28,5 +28,7 @@ public class Equipment {
     @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
     @JoinColumn(name="repairid")
     private Repairs repairs;
+
+   
   
 }
