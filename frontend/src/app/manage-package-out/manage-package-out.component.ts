@@ -11,6 +11,7 @@ export class ManagePackageOutComponent implements OnInit {
   datadetail: any = [];
   noti: boolean;
   notimag: String;
+  empid: String;
   constructor(private mangagePackageService: MangagePackageService) { }
   ngOnInit() {
     this.state = true;
@@ -37,7 +38,8 @@ export class ManagePackageOutComponent implements OnInit {
     // this.mangagePackageService.
   }
   onSubmit() {
-      this.mangagePackageService.savePackageOut('1', this.managepak.receiver, this.datadetail.mpInId).subscribe(data => {
+     this.empid = JSON.parse(localStorage.getItem('employee')).empId;
+      this.mangagePackageService.savePackageOut(this.empid, this.managepak.receiver, this.datadetail.mpInId).subscribe(data => {
             console.log(data);
             this.state = true;
             this.noti = false;
