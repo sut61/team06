@@ -30,4 +30,8 @@ public class RentHouse {
     @JoinColumn(name="houseId")
     private House house;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="empId")
+    private Employee employee;
+
 }
