@@ -41,10 +41,12 @@ public class ManagePackageIn {
     @JoinColumn(name="deliComId")
     private DeliveryCompany deliveryCompany;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="mpInOut")
     private ManagePackageOut managePackageOut;
-    
+    private ManagePackageIn(){
+        
+    }
     public ManagePackageIn(String packageId,House house,Employee employee, RentHouse rentHouse,DeliveryCompany deliveryCompany){
             this.packageId = packageId;
             this.date = new Date();

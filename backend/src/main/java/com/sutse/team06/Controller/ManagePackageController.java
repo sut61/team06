@@ -12,6 +12,7 @@ import com.sutse.team06.Repository.EmployeeRepository;
 import com.sutse.team06.Repository.HouseRepository;
 import com.sutse.team06.Repository.RentHouseRepository;
 import com.sutse.team06.Repository.ManagePackageInRepository;
+import com.sutse.team06.Repository.ManagePackageOutRepository;
 import com.sutse.team06.entity.*;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,6 +28,7 @@ public class ManagePackageController {
     @Autowired private EmployeeRepository employeeRepository;
     @Autowired private DeliveryCompanyRepository deliveryCompanyRepository;
     @Autowired private ManagePackageInRepository managePackageInRepository;
+    @Autowired private ManagePackageOutRepository managePackageOutRepository;
 
     // house
     @GetMapping("/house/{houseid}")
@@ -69,6 +71,25 @@ public class ManagePackageController {
              
              ManagePackageIn mpIn =  new ManagePackageIn(packageid,house,emp,renthouse,delier);
              return this.managePackageInRepository.save(mpIn);
+     }
+     @GetMapping("/manapackagein/{hourenum}")
+     public ManagePackageIn getPackageIn(@PathVariable("hourenum") Integer hourenum){
+          House house =  this.houseRepository.findByhouseNumber(hourenum);
+          RentHouse renthouse =  this.rentHouseRepository.findByHouse(house);
+          return this.managePackageInRepository.findByRentHouse(renthouse);
+     }
+     @PostMapping("/packageout/{receiver}/{empid}/{mpInId}")
+     public ManagePackageOut savePackageOut(@PathVariable("receiver") String receiver,@PathVariable("empid") Long empid, @PathVariable("mpInId") Long mpInId){
+          ManagePackageIn managein = this.managePackageInRepository.findByMpInId(mpInId);
+          Employee emp = this.employeeRepository.findByEmpId(empid);
+
+          ManagePackageOut manageout = new ManagePackageOut(receiver,emp,managein);
+          ManagePackageOut out = this.managePackageOutRepository.save(manageout);
+
+          // managein.setManagePackageOut(manageout);
+          // this.managePackageInRepository.save(managein);
+           
+          return  out;
      }
 
 
