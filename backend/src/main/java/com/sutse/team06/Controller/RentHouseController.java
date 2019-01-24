@@ -21,6 +21,10 @@ class RentHouseController {
     private RentHouseRepository rentHouseRepository;
     @Autowired
     private RentHouseTypeRepository renthousetypeRepository;
+    @Autowired
+    private ClientRepository clientRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @GetMapping("/house")
     public List<House> HouseAll(){
@@ -35,6 +39,16 @@ class RentHouseController {
     @GetMapping("/renthousetype")
     public List<RentHouseType> RentHouseTypeAll(){
         return renthousetypeRepository.findAll().stream().collect(Collectors.toList());
+    }
+
+    @GetMapping("/client")
+    public List<Client> ClientAll(){
+        return clientRepository.findAll().stream().collect(Collectors.toList());
+    }
+
+    @GetMapping("/employee")
+    public List<Employee> EmployeeAll(){
+        return employeeRepository.findAll().stream().collect(Collectors.toList());
     }
     
 }
