@@ -10,17 +10,29 @@ export class ManagePackageOutComponent implements OnInit {
   state: boolean;
   datadetail: any = [];
   noti: boolean;
+  submit: boolean;
   notimag: String;
   empid: String;
+  packalist: any = [];
+  package: any = [];
   constructor(private mangagePackageService: MangagePackageService) { }
   ngOnInit() {
     this.state = true;
+    this.submit = true;
     this.noti = true;
   }
   onCheck() {
     console.log(this.managepak);
     this.mangagePackageService.getPackageIn(this.managepak.houseNumber).subscribe(data => {
+      data.forEach( (element, id) => {
+        this.mangagePackageService.checkPackeIn(element.mpInId).subscribe(check => {
+            if (check == null) {
+                 this.package.push(data[id]);
+            }
+        });
+    });
         this.datadetail = data;
+        this.packalist = this.package;
         console.log(data);
         if ( data !== null ) {
           this.state = false;
@@ -38,11 +50,12 @@ export class ManagePackageOutComponent implements OnInit {
     // this.mangagePackageService.
   }
   onSubmit() {
-     this.empid = JSON.parse(localStorage.getItem('employee')).empId;
+      this.empid = JSON.parse(localStorage.getItem('employee')).empId;
       this.mangagePackageService.savePackageOut(this.empid, this.managepak.receiver, this.datadetail.mpInId).subscribe(data => {
             console.log(data);
             this.state = true;
             this.noti = false;
+            this.submit = true;
             this.notimag = 'บันทึกการส่งพัสดุ';
             setTimeout(() => {
                this.noti = true;
@@ -50,5 +63,13 @@ export class ManagePackageOutComponent implements OnInit {
             }, 1500);
       });
       // console.log("loser");
+  }
+  onChood(datain: any) {
+    this.submit =  false;
+     this.mangagePackageService.getPackageInbyId(datain).subscribe(data => {
+        this.datadetail = data;
+        console.log(data);
+    });
+    console.log(datain);
   }
 }

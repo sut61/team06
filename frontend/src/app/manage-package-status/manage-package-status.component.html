@@ -5,14 +5,22 @@
     <br/>
     <h1>สถานะพัสดุ</h1>
     <div class="example-container">
-      <mat-list role="list"  *ngFor = "let status of statusList" >
-        <mat-list-item role="listitem">{{status.mpInId}} | <b>Package ID:</b>&nbsp;&nbsp;&nbsp;{{status.packageId}}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Date In:&nbsp;&nbsp;&nbsp;</b>{{status.date | date}}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status:</b>&nbsp;&nbsp;&nbsp;{{status.status}}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <b>House Number:</b>&nbsp;&nbsp;&nbsp;{{status.house.houseNumber}}
-        </mat-list-item>
-      </mat-list>
+      <table     style="width:100%">
+          <tr>
+              <th>Package No.</th>
+              <th>Package ID:</th>
+              <th>Date In</th>
+              <th>Status</th>
+              <th>House Number</th>
+            </tr>
+        <tr *ngFor = "let status of statusList">
+         <td>{{status.mpInId}}</td><td>{{status.packageId}}</td>
+         <td>{{status.date | date}}</td>
+         <td>{{status.status}}</td>
+         <td>{{status.house.houseNumber}}</td>
+        </tr>
+
+    </table>
     </div>
   </mat-card>
 </div>
