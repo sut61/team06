@@ -121,7 +121,7 @@ public class ManagePackageController {
                      json.put("status", "No data");
               }
                
-
+            
               HttpHeaders headers = new HttpHeaders();
               headers.add("Content-Type", "application/json; charset=UTF-8");
               return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.OK));
@@ -131,9 +131,10 @@ public class ManagePackageController {
                 json.put("status", "saved fail");
                return  (new ResponseEntity<Map<String, Object>>(json, null, HttpStatus.INTERNAL_SERVER_ERROR));
           }
+          //   return mpInstatus;
      }
      @GetMapping("/manapackagein/{hourenum}")
-     public ManagePackageIn getPackageIn(@PathVariable("hourenum") Integer hourenum){
+     public List<ManagePackageIn> getPackageIn(@PathVariable("hourenum") Integer hourenum){
           House house =  this.houseRepository.findByhouseNumber(hourenum);
           RentHouse renthouse =  this.rentHouseRepository.findByHouse(house);
           return this.managePackageInRepository.findByRentHouse(renthouse);
@@ -142,6 +143,11 @@ public class ManagePackageController {
      public ManagePackageOut checkPackeIn(@PathVariable("mpInId") Long mpInId){
           ManagePackageIn mpIn = this.managePackageInRepository.findByMpInId(mpInId);
           return this.managePackageOutRepository.findByMpInId(mpIn);
+     }
+     @GetMapping("/managein/{mpInId}")
+     public ManagePackageIn getPackageInbyId(@PathVariable("mpInId") Long mpInId){
+          ManagePackageIn mpIn = this.managePackageInRepository.findByMpInId(mpInId);
+          return mpIn;
      }
      @PostMapping("/packageout/{receiver}/{empid}/{mpInId}")
      public  ResponseEntity<Map<String, Object>> savePackageOut(@PathVariable("receiver") String receiver,@PathVariable("empid") Long empid, @PathVariable("mpInId") Long mpInId){
