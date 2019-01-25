@@ -1,3 +1,4 @@
+<div class ="bg-manage">
 <mat-card class="manage-check-form">
 <p>บริการสั่งอาหาร</p>
   <mat-tab-group>
@@ -68,3 +69,21 @@
   </mat-tab-group>
 
 </mat-card>
+
+<mat-card class="manage-check-form">
+
+<mat-card-title><p>รายการที่ถูกบันทึก</p></mat-card-title>
+    <mat-list>
+      <div *ngFor="let foodOrder of FoodOrders">
+        <mat-card-content>
+          <mat-divider></mat-divider><br>
+          <p>รายการที่ :&nbsp;{{foodOrder.foodOrderId}}&nbsp;&nbsp; รายชื่ออาหาร : {{foodOrder.foodlistId.foodlistName}}&nbsp;&nbsp;ราคาอาหาร : &nbsp;{{foodOrder.foodlistId.foodlistPrice}}&nbsp;&nbsp; สั่งโดยคุณ :&nbsp;{{foodOrder.cid.name}} &nbsp;&nbsp; บ้านเลขที่ : {{foodOrder.houseId.houseNumber}}</p>
+          <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+      </div>
+    </mat-list>
+
+</mat-card>
+
+</div>

@@ -21,7 +21,7 @@ public class FoodList{
 	@Column(name="foodlistId",unique = true, nullable = true)
 	private @NonNull Long foodlistId;
 	private @NonNull String foodlistName;
-
+    private @NonNull Long foodlistPrice;
 	
 	
 	// @ManyToOne(fetch = FetchType.LAZY)  

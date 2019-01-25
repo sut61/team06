@@ -158,9 +158,18 @@ public class Team06Application {
 				Stream.of("ข้าวกะเพราไก่","ข้าวกะเพราหมู","ข้าวกะเพรากุ้ง","ข้าวกะเพราเป็ด","ข้าวกะเพราทะเลรวมมิตร").forEach(foodlistName ->{
 					FoodList foodList = new FoodList();
 					foodList.setFoodlistName(foodlistName);
+					if (foodlistName=="ข้าวกะเพราไก่" || foodlistName=="ข้าวกะเพราหมู"){
+						foodList.setFoodlistPrice(40L);
+					}
+					else if(foodlistName=="ข้าวกะเพรากุ้ง" || foodlistName=="ข้าวกะเพราเป็ด"){
+						foodList.setFoodlistPrice(50L);
+					}
+					else{
+						foodList.setFoodlistPrice(60L);
+					}
 					foodListRepository.save(foodList);
 				});
-
+				
 			
 
 				//Equipment

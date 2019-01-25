@@ -40,12 +40,7 @@ public class FoodOrder{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "foodlistId")
     private FoodList foodlistId;
-    // @OneToMany(
-    //     mappedBy="foodOrder", 
-    //     cascade = CascadeType.ALL,
-    //     orphanRemoval = true) 
-    //     private List<FoodList> foodLists = new ArrayList<>();
-
+    
 
 
     
