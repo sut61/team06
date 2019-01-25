@@ -25,6 +25,6 @@ public class InsurancePrice {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Type")
-    private InsuranceType Type;
+    private InsuranceType type;
 }
 
