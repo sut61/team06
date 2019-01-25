@@ -1,0 +1,14 @@
+.bg-book{
+  background: url('./bg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 1080px;
+  margin: 0;
+}
+.welcome{
+  padding-top: 15%;
+  text-align: center;
+  font-size: 500%;
+  font-weight: bold;
+  /* opacity: 0.5; */
+}
