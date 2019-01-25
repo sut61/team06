@@ -20,11 +20,10 @@
           </div>
       </div>
     </div>
-    <div *ngIf="!state">
+    <div *ngIf="!submit">
         <div class="layout-text-ss">
             <mat-card class="config-password-valid" >
-            <!-- เเก้ไข้ -clsoe  to -close  -->
-            <p class="password-tltle-1"><b>รายละเอียดพัสดุ</b></p>
+            <p class="password-tltle-1"><b>รายละเอียดพัสดุที่เลือก</b></p>
             <p class="password-tltle"><b>เลขพัสดุ: {{datadetail.packageId}}</b></p>
             <p class="password-tltle"><b>วันรับเข้า: {{datadetail.date | date}}</b></p>
             <p class="password-tltle"><b>ชื่อพักงานที่รับ: {{datadetail.employee.name}}  </b></p>
@@ -36,6 +35,22 @@
             </div>
         </mat-card>
         </div>
+    </div>
+    <div class="bodylayout-1" *ngIf="!state">
+      <!-- <mat-card class="manage-check-form"> -->
+        <br/>
+        <h1>พัสดุที่พบ</h1>
+        <div class="example-container-1">
+          <mat-list role="list"  *ngFor = "let status of packalist" >
+            <mat-list-item role="listitem"><p class="title-name">{{status.mpInId}} | <b>Package ID:</b>&nbsp;&nbsp;&nbsp;{{status.packageId}}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Date In:&nbsp;&nbsp;&nbsp;</b>{{status.date | date}}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <b>House Number:</b>&nbsp;&nbsp;&nbsp;{{status.house.houseNumber}}</p>
+                  <a    mat-raised-button  class="btn-linwe" (click)="onChood(status.mpInId)"><b>เลือก</b></a>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      <!-- </mat-card> -->
     </div>
     </mat-card>
   </div>

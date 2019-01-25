@@ -2,7 +2,7 @@
   /* margin-top: 3%; */
   margin-left:15%;
   margin-right: 15%;
-  height: 400px;
+  height:auto;
   text-align: center;
 }
 .example-container {
@@ -37,6 +37,23 @@ margin-right: 30%;
 .bodylayout{
   padding-top: 3%;
   margin: 0;
+}
+.btn-linwe{
+    margin-left: auto;
+    float: left;
+    background-color:hsl(348, 100%, 61%)
+}
+.btn-linwe-1{
+  /* background-color: hsl(141, 71%, 48%); */
+  /* padding-left: 2%; */
+  width: 222px;
+  float: right;
+}
+.title-name{
+  float: left;
+  margin-left: 10px;
+  margin-right: 2%;
+  font-size: 18px;
 }
 .config-password-valid{
   margin-top: 3%;

@@ -49,5 +49,8 @@ export class MangagePackageService {
   clientLogin(username: String, password: String): Observable<any> {
     return this.http.post(this.API + '/elient/auth/' + username + '/' + password , {});
  }
+ getPackageInbyId(mpInid: any): Observable<any> {
+    return this.http.get(this.API + '/managein/' + mpInid);
+ }
 
 }

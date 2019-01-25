@@ -26,7 +26,7 @@ export class ManagePackageInComponent implements OnInit {
   onSave() {
     // tslint:disable-next-line:no-non-null-assertion
     // console.log((Object.keys(this.managepak).length);
-  if (Object.keys(this.managepak).length !== 0) {
+  if (Object.keys(this.managepak).length === 3) {
     this.empid = JSON.parse(localStorage.getItem('employee')).empId;
      // tslint:disable-next-line:max-line-length
         this.mangagePackageService.savePackageIn(this.empid, this.managepak.packageId, this.managepak.deliverId, this.managepak.houseNumber).subscribe(data => {
@@ -35,7 +35,7 @@ export class ManagePackageInComponent implements OnInit {
               this.notimag = 'บันทึกพัสดุสำเร็จ';
               setTimeout(() => {
                   this.noti = true;
-                  this.router.navigateByUrl('manage/package');
+                  // this.router.navigateByUrl('manage/package');
                   this.managepak = {};
               }, 1000);
         });
