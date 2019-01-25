@@ -2,26 +2,30 @@
   <div class="bodylayout">
   <mat-card class="manage-check-form">
     <h1>ทำประกัน</h1>
-    <div class="example-container">
-      <mat-form-field  class="matfile">
-        <input matInput placeholder="ชื่อผู้ทำประกัน" name="name"  [(ngModel)]="insu.name" required #name>
-      </mat-form-field>
-      <mat-form-field  class="matfile">
-        <mat-select placeholder="Type of insurance" [(ngModel)]="insu.type">
-          <mat-option >
+     <div class="example-container">
 
-          </mat-option>
+            <mat-form-field  class="matfile">
+                <input matInput placeholder="ชื่อและนามสุกลของเจ้าของประกัน"  [(ngModel)]="insuname">
+              </mat-form-field>
+             
+
+      <mat-form-field  class="matfile">
+        <mat-select placeholder="Type of insurance" [(ngModel)]="type" (change)="selectChange()">
+            <mat-option  *ngFor="let insutypeloop of insu" [value]="insutypeloop.tid">
+                {{insutypeloop.type}}
+            </mat-option >
+
         </mat-select>
     </mat-form-field>
       <mat-form-field  class="matfile">
-          <mat-select placeholder="Price of insurance" [(ngModel)]="insu.price">
-            <mat-option >
-
-            </mat-option>
+          <mat-select placeholder="Price of insurance" [(ngModel)]="price">
+              <mat-option  *ngFor="let insupriceloop of insuprice" [value]="insupriceloop.pid">
+                  {{insupriceloop.price}}
+              </mat-option >
           </mat-select>
       </mat-form-field>
         <div>
-          <a    mat-raised-button  class="btn-check" (click)="onSave()"><b>บันทึก</b></a>
+          <a    mat-raised-button  class="btn-check" (click)="save()"><b>บันทึก</b></a>
         </div>
 
     </div>

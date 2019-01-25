@@ -35,8 +35,20 @@ export class Team06Service {
   EquipmentAll(): Observable<any> {
     return this.http.get('//localhost:8080/api/equipment');
   }
+
   FoodOrderAll(): Observable<any> {
     return this.http.get('//localhost:8080/FoodOrder');
+  }
+
+
+  insuranceTypeAll(): Observable<any> {
+    return this.http.get('//localhost:8080/InsuranceType');
+  }
+  insurancePriceAll(): Observable<any> {
+    return this.http.get('//localhost:8080/InsurancePrice');
+  }
+  InsurancePriceSelectAll(tid: String): Observable<any> {
+    return this.http.get('//localhost:8080/InsurancePriceSelect/' + tid);
   }
 
 }

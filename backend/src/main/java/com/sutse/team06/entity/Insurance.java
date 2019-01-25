@@ -36,8 +36,5 @@ public class Insurance {
     @JoinColumn(name = "Cid")
     private Client Client;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="rentId")
-    private RentHouse rentHouse;
     
 }
