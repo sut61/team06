@@ -12,21 +12,26 @@ export class AppComponent implements OnInit {
   constructor(private app: MangagePackageService,  private router: Router) {
   }
   ngOnInit() {
-    if ( localStorage.getItem('employee') == null && localStorage.getItem('employee') == null ) {
-      this.router.navigate(['home']);
+
+    if ( localStorage.getItem('employee') == null && localStorage.getItem('client') == null ) {
+      this.router.navigate(['']);
     } else {
-      this.app.authenticatedemp = true;
-      this.app.authenticatedclient = true;
+      if ( localStorage.getItem('employee') != null ) {
+          this.app.authenticatedemp = true;
+      }
+      if ( localStorage.getItem('client') != null ) {
+          this.app.authenticatedclient = true;
+      }
     }
   }
   authed() {
-    return this.app.authenticatedemp || this.app.authenticatedclient;
+    return this.app.authenticatedemp || this.app.authenticatedclient || localStorage.getItem('employee') != null;
   }
   emp() {
       return this.app.authenticatedemp;
   }
   client() {
-     return this.app.authenticatedclient ||  this.app.authenticatedemp;
+     return this.app.authenticatedclient ||  this.app.authenticatedemp || localStorage.getItem('client') != null;
   }
   logOut() {
       console.log('logout');
@@ -38,6 +43,6 @@ export class AppComponent implements OnInit {
   }
   names() {
     // tslint:disable-next-line:max-line-length
-    return  (localStorage.getItem('employee') != null) ? JSON.parse(localStorage.getItem('employee')).name : '' || (localStorage.getItem('employee') != null) ? JSON.parse(localStorage.getItem('client')).name : '';
+    return  (localStorage.getItem('employee') != null) ? JSON.parse(localStorage.getItem('employee')).name : '' || (localStorage.getItem('client') != null) ? JSON.parse(localStorage.getItem('client')).name : '';
   }
 }
