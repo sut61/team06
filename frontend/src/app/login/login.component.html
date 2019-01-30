@@ -3,6 +3,9 @@
         <h1>EMPLOYEE LOGIN</h1>
         <form role="form" (submit)="LoginSubmit()">
       <div class="example-container">
+          <span *ngIf="!empnoti"  class="span-noti">
+              <mat-card>{{empmsg}}</mat-card>
+          </span>
         <mat-form-field>
           <input matInput placeholder="username" [(ngModel)]="credentials.username" required name="username" #username>
         </mat-form-field>
@@ -19,6 +22,9 @@
         <h1>CLIENT LOGIN</h1>
         <form role="form" (submit)="LoginSubmitClint()">
       <div class="example-container">
+          <span *ngIf="!clintnoti"   class="span-noti">
+              <mat-card class="card-owr">{{clientmsg}}</mat-card>
+          </span>
         <mat-form-field>
           <input matInput placeholder="username" [(ngModel)]="credentials.username" required name="username" #username>
         </mat-form-field>

@@ -10,6 +10,8 @@ export class IndexComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(JSON.parse(localStorage.getItem('client')));
+    console.log(JSON.parse(localStorage.getItem('employee')));
   }
 
 }
