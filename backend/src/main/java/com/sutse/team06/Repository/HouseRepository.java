@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin(origins = "http://localhost:4200")
 public interface HouseRepository extends JpaRepository<House, Long> {
      House findByHouseId(Long houseId);
-     House findByhouseNumber(Integer  house);
+     House findByhouseNumber(Integer  houseNumber);
 }
