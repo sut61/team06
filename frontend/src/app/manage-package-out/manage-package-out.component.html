@@ -10,6 +10,9 @@
               <mat-card>{{notimag}}</mat-card>
         </span>
         <mat-form-field  class="matfile">
+          <input matInput placeholder="RentID" name="rentid"  [(ngModel)]="managepak.rentid" required #rentid>
+        </mat-form-field>
+        <mat-form-field  class="matfile">
           <input matInput placeholder="House Number" name="packageid"  [(ngModel)]="managepak.houseNumber" required #packageid>
         </mat-form-field>
         <mat-form-field  class="matfile">
@@ -26,8 +29,8 @@
             <p class="password-tltle-1"><b>รายละเอียดพัสดุที่เลือก</b></p>
             <p class="password-tltle"><b>เลขพัสดุ: {{datadetail.packageId}}</b></p>
             <p class="password-tltle"><b>วันรับเข้า: {{datadetail.date | date}}</b></p>
-            <p class="password-tltle"><b>ชื่อพักงานที่รับ: {{datadetail.employee.name}}  </b></p>
-            <p class="password-tltle"><b>บริษัทที่มาสง: {{datadetail.deliveryCompany.name}}</b></p>
+            <p class="password-tltle"><b>ชื่อพักงานที่รับ: {{datadetail.empname}}  </b></p>
+            <p class="password-tltle"><b>บริษัทที่มาสง: {{datadetail.delivername}}</b></p>
             <div class="example-container">
                 <div>
                     <a    mat-raised-button  class="btn-check" (click)="onSubmit()"><b>ยืนยัน</b></a>
