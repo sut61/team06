@@ -49,6 +49,11 @@ public class ManagePackageController {
     public  Employee getEmployeeById(@PathVariable("empid") Long empid){
          return this.employeeRepository.findByEmpId(empid);
     }
+    @GetMapping("/renthouses/{hourenum}")
+    public RentHouse getRentHouseByHomeNum(@PathVariable("hourenum") Integer hourenum){
+          House house =  this.houseRepository.findByhouseNumber(hourenum);
+          return this.rentHouseRepository.findByHouse(house);
+    }
     @PostMapping("/employee/auth/{username}/{password}")
     public  ResponseEntity<Map<String, Object>> authEmployee(@PathVariable("username") String username,@PathVariable("password") String password){
          Employee employee =  this.employeeRepository.findByUsernameAndPassword(username,password);
@@ -133,11 +138,11 @@ public class ManagePackageController {
           }
           //   return mpInstatus;
      }
-     @GetMapping("/manapackagein/{hourenum}")
-     public List<ManagePackageIn> getPackageIn(@PathVariable("hourenum") Integer hourenum){
+     @GetMapping("/manapackagein/{hourenum}/{renthouse}")
+     public List<ManagePackageIn> getPackageIn(@PathVariable("hourenum") Integer hourenum,@PathVariable("renthouse") Long renthouse){
           House house =  this.houseRepository.findByhouseNumber(hourenum);
-          RentHouse renthouse =  this.rentHouseRepository.findByHouse(house);
-          return this.managePackageInRepository.findByRentHouse(renthouse);
+          RentHouse renthouses =  this.rentHouseRepository.findByRentId(renthouse);
+          return this.managePackageInRepository.findByRentHouseAndHouse(renthouses,house);
      }
      @GetMapping("/manageout/{mpInId}")
      public ManagePackageOut checkPackeIn(@PathVariable("mpInId") Long mpInId){
