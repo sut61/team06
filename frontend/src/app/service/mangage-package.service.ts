@@ -37,8 +37,8 @@ export class MangagePackageService {
   checkPackeIn(mpOut: String): Observable<any> {
       return this.http.get(this.API + '/manageout/' + mpOut);
   }
-  getPackageIn(humeid: String): Observable<any>  {
-      return this.http.get(this.API + '/manapackagein/'  + humeid);
+  getPackageIn(humeid: String, rentid: String): Observable<any>  {
+      return this.http.get(this.API + '/manapackagein/'  + humeid + '/' + rentid);
   }
   savePackageOut(empid: String, recive: String, mpInId: String): Observable<any> {
       return this.http.post(this.API + '/packageout/'  + recive + '/' + empid + '/' + mpInId, {});
@@ -52,5 +52,9 @@ export class MangagePackageService {
  getPackageInbyId(mpInid: any): Observable<any> {
     return this.http.get(this.API + '/managein/' + mpInid);
  }
+ getRentHouseByHouseNumber(housenum: String): Observable<any> {
+     return this.http.get(this.API + '/renthouses/' + housenum );
+ }
+
 
 }

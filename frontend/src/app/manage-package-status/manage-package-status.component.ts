@@ -13,7 +13,7 @@ export class ManagePackageStatusComponent implements OnInit {
   constructor(private mangagePackageService: MangagePackageService) { }
   ngOnInit() {
       this.mangagePackageService.getManageAll().subscribe(data => {
-          console.log(data);
+          // console.log(data);
           data.forEach( (element, id) => {
               this.mangagePackageService.checkPackeIn(element.mpInId).subscribe(check => {
                   if (check == null) {
@@ -26,7 +26,7 @@ export class ManagePackageStatusComponent implements OnInit {
           this.statusList = data;
           // this.mangagePackageService.checkPackeIn(data.mpInId)
       });
-      console.log(this.statusList);
+      // console.log(this.statusList);
   }
 
 }

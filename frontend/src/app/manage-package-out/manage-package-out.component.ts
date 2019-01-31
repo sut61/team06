@@ -22,31 +22,62 @@ export class ManagePackageOutComponent implements OnInit {
     this.noti = true;
   }
   onCheck() {
-    console.log(this.managepak);
-    this.mangagePackageService.getPackageIn(this.managepak.houseNumber).subscribe(data => {
-      data.forEach( (element, id) => {
-        this.mangagePackageService.checkPackeIn(element.mpInId).subscribe(check => {
-            if (check == null) {
-                 this.package.push(data[id]);
-            }
+    // console.log(this.managepak);
+    if ( Object.keys(this.managepak).length === 3 ) {
+      this.mangagePackageService.getRentHouseById(this.managepak.rentid.trim()).subscribe(rent => {
+      //  console.log(rent);
+       if (rent != null ) {
+        this.mangagePackageService.getPackageIn(this.managepak.houseNumber.trim(), this.managepak.rentid.trim()).subscribe(data => {
+          // console.log(data.length !== 0);
+          if (data.length !== 0) {
+                    data.forEach( (element, id) => {
+                      this.mangagePackageService.checkPackeIn(element.mpInId).subscribe(check => {
+                          if (check == null) {
+                              this.package.push(data[id]);
+                              // console.log(data[id]);
+                          }
+                      });
+                  });
+
+                this.datadetail = data;
+                this.packalist = this.package;
+                this.state = false;
+                // this.package = [];
+
+          } else {
+                  this.noti = false;
+                  this.notimag = 'ไม่มีพัสดุ';
+                  this.managepak = {};
+          }
+        }, error => {
+                this.state = true;
+                this.noti = false;
+                this.notimag = 'ไม่มีพัสดุ';
+                this.managepak = {};
         });
+      } else {
+                this.noti = false;
+                this.notimag = 'ID ผู้เช่าไม่ถูกต้อง';
+                this.managepak = {};
+                setTimeout(() => {
+                    this.noti = true;
+                    this.managepak = {};
+              }, 1500);
+      }
+    },  error => {
+              this.noti = false;
+              this.notimag = 'ID ผู้เช่าไม่ถูกต้อง';
+              this.managepak = {};
     });
-        this.datadetail = data;
-        this.packalist = this.package;
-        console.log(data);
-        if ( data !== null ) {
-          this.state = false;
-        } else if ( data === null ) {
-          this.state = true;
-          this.noti = false;
-          this.notimag = 'ไม่พบพัสดุ';
-          this.managepak = {};
-          setTimeout(() => {
-           this.noti = true;
-           this.managepak = {};
-        }, 1000);
-        }
-    });
+  } else {
+            this.noti = false;
+            this.notimag = 'empty input';
+            this.managepak = {};
+            setTimeout(() => {
+            this.noti = true;
+            this.managepak = {};
+          }, 1000);
+  }
     // this.mangagePackageService.
   }
   onSubmit() {
@@ -56,7 +87,8 @@ export class ManagePackageOutComponent implements OnInit {
             this.state = true;
             this.noti = false;
             this.submit = true;
-            this.notimag = 'บันทึกการส่งพัสดุ';
+            this.notimag = 'พัสดุถูกนำส่ง';
+            this.package = [];
             setTimeout(() => {
                this.noti = true;
                this.managepak = {};
@@ -68,8 +100,10 @@ export class ManagePackageOutComponent implements OnInit {
     this.submit =  false;
      this.mangagePackageService.getPackageInbyId(datain).subscribe(data => {
         this.datadetail = data;
-        console.log(data);
+        this.datadetail['empname'] = data.employee.name;
+        this.datadetail['delivername'] = data.deliveryCompany.name;
+        // console.log(data);
     });
-    console.log(datain);
+    // console.log(datain);
   }
 }
