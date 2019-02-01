@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
+import javax.validation.constraints.*;
 
 @Entity
 @Data
@@ -22,8 +23,15 @@ public class ManagePackageIn {
     @SequenceGenerator(name = "ManagePackageIn_seq", sequenceName = "ManagePackageIn_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ManagePackageIn_seq")
     @NotNull private  Long mpInId;
-    @NotNull private  String packageId;
-    @NotNull private  Date date;
+
+    
+    @NotNull(message="Package Id must not be null to be valid")
+    @Pattern(regexp = "([A-Z]{0,3}\\d{8,13})TH|(\\d{8,13})TH")
+    @Size(min = 10, max = 20)
+    private  String packageId;
+
+    @NotNull 
+    private  Date date;
 
     @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
     @JoinColumn(name="houseId")
@@ -44,7 +52,8 @@ public class ManagePackageIn {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="mpInOut")
     private ManagePackageOut managePackageOut;
-    private ManagePackageIn(){
+
+    public ManagePackageIn(){
         
     }
     public ManagePackageIn(String packageId,House house,Employee employee, RentHouse rentHouse,DeliveryCompany deliveryCompany){
