@@ -28,7 +28,6 @@ const routes: Routes = [
   { path: 'manage/packageout' , component: ManagePackageOutComponent},
   { path: 'manage/packagestatus' , component: ManagePackageStatusComponent},
   { path: 'makeinsurance' , component: MakeInsuranceComponent},
-  { path: 'insurancetable' , component: InsuranceTableComponent},
   { path: 'makerenthouse' , component: MakeRentHouseComponent},
   { path: 'renthouse' , component: RentHouseComponent},
   { path: 'foodorder' , component: FoodOrderComponent},

@@ -3,11 +3,13 @@
   <mat-card class="manage-check-form">
     <h1>ทำประกัน</h1>
      <div class="example-container">
-
+      <span *ngIf="!noti"  >
+        <mat-card>{{notimag}}</mat-card>
+      </span>
             <mat-form-field  class="matfile">
                 <input matInput placeholder="ชื่อและนามสุกลของเจ้าของประกัน"  [(ngModel)]="insuname">
               </mat-form-field>
-             
+
 
       <mat-form-field  class="matfile">
         <mat-select placeholder="Type of insurance" [(ngModel)]="type" (change)="selectChange()">
