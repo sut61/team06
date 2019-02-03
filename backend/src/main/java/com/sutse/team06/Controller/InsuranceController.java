@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.sutse.team06.Repository.HouseRepository;
+import com.sutse.team06.Repository.RentHouseRepository;
+import org.springframework.http.*;
+import java.util.*;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 //@RequestMapping("/api")
@@ -40,15 +45,36 @@ public class InsuranceController {
 
 
     @PostMapping("/insurance/save/{name}/{type}/{price}/{insuname}")
-    public  Insurance insurance(@PathVariable Long name,@PathVariable Long type,
+    public ResponseEntity<Map<String, Object>> insurance(@PathVariable Long name,@PathVariable Long type,
     @PathVariable Long price,@PathVariable String insuname){
+
+        try{
         Insurance insurance = new Insurance();
+        Map<String, Object> json = new HashMap<String, Object>();
+        insurance.setInsuname(insuname);
         insurance.setClient(clientRepository.getOne(name));        
         insurance.setType(insuranceTypeRepository.getOne(type));
         insurance.setPrice(insurancePriceRepository.getOne(price));
-        insurance.setInsuname(insuname);
-        return insuranceRepository.save(insurance);
-    }
+        insuranceRepository.save(insurance);
+
+        json.put("success", true);
+                     json.put("status", "saved");
+           
+            
+              HttpHeaders headers = new HttpHeaders();
+              headers.add("Content-Type", "application/json; charset=UTF-8");
+              return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.OK));
+        }
+        catch(Exception e) {
+            Map<String, Object> json = new HashMap<String, Object>();
+             json.put("success", false);
+             json.put("status", "saved fail");
+            return  (new ResponseEntity<Map<String, Object>>(json, null, HttpStatus.INTERNAL_SERVER_ERROR));
+       }
+    
+ }
+
+    
   /*  @GetMapping("/client")
     public List<Client> Client(){
         return clientRepository.findAll().stream().collect(Collectors.toList());

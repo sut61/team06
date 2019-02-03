@@ -32,7 +32,7 @@ public class Insurance {
     @JoinColumn(name = "Price")
     private InsurancePrice Price;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Cid")
     private Client Client;
 
