@@ -17,15 +17,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin(origins = "http://localhost:4200")
 class CanceledRentHouseController {
     @Autowired
-    private HouseRepository houseRepository;
-    @Autowired
-    private RentHouseRepository rentHouseRepository;
-    @Autowired
-    private RentHouseTypeRepository renthousetypeRepository;
-    @Autowired
-    private ClientRepository clientRepository;
-    @Autowired
-    private EmployeeRepository employeeRepository;
+    private CancelTypeRepository cancelTypeRepository;
+
+    @GetMapping("/canceltype")
+    public List<CancelType> canceltypeAll(){
+        return cancelTypeRepository.findAll().stream().collect(Collectors.toList());
+    }
+
 
     
 }
