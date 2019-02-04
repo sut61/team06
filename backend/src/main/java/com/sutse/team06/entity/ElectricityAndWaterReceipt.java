@@ -36,4 +36,5 @@ public class ElectricityAndWaterReceipt {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Mid")
     private Mounth mid;
+
 }
