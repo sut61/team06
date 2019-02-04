@@ -35,7 +35,10 @@ public class Team06Application {
 							CancelTypeRepository cancelTypeRepository,
 							CanceledRentHouseRepository canceledRentHouseRepository,
 							ElectricityAndWaterReceiptRepository electricityandwaterreceiptRepository,
-							MounthRepository mounthRepository
+							MounthRepository mounthRepository,
+							TypeSpeedInternetRepository typeSpeedInternetRepository,
+							TimeTypeUseRepository timeTypeUseRepository,
+							ScaleTimeRepository scaleTimeRepository
 							){
 
 		return args ->{
@@ -251,6 +254,33 @@ public class Team06Application {
 				canceledrentHouse.setRenthouse(rentHouseRepository.getOne(2L));
 				canceledrentHouse.setCanceltype(cancelTypeRepository.getOne(1L));
 				canceledRentHouseRepository.save(canceledrentHouse);
+
+
+				//new keng 
+				typeSpeedInternetRepository.save(new TypeSpeedInternet("10/30 Mb",10));
+				typeSpeedInternetRepository.save(new TypeSpeedInternet("30/50 Mb",10));
+				typeSpeedInternetRepository.save(new TypeSpeedInternet("50/100 Mb",1));
+				Stream.of("week","month").forEach(scaleTimeid ->{
+					ScaleTime scaleTime = new  ScaleTime();
+					scaleTime.setTypeScale(scaleTimeid);
+					scaleTimeRepository.save(scaleTime);
+					
+				});
+				ScaleTime scale1 = scaleTimeRepository.findByScaleTimeId(1L);
+				ScaleTime scale2 = scaleTimeRepository.findByScaleTimeId(2L);
+
+				for(int time = 1; time<=3; time++){
+					TimeTypeUse timeuse = new  TimeTypeUse();
+					timeuse.setTimeType(time);
+					timeuse.setScaleTime(scale1);
+					timeTypeUseRepository.save(timeuse);
+				}
+				for(int time = 1; time<=3; time++){
+					TimeTypeUse timeuses = new  TimeTypeUse();
+					timeuses.setTimeType(time);
+					timeuses.setScaleTime(scale2);
+					timeTypeUseRepository.save(timeuses);
+				}
 		};
 	}
 	
