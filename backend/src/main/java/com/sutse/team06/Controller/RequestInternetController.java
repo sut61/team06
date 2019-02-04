@@ -85,4 +85,39 @@ public class RequestInternetController {
                         return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.INTERNAL_SERVER_ERROR));   
             }
     }
+    @PostMapping("/requsetsave/{netuser}/{netpass}/{empid}/{rentid}/{timetypeid}/{speedid}")
+    public ResponseEntity<Map<String, Object>> saveRequestNet(
+        @PathVariable("netuser") String netuser,
+        @PathVariable("netpass") String netpass,
+        @PathVariable("empid") Long empid,
+        @PathVariable("rentid") Long rentid,
+        @PathVariable("timetypeid") Long timetypeid,
+        @PathVariable("speedid") Long speedid
+    ){
+        
+        try{
+                Map<String, Object> json = new HashMap<String, Object>();
+                Employee emp = this.employeeRepository.findByEmpId(empid);
+                RentHouse renthouse = this.rentHouseRepository.findByRentId(rentid);
+                TimeTypeUse timeuse = this.timeTypeUseRepository.findByTimeTypeId(timetypeid);
+                TypeSpeedInternet typeSpeed = this.typeSpeedInternetRepository.findByTypeSpeedId(speedid);
+                RequestInternet newreq = new RequestInternet(netuser,netpass,renthouse,emp,timeuse,typeSpeed);
+                typeSpeed.setConnection(typeSpeed.getConnection()-1);
+                this.typeSpeedInternetRepository.save(typeSpeed);
+                this.requestInternetRepository.save(newreq);
+
+                json.put("success", true);
+                json.put("status", "saved");
+                HttpHeaders headers = new HttpHeaders();
+                headers.add("Content-Type", "application/json; charset=UTF-8");
+                return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.OK));
+
+        } catch(Exception e) {
+                Map<String, Object> json = new HashMap<String, Object>();
+                json.put("success", false);
+                json.put("status", "saved fail");
+                return  (new ResponseEntity<Map<String, Object>>(json, null, HttpStatus.INTERNAL_SERVER_ERROR));
+          }
+        
+    }
 }
