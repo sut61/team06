@@ -31,8 +31,9 @@ public class Team06Application {
 							RentHouseRepository rentHouseRepository,
 							FoodListRepository foodListRepository,
 							RepairsRepository repairsRepository,
-							EquipmentRepository equipmentRepository
-
+							EquipmentRepository equipmentRepository,
+							CancelTypeRepository cancelTypeRepository,
+							CanceledRentHouseRepository canceledRentHouseRepository
 							){
 
 		return args ->{
@@ -183,8 +184,6 @@ public class Team06Application {
 					}
 					foodListRepository.save(foodList);
 				});
-				
-			
 
 				//Equipment
 				Stream.of("เตียง","โคมไฟ","ประตู","หน้าต่าง").forEach(equipmentlist ->{
@@ -195,7 +194,21 @@ public class Team06Application {
 					equipmentRepository.save(equipment);
 				});
 
+				//CancelType
+				Stream.of("ครบสัญญา","ค้างชำระ","ยกเลิกก่อนกำหนด","อื่นๆ").forEach(cancelt ->{
+					CancelType cancel = new CancelType();
+					cancel.setCanceltype(cancelt);
+					cancelTypeRepository.save(cancel);
+				});
 
+				//CanceledRentHouse
+				CanceledRentHouse canceledrentHouse = new CanceledRentHouse();
+				canceledrentHouse.setComment("ครบสัญญา่เช่าตามปกติอิอิ");
+				canceledrentHouse.setEmployee(employeeRepository.getOne(1L));
+				canceledrentHouse.setClient(clientRepository.getOne(1L));
+				canceledrentHouse.setRenthouse(rentHouseRepository.getOne(2L));
+				canceledrentHouse.setCanceltype(cancelTypeRepository.getOne(1L));
+				canceledRentHouseRepository.save(canceledrentHouse);
 		};
 	}
 	
