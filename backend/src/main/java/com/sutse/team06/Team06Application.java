@@ -33,25 +33,14 @@ public class Team06Application {
 							RepairsRepository repairsRepository,
 							EquipmentRepository equipmentRepository,
 							CancelTypeRepository cancelTypeRepository,
-							CanceledRentHouseRepository canceledRentHouseRepository
+							CanceledRentHouseRepository canceledRentHouseRepository,
+							ElectricityAndWaterReceiptRepository electricityandwaterreceiptRepository,
+							MounthRepository mounthRepository
 							){
 
 		return args ->{
 
-			//Client
-			Stream.of("Best","Jump").forEach(Name ->{
-				Client client = new Client();
-				client.setName(Name);
-				if(Name=="Best"){
-					client.setUsername("Test1");
-					client.setPassword("Test1");
-				}
-				if(Name=="Jump"){
-					client.setUsername("Test2");
-					client.setPassword("Test2");
-				}
-				clientRepository.save(client);	
-			});
+			
 			//InsuranceType
 			Stream.of("Car","Motorcycle","Bike","Labtop").forEach(Type_of_insuance ->{
 				InsuranceType type = new InsuranceType();
@@ -134,6 +123,7 @@ public class Team06Application {
 				employeeRepository.save(emp);
 			
 				//House
+				
 				Stream.of(1111,2222,3333,4444).forEach(houseNumber ->{
 					House house = new House();	
 					house.setHouseNumber(houseNumber);
@@ -169,6 +159,58 @@ public class Team06Application {
 					rentHouse2.setEmployee(employeeRepository.getOne(1L));
 					rentHouseRepository.save(rentHouse2);
 
+				//Client
+			Stream.of("Best","Jump","A").forEach(Name ->{
+				Client client = new Client();
+				client.setName(Name);
+				if(Name=="Best"){
+					client.setUsername("Test1");
+					client.setPassword("Test1");
+					client.setRentHouse(rentHouseRepository.getOne(1L));
+				}
+				if(Name=="Jump"){
+					client.setUsername("Test2");
+					client.setPassword("Test2");
+					client.setRentHouse(rentHouseRepository.getOne(2L));
+				}
+				if(Name=="A"){
+					client.setUsername("Test3");
+					client.setPassword("Test3");
+					client.setRentHouse(rentHouseRepository.getOne(3L));
+				}
+				
+				clientRepository.save(client);	
+			});	
+
+			//mounth
+			Stream.of("๋January","February","March","April","May","June","July",
+			"August","September","October","November","December").forEach(mounth ->{
+				Mounth mounths = new Mounth();
+				mounths.setMounth(mounth);
+				// equipment.setHouse(houseRepository.getOne(1L));
+				// equipment.setRepairs(null);
+				mounthRepository.save(mounths);
+			});
+
+			//Electric and water
+			ElectricityAndWaterReceipt ew1 = new ElectricityAndWaterReceipt();
+			ew1.setElectircity(700);
+			ew1.setWater(200);
+			ew1.setWesum(900);
+			ew1.setCid(clientRepository.getOne(3L));
+			ew1.setMid(mounthRepository.getOne(1L));
+			ew1.setHouse(houseRepository.getOne(3L));
+			electricityandwaterreceiptRepository.save(ew1);
+			
+			ElectricityAndWaterReceipt ew2 = new ElectricityAndWaterReceipt();
+			ew2.setElectircity(850);
+			ew2.setWater(150);
+			ew2.setWesum(1000);
+			ew2.setCid(clientRepository.getOne(1L));
+			ew2.setMid(mounthRepository.getOne(1L));
+			ew2.setHouse(houseRepository.getOne(2L));
+			electricityandwaterreceiptRepository.save(ew2);
+
 				//FoodList
 				Stream.of("ข้าวกะเพราไก่","ข้าวกะเพราหมู","ข้าวกะเพรากุ้ง","ข้าวกะเพราเป็ด","ข้าวกะเพราทะเลรวมมิตร").forEach(foodlistName ->{
 					FoodList foodList = new FoodList();
@@ -184,7 +226,7 @@ public class Team06Application {
 					}
 					foodListRepository.save(foodList);
 				});
-
+				
 				//Equipment
 				Stream.of("เตียง","โคมไฟ","ประตู","หน้าต่าง").forEach(equipmentlist ->{
 					Equipment equipment = new Equipment();
