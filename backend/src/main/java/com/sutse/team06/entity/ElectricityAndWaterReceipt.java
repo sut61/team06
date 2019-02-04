@@ -37,4 +37,5 @@ public class ElectricityAndWaterReceipt {
     @JoinColumn(name = "Mid")
     private Mounth mid;
 
+    
 }
