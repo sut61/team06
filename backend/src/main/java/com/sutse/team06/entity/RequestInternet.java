@@ -29,5 +29,27 @@ public class RequestInternet {
     @NotNull
     private String netPassword;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="rentHouse")
+    private RentHouse rentHouse;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Employee employee;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private TimeTypeUse timeTypeUse;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private TypeSpeedInternet typeSpeedInternet;
+   
+    public RequestInternet(){}
+    public RequestInternet(String netUser,String netPassword,RentHouse rentHouse,Employee employee,TimeTypeUse timeTypeUse,TypeSpeedInternet typeSpeedInternet){
+        this.netUser = netUser;
+        this.netPassword = netPassword;
+        this.rentHouse = rentHouse;
+        this.employee =   employee;
+        this.timeTypeUse = timeTypeUse;
+        this.typeSpeedInternet = typeSpeedInternet;
+    }
 }
   

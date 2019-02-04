@@ -26,4 +26,7 @@ public class TimeTypeUse {
     
     @NotNull
     private Integer timeType;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private ScaleTime scaleTime;
 }
