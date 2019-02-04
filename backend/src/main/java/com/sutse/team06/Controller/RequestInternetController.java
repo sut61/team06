@@ -36,4 +36,53 @@ public class RequestInternetController {
     public List<TimeTypeUse> getAlltimeTypeUse(){
              return this.timeTypeUseRepository.findAll().stream().collect(Collectors.toList());
     }
+    @GetMapping("/typespeed/{typeSpeedId}")
+    public TypeSpeedInternet geByIdTypeSpeed(@PathVariable("typeSpeedId") Long typeSpeedId){
+             return this.typeSpeedInternetRepository.findByTypeSpeedId(typeSpeedId);
+    }
+    @GetMapping("/checkrent/{rentid}/{housenum}")
+    public  ResponseEntity<Map<String, Object>> CheckRent(@PathVariable("rentid") Long rentid,@PathVariable("housenum") Integer housenum){
+            House house = this.houseRepository.findByhouseNumber(housenum);
+            RentHouse rentHouse = this.rentHouseRepository.findByRentIdAndHouse(rentid,house);
+            if ( rentHouse != null ) {
+                 Map<String, Object> json = new HashMap<String, Object>();
+                 json.put("message", "found renthouse");
+                 json.put("found", true);
+                 HttpHeaders headers = new HttpHeaders();
+                 headers.add("Content-Type", "application/json; charset=UTF-8");
+                 return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.OK));
+            } else {
+                 Map<String, Object> json = new HashMap<String, Object>();
+                 json.put("message", "not found renthouse");
+                 json.put("found", false);
+                 HttpHeaders headers = new HttpHeaders();
+                 headers.add("Content-Type", "application/json; charset=UTF-8");
+                 return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.NOT_FOUND));   
+            }
+    }
+    @GetMapping("/checkspeed/{typeSpeedId}")
+    public  ResponseEntity<Map<String, Object>> CheckTypeSpeed(@PathVariable("typeSpeedId") Long typeSpeedId){
+            try{
+                    TypeSpeedInternet typespeed = this.typeSpeedInternetRepository.findByTypeSpeedId(typeSpeedId);
+                    if ( typespeed.getConnection() > 0) {
+                        Map<String, Object> json = new HashMap<String, Object>();
+                        json.put("have", true);
+                        HttpHeaders headers = new HttpHeaders();
+                        headers.add("Content-Type", "application/json; charset=UTF-8");
+                        return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.OK));
+                    } else {
+                        Map<String, Object> json = new HashMap<String, Object>();
+                        json.put("have", false);
+                        HttpHeaders headers = new HttpHeaders();
+                        headers.add("Content-Type", "application/json; charset=UTF-8");
+                        return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.NOT_FOUND));   
+                    }
+            } catch(Exception e) {
+                        Map<String, Object> json = new HashMap<String, Object>();
+                        json.put("error", e);
+                        HttpHeaders headers = new HttpHeaders();
+                        headers.add("Content-Type", "application/json; charset=UTF-8");
+                        return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.INTERNAL_SERVER_ERROR));   
+            }
+    }
 }
