@@ -24,4 +24,16 @@ public class ElctricityAndWaterReceipt {
     private @NonNull Long water;
     private @NonNull Long electircity;
     private @NonNull Long wesum;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "Cid")
+    private Client cid;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "rentId")
+    private RentHouse renthouse;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "Mid")
+    private Mounth mid;
 }
