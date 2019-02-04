@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 
 @Entity
 @Getter @Setter
@@ -34,5 +35,9 @@ public class RentHouse {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="empId")
     private Employee employee;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="requestInternet")
+    private RequestInternet requestInternet;
 
 }

@@ -28,4 +28,9 @@ public class TypeSpeedInternet {
     private String typeSpeed;
     @NotNull
     private Integer connection;
+    public TypeSpeedInternet(String typeSpeed,Integer connection){
+        this.typeSpeed = typeSpeed;
+        this.connection = connection;
+    }
+    public TypeSpeedInternet(){}
 }
