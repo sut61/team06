@@ -21,9 +21,9 @@ public class ElectricityAndWaterReceipt {
     @SequenceGenerator(name = "ElctricityAndWaterReceipt_seq", sequenceName = "ElctricityAndWaterReceipt_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ElctricityAndWaterReceipt_seq")
     private @NonNull Long ewid;
-    private @NonNull Long water;
-    private @NonNull Long electircity;
-    private @NonNull Long wesum;
+    private @NonNull Integer water;
+    private @NonNull Integer electircity;
+    private @NonNull Integer wesum;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Cid")
