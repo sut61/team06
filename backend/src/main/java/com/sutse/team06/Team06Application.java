@@ -51,7 +51,7 @@ public class Team06Application {
 				}
 				clientRepository.save(client);	
 			});
-			//type
+			//InsuranceType
 			Stream.of("Car","Motorcycle","Bike","Labtop").forEach(Type_of_insuance ->{
 				InsuranceType type = new InsuranceType();
 				type.setType(Type_of_insuance);
@@ -150,9 +150,23 @@ public class Team06Application {
 					RentHouse rentHouse = new RentHouse();
 					rentHouse.setHouse(houseRepository.getOne(2L));
 					rentHouse.setRentHouseType(rentHouseTypeRepository.getOne(3L));
-					rentHouse.setResident("Jump");
+					rentHouse.setResident("Mr.Tomas");
 					rentHouse.setEmployee(employeeRepository.getOne(1L));
 					rentHouseRepository.save(rentHouse);
+
+					RentHouse rentHouse1 = new RentHouse();
+					rentHouse1.setHouse(houseRepository.getOne(3L));
+					rentHouse1.setRentHouseType(rentHouseTypeRepository.getOne(4L));
+					rentHouse1.setResident("Mr.Joseph");
+					rentHouse1.setEmployee(employeeRepository.getOne(1L));
+					rentHouseRepository.save(rentHouse1);
+
+					RentHouse rentHouse2 = new RentHouse();
+					rentHouse2.setHouse(houseRepository.getOne(4L));
+					rentHouse2.setRentHouseType(rentHouseTypeRepository.getOne(1L));
+					rentHouse2.setResident("Mrs.Susan");
+					rentHouse2.setEmployee(employeeRepository.getOne(1L));
+					rentHouseRepository.save(rentHouse2);
 
 				//FoodList
 				Stream.of("ข้าวกะเพราไก่","ข้าวกะเพราหมู","ข้าวกะเพรากุ้ง","ข้าวกะเพราเป็ด","ข้าวกะเพราทะเลรวมมิตร").forEach(foodlistName ->{
