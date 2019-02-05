@@ -13,7 +13,7 @@ import {ManagePackageOutComponent} from '../manage-package-out/manage-package-ou
 import {ManagePackageStatusComponent} from '../manage-package-status/manage-package-status.component';
 // best
 import { MakeInsuranceComponent } from '../make-insurance/make-insurance.component';
-import { InsuranceTableComponent } from '../insurance-table/insurance-table.component';
+import { MakeReceiptComponent } from '../make-receipt/make-receipt.component';
 // jump
 import { MakeRentHouseComponent } from '../make-rent-house/make-rent-house.component';
 import { RentHouseComponent } from '../rent-house/rent-house.component';
@@ -32,7 +32,8 @@ const routes: Routes = [
   { path: 'renthouse' , component: RentHouseComponent},
   { path: 'foodorder' , component: FoodOrderComponent},
   { path: 'repairs' , component: RepairsComponent},
-  { path: 'login' , component: LoginComponent}
+  { path: 'login' , component: LoginComponent},
+  { path: 'receipt' , component: MakeReceiptComponent}
 ];
 
 @NgModule({

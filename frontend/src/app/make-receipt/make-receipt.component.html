@@ -1,0 +1,46 @@
+<div class="bg-manage">
+  <div class="bodylayout">
+  <mat-card class="manage-check-form">
+    <h1>ระบบ ค่าน้ำค่าไฟ</h1>
+     <div class="example-container">
+
+      <mat-form-field  class="matfile">
+        <input matInput placeholder="ค่าน้ำ"  [(ngModel)]="water">
+      </mat-form-field>
+
+      <mat-form-field  class="matfile">
+          <input matInput placeholder="ค่าไฟ"  [(ngModel)]="elec">
+      </mat-form-field>
+
+      <mat-form-field  class="matfile">
+          <mat-select placeholder="เลือกลูกค้า" [(ngModel)]="name">
+              <mat-option  *ngFor="let clientloop of clientname" [value]="clientloop.cid">
+                  {{clientloop.name}}
+              </mat-option >
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field  class="matfile">
+          <mat-select placeholder="เลือกเดือน" [(ngModel)]="mounths">
+              <mat-option  *ngFor="let mounthloop of mounth" [value]="mounthloop.mid">
+                  {{mounthloop.mounth}}
+              </mat-option >
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field  class="matfile">
+          <input matInput placeholder="รหัส slipt"  [(ngModel)]="sliptid">
+        </mat-form-field>
+
+      <mat-form-field  class="matfile">
+          <input matInput placeholder="ชื่อและนามสกุลผู้กรอกราคาค่าน้ำค่าไฟ"  [(ngModel)]="meterchecker">
+        </mat-form-field>
+
+        <div>
+            <a    mat-raised-button  class="btn-check" (click)="save()"><b>บันทึก</b></a>
+          </div>
+
+    </div>
+  </mat-card>
+</div>
+</div>

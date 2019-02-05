@@ -50,5 +50,8 @@ export class Team06Service {
   InsurancePriceSelectAll(tid: String): Observable<any> {
     return this.http.get('//localhost:8080/InsurancePriceSelect/' + tid);
   }
+  mounthAll(): Observable<any> {
+    return this.http.get('//localhost:8080/Mounth');
+  }
 
 }
