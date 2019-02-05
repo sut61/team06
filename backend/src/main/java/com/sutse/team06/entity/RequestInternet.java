@@ -15,6 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
+import javax.persistence.Column;
+import javax.validation.constraints.*;
 
 @Entity
 @Data
@@ -24,9 +26,16 @@ public class RequestInternet {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RequestInternet_seq")
     @NotNull private  Long reqInternetId;
     
-    @NotNull
+    @NotNull(message = "Net name not null")
+    @Size(min = 6)
+    @Pattern(regexp = "[A-Za-z\\w0,9\\d]{6,}")
+    @Column(unique = true)
     private String netUser;
-    @NotNull
+
+    @NotNull(message = "Net password not null")
+    @Size(min = 6)
+    @Pattern(regexp = "[A-Za-z\\w0,9\\d@$!%*#?&]{6,}")
+    @Column(unique = true)
     private String netPassword;
 
     @OneToOne(fetch = FetchType.LAZY)
