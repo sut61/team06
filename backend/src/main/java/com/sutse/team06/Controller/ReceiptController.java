@@ -21,7 +21,25 @@ import java.util.*;
 //@RequestMapping("/api")
 public class ReceiptController {
     @Autowired private MounthRepository mounthRepository;
-    @Autowired private ElectricityAndWaterReceiptRepository receiptRepository;
+    @Autowired private ElectricityAndWaterReceiptRepository electricityandwaterreceiptRepository;
     @Autowired private ClientRepository clientRepository;
     @Autowired private HouseRepository houseRepository;
+
+    @GetMapping("/Mounth")
+    public List<Mounth> MounthAll(){
+        return mounthRepository.findAll().stream().collect(Collectors.toList());
+    }
+    @GetMapping("/ElectricityAndWaterReceipt")
+    public List<ElectricityAndWaterReceipt> ElectricityAndWaterReceiptAll(){
+        return electricityandwaterreceiptRepository.findAll().stream().collect(Collectors.toList());
+    }
+    @GetMapping("/Clients")
+    public List<Client> ClientAll(){
+        return clientRepository.findAll().stream().collect(Collectors.toList());
+    }
+    @GetMapping("/Houses")
+    public List<House> HouseAll(){
+        return houseRepository.findAll().stream().collect(Collectors.toList());
+    }
+
 }

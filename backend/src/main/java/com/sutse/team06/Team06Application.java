@@ -200,6 +200,8 @@ public class Team06Application {
 			ew1.setCid(clientRepository.getOne(3L));
 			ew1.setMid(mounthRepository.getOne(1L));
 			ew1.setHouse(houseRepository.getOne(3L));
+			ew1.setMeterchecker("dom");
+			ew1.setSliptid("R11111");
 			electricityandwaterreceiptRepository.save(ew1);
 			
 			ElectricityAndWaterReceipt ew2 = new ElectricityAndWaterReceipt();
@@ -209,6 +211,8 @@ public class Team06Application {
 			ew2.setCid(clientRepository.getOne(1L));
 			ew2.setMid(mounthRepository.getOne(1L));
 			ew2.setHouse(houseRepository.getOne(2L));
+			ew2.setMeterchecker("bryan");
+			ew2.setSliptid("R22222");
 			electricityandwaterreceiptRepository.save(ew2);
 
 				//FoodList
