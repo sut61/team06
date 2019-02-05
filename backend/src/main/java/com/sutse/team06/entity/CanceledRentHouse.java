@@ -4,6 +4,7 @@ package com.sutse.team06.entity;
 import lombok.*;
 
 import javax.persistence.Id;
+import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.validation.constraints.*;
 
 @Entity
 @Getter @Setter
@@ -21,7 +23,14 @@ public class CanceledRentHouse {
     @SequenceGenerator(name = "CanceledRentHouse_seq", sequenceName = "CanceledRentHouse_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CanceledRentHouse_seq")
     private @NonNull Long cancelId;
+
+    @NonNull
+    @Pattern(regexp = "\\w{2,5}")
+    @Size(min = 2, max = 10)
+    @Column(unique = true)
     private String comment;
+
+    //private String testcomment;    
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="empId")

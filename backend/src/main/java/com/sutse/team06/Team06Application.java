@@ -248,7 +248,7 @@ public class Team06Application {
 
 				//CanceledRentHouse
 				CanceledRentHouse canceledrentHouse = new CanceledRentHouse();
-				canceledrentHouse.setComment("ครบสัญญา่เช่าตามปกติอิอิ");
+				canceledrentHouse.setComment("Hello");
 				canceledrentHouse.setEmployee(employeeRepository.getOne(1L));
 				canceledrentHouse.setClient(clientRepository.getOne(1L));
 				canceledrentHouse.setRenthouse(rentHouseRepository.getOne(2L));
