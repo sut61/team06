@@ -1,12 +1,12 @@
 package com.sutse.team06.entity;
 
-
 import lombok.*;
 
 import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,12 +25,11 @@ public class CanceledRentHouse {
     private @NonNull Long cancelId;
 
     @NonNull
-    @Pattern(regexp = "\\w{2,5}")
+    /*@Pattern(regexp = "\\w{2,5}")
     @Size(min = 2, max = 10)
-    @Column(unique = true)
+    @Column(unique = true)*/
     private String comment;
-
-    //private String testcomment;    
+   
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="empId")
@@ -40,7 +39,7 @@ public class CanceledRentHouse {
     @JoinColumn(name = "cid")
     private Client client;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "rentId")
     private RentHouse renthouse;
 
