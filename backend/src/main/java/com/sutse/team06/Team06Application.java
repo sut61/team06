@@ -197,7 +197,7 @@ public class Team06Application {
 
 			//Electric and water
 			ElectricityAndWaterReceipt ew1 = new ElectricityAndWaterReceipt();
-			ew1.setElectircity(700);
+			ew1.setElectricity(700);
 			ew1.setWater(200);
 			ew1.setWesum(900);
 			ew1.setCid(clientRepository.getOne(3L));
@@ -208,7 +208,7 @@ public class Team06Application {
 			electricityandwaterreceiptRepository.save(ew1);
 			
 			ElectricityAndWaterReceipt ew2 = new ElectricityAndWaterReceipt();
-			ew2.setElectircity(850);
+			ew2.setElectricity(850);
 			ew2.setWater(150);
 			ew2.setWesum(1000);
 			ew2.setCid(clientRepository.getOne(1L));
