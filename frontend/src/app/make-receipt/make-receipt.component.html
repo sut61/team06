@@ -9,24 +9,33 @@
       </mat-form-field>
 
       <mat-form-field  class="matfile">
-          <input matInput placeholder="ค่าไฟ"  [(ngModel)]="elec">
+          <input matInput placeholder="ค่าไฟ"  [(ngModel)]="electricity">
       </mat-form-field>
 
       <mat-form-field  class="matfile">
-          <mat-select placeholder="เลือกลูกค้า" [(ngModel)]="name">
+          <mat-select placeholder="เลือกลูกค้า" [(ngModel)]="cid">
               <mat-option  *ngFor="let clientloop of clientname" [value]="clientloop.cid">
                   {{clientloop.name}}
               </mat-option >
           </mat-select>
       </mat-form-field>
 
-      <mat-form-field  class="matfile">
-          <mat-select placeholder="เลือกเดือน" [(ngModel)]="mounths">
-              <mat-option  *ngFor="let mounthloop of mounth" [value]="mounthloop.mid">
-                  {{mounthloop.mounth}}
-              </mat-option >
-          </mat-select>
+
+     <mat-form-field  class="matfile">
+      <mat-select placeholder="ระบุบ้านเลขที่" [(ngModel)]="house">
+        <mat-option  *ngFor="let houseloop of houses" [value]="houseloop.houseId">
+            {{houseloop.houseNumber}}
+        </mat-option>
+      </mat-select>
       </mat-form-field>
+
+      <mat-form-field  class="matfile">
+        <mat-select placeholder="เลือกเดือน" [(ngModel)]="mid">
+            <mat-option  *ngFor="let mounthloop of mounths" [value]="mounthloop.mid">
+                {{mounthloop.mounth}}
+            </mat-option >
+        </mat-select>
+    </mat-form-field>
 
       <mat-form-field  class="matfile">
           <input matInput placeholder="รหัส slipt"  [(ngModel)]="sliptid">

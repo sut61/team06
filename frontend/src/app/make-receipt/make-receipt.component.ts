@@ -10,39 +10,43 @@ import { HttpClient} from '@angular/common/http';
 export class MakeReceiptComponent implements OnInit {
   notimag: String;
   water: '';
-  elec: '';
-  mounth: Array<any>;
+  electricity: '';
+  mounths: Array<any>;
+  mid: '';
   clientname: Array<any>;
+  cid: '';
   meterchecker: '';
-  slipt: '';
+  sliptid: '';
+  houses: Array<any>;
+  house: '';
   constructor(private data: Team06Service,private httpClient: HttpClient) {
-    this.data.ClientAll().subscribe(data => {this.clientname = data;})
-    this.data.mounthAll().subscribe(data => {this.mounth = data;})
+
   }
 
   ngOnInit() {
+    this.data.ClientAll().subscribe(data => {this.clientname = data;})
+    this.data.mounthAll().subscribe(data => {this.mounths = data;})
+    this.data.HouseAll().subscribe(data => {this.houses = data; });
 
   }
-  save(){
-  //    this.cid = JSON.parse(localStorage.getItem('client')).cid;
-  //   if (this.water === undefined || this.elec === undefined
-  //      || this.mounth === undefined || this.clientname === undefined || this.meterchecker === undefined
-  //      || this.slipt === undefined) {  this.noti = false;
-  //       this.notimag = 'บันทึกไม่สำเร็จ(กรุณากรอกข้อมูลให้ครบ)'   }
-  //   else{
-  //       this.httpClient.post('http://localhost:8080/insurance/save/'
-  //       + this.cid + '/' + this.type + '/' + this.price + '/' + this.insuname, null).subscribe(
-  //       data => {
-  //         console.log('PUT Code and repairs is successful', data);
-  //         this.noti = false;
-  //         this.notimag = 'บันทึกสำเร็จ';
-  //           },
-  //           error => {
-  //               console.log('------------Error----------', error);
-  //               //window.location.reload();
-  //           }
+  save() {
+    if (this.water === undefined
+    || this.electricity === undefined || this.mounths === undefined || this.clientname === undefined || this.houses === undefined
+    || this.meterchecker === undefined
+    || this.sliptid === undefined) {alert('กรุณากรอกข้อมูลให้ครบถ้วน');}
+    else {
+       this.httpClient.post('http://localhost:8080/electricityandwater/save/'
+       + this.water + '/' + this.electricity + '/' + this.mid + '/' + this.cid + '/' + this.house + '/'  + this.meterchecker
+       + '/' + this.sliptid, null).subscribe(
+       data => {
+               console.log('PUT Code and receipt is successful', data);
+           },
+           error => {
+               console.log('------------Error----------', error);
+               //window.location.reload();
+           }
 
-  //     );
-  // }
-  }
+     );
+ }
+}
 }

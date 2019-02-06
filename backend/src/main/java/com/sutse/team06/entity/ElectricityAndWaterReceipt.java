@@ -27,7 +27,7 @@ public class ElectricityAndWaterReceipt {
     
     private @NonNull Integer water;
 
-    private @NonNull Integer electircity;
+    private @NonNull Integer electricity;
 
     private @NonNull Integer wesum;
 
