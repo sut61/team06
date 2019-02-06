@@ -3,8 +3,8 @@
     <mat-card class="manage-check-form">
       <h1>ยกเลิกสัญญาการเช่าบ้าน</h1>
         <mat-form-field  class="matfile">
-            <mat-select placeholder="เลือกสัญญาการเช่า">
-              <mat-option  *ngFor="let renthouse of renthouses" >
+            <mat-select placeholder="เลือกสัญญาการเช่า" [(ngModel)]="renthouseid">
+              <mat-option  *ngFor="let renthouse of renthouses" [value]="renthouse.rentId">
                   {{renthouse.rentId}} :
                   {{renthouse.resident}} :
                   {{renthouse.house.houseNumber}} :
@@ -22,18 +22,26 @@
     </mat-form-field>
   <br>
   <mat-form-field  class="matfile">
-      <mat-select placeholder="เลือกผู้ดำเนินการ" [(ngModel)]="client">
-        <mat-option  *ngFor="let client of clients" [value]="client.name">
+      <mat-select placeholder="เลือกผู้ดำเนินการ" [(ngModel)]="clientid">
+        <mat-option  *ngFor="let client of clients" [value]="client.cid">
             {{client.name}}
         </mat-option>
       </mat-select>
   </mat-form-field>
   <br>
   <mat-form-field  class="matfile">
-    <input matInput placeholder="ข้อติชม">
+      <mat-select placeholder="เลือกประเภทการยกเลิก" [(ngModel)]="canceltype">
+        <mat-option  *ngFor="let canceltype of canceltypes" [value]="canceltype.canceltypeId">
+            {{canceltype.canceltype}}
+        </mat-option>
+      </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field  class="matfile">
+    <input matInput placeholder="ข้อติชม"[(ngModel)]="comment">
   </mat-form-field>
       <div class="center">
-          <button mat-raised-button color="accent">ยืนยัน</button>
+          <button mat-raised-button color="accent" (click)="save()">ยืนยัน</button>
         <button mat-raised-button color="accent" routerLink="/makerenthouse">กลับ</button>
       </div>
     </mat-card>
