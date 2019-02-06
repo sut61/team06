@@ -20,6 +20,10 @@ class CanceledRentHouseController {
     private CancelTypeRepository cancelTypeRepository;
     @Autowired
     private CanceledRentHouseRepository canceledRentHouseRepository;
+    @Autowired
+    private ClientRepository clientRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @GetMapping("/canceltype")
     public List<CancelType> canceltypeAll(){
@@ -31,5 +35,23 @@ class CanceledRentHouseController {
         return canceledRentHouseRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    
+    @PostMapping("/cancelrenthouse/save/{renthouseid}/{employeeid}/{clientid}/{comment}/{canceltype}")
+    public CanceledRentHouse createCanceledRentHouse(@PathVariable long renthouseid,@PathVariable long employeeid,@PathVariable long clientid,
+                                    @PathVariable String comment,@PathVariable long canceltype){
+
+        CanceledRentHouse cancel = new CanceledRentHouse();
+        cancel.setComment(comment);
+        cancel.setEmployee(employeeRepository.getOne(employeeid));
+        cancel.setClient(clientRepository.getOne(clientid));
+        //cancel.setRenthouse(renthousetypeRepository.getOne(renthouseid));
+        cancel.setCanceltype(cancelTypeRepository.getOne(canceltype));
+        return canceledRentHouseRepository.save(cancel);
+       /*RentHouse rentHouse = new RentHouse();
+       rentHouse.setHouse(houseRepository.getOne(houseid));
+       rentHouse.setRentHouseType(renthousetypeRepository.getOne(housetypesid));
+       rentHouse.setEmployee(employeeRepository.getOne(employeeid));
+       rentHouse.setResident(client);
+       return rentHouseRepository.save(rentHouse);*/
+       
+    }
 }

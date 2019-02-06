@@ -54,4 +54,8 @@ export class Team06Service {
     return this.http.get('//localhost:8080/Mounth');
   }
 
+  canceltypeAll(): Observable<any> {
+    return this.http.get('//localhost:8080/canceltype');
+  }
+
 }
