@@ -38,6 +38,7 @@ import { MangagePackageService } from './service/mangage-package.service';
 import { RepairsComponent } from './repairs/repairs.component';
 import { LoginComponent } from './login/login.component';
 import { MakeReceiptComponent } from './make-receipt/make-receipt.component';
+import { CancelRentHouseComponent } from './cancel-rent-house/cancel-rent-house.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { MakeReceiptComponent } from './make-receipt/make-receipt.component';
     FoodOrderComponent,
     RepairsComponent,
     LoginComponent,
-    MakeReceiptComponent
+    MakeReceiptComponent,
+    CancelRentHouseComponent
 
   ],
   imports: [

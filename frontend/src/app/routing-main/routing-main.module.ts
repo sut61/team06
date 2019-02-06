@@ -17,6 +17,7 @@ import { MakeReceiptComponent } from '../make-receipt/make-receipt.component';
 // jump
 import { MakeRentHouseComponent } from '../make-rent-house/make-rent-house.component';
 import { RentHouseComponent } from '../rent-house/rent-house.component';
+import { CancelRentHouseComponent } from '../cancel-rent-house/cancel-rent-house.component';
 // pheekay
 import { FoodOrderComponent } from '../food-order/food-order.component';
 import { from } from 'rxjs';
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'foodorder' , component: FoodOrderComponent},
   { path: 'repairs' , component: RepairsComponent},
   { path: 'login' , component: LoginComponent},
-  { path: 'receipt' , component: MakeReceiptComponent}
+  { path: 'receipt' , component: MakeReceiptComponent},
+  { path: 'cancelrenthouse' , component: CancelRentHouseComponent}
 ];
 
 @NgModule({

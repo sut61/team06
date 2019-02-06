@@ -1,0 +1,41 @@
+<div class="bg">
+  <div class="bodylayout">
+    <mat-card class="manage-check-form">
+      <h1>ยกเลิกสัญญาการเช่าบ้าน</h1>
+        <mat-form-field  class="matfile">
+            <mat-select placeholder="เลือกสัญญาการเช่า">
+              <mat-option  *ngFor="let renthouse of renthouses" >
+                  {{renthouse.rentId}} :
+                  {{renthouse.resident}} :
+                  {{renthouse.house.houseNumber}} :
+                  {{renthouse.rentHouseType.description}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+      <br>
+    <mat-form-field  class="matfile">
+        <mat-select placeholder="เลือกพนักงานยืนยัน" [(ngModel)]="employeeid">
+          <mat-option  *ngFor="let employee of employees" [value]="employee.empId">
+              {{employee.name}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+  <br>
+  <mat-form-field  class="matfile">
+      <mat-select placeholder="เลือกผู้ดำเนินการ" [(ngModel)]="client">
+        <mat-option  *ngFor="let client of clients" [value]="client.name">
+            {{client.name}}
+        </mat-option>
+      </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field  class="matfile">
+    <input matInput placeholder="ข้อติชม">
+  </mat-form-field>
+      <div class="center">
+          <button mat-raised-button color="accent">ยืนยัน</button>
+        <button mat-raised-button color="accent" routerLink="/makerenthouse">กลับ</button>
+      </div>
+    </mat-card>
+  </div>
+</div>

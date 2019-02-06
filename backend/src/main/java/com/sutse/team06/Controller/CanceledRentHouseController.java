@@ -18,12 +18,18 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 class CanceledRentHouseController {
     @Autowired
     private CancelTypeRepository cancelTypeRepository;
+    @Autowired
+    private CanceledRentHouseRepository canceledRentHouseRepository;
 
     @GetMapping("/canceltype")
     public List<CancelType> canceltypeAll(){
         return cancelTypeRepository.findAll().stream().collect(Collectors.toList());
     }
 
+    @GetMapping("/cancelrenthouse")
+    public List<CanceledRentHouse> cancelrenthouseAll(){
+        return canceledRentHouseRepository.findAll().stream().collect(Collectors.toList());
+    }
 
     
 }
