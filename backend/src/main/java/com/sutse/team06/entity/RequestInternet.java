@@ -27,14 +27,14 @@ public class RequestInternet {
     @NotNull private  Long reqInternetId;
     
     @NotNull(message = "Net name not null")
-    @Size(min = 6)
-    @Pattern(regexp = "[A-Za-z\\w0,9\\d]{6,}")
+    @Size(min = 6, max = 13)
+    @Pattern(regexp = "[A-Za-z\\w0,9\\d]{6,13}")
     @Column(unique = true)
     private String netUser;
 
     @NotNull(message = "Net password not null")
     @Size(min = 6)
-    @Pattern(regexp = "[A-Za-z\\w0,9\\d@$!%*#?&]{6,}")
+    @Pattern(regexp = "[A-Za-z\\w0,9\\d@$!%*#?&]{6,13}")
     @Column(unique = true)
     private String netPassword;
 
