@@ -2,6 +2,9 @@
   <div class="bodylayout">
     <mat-card class="manage-check-form">
       <h1>ยกเลิกสัญญาการเช่าบ้าน</h1>
+      <span *ngIf="!noti" >
+          <mat-card>{{notimag}}</mat-card>
+    </span>
         <mat-form-field  class="matfile">
             <mat-select placeholder="เลือกสัญญาการเช่า" [(ngModel)]="renthouseid">
               <mat-option  *ngFor="let renthouse of renthouses" [value]="renthouse.rentId">
@@ -41,7 +44,7 @@
     <input matInput placeholder="ข้อติชม"[(ngModel)]="comment">
   </mat-form-field>
       <div class="center">
-          <button mat-raised-button color="accent" (click)="save()">ยืนยัน</button>
+          <button mat-raised-button color="primary" (click)="save()">ยืนยัน</button>
         <button mat-raised-button color="accent" routerLink="/makerenthouse">กลับ</button>
       </div>
     </mat-card>

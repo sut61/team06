@@ -14,13 +14,15 @@ export class MakeRentHouseComponent implements OnInit {
   housetypes: Array<any>;
   employees: Array<any>;
   clients: Array<any>;
+  notimag: String;
+  noti: boolean;
 
   houseid: number;
   housetypesid: number;
   employeeid: number;
   client: String;
 
-  constructor(private data: Team06Service,private httpClient: HttpClient) { }
+  constructor(private data: Team06Service,private httpClient: HttpClient) { this.noti = true; }
 
   ngOnInit() {
     this.data.HouseAll().subscribe(data => {this.houses = data;})
@@ -31,7 +33,13 @@ export class MakeRentHouseComponent implements OnInit {
 
   save(){
     if (this.houseid === undefined || this.housetypesid === undefined
-       || this.employeeid === undefined || this.client === undefined ) {   alert('กรุณากรอกข้อมูลให้ครบถ้วน');   }
+       || this.employeeid === undefined || this.client === undefined ) {
+         console.log('empty input');
+       this.notimag = 'empty input';
+       this.noti = false;
+       setTimeout(() => {
+         this.noti = true;
+       }, 1000);   }
     else{
         this.httpClient.post('http://localhost:8080/renthouse/save/'
         + this.houseid + '/' + this.housetypesid + '/' + this.employeeid + '/' + this.client,null).subscribe(
@@ -41,7 +49,7 @@ export class MakeRentHouseComponent implements OnInit {
             error => {
                 console.log('------------Error----------', error);
                 window.location.reload();
-            }
+              }
 
       );
   }
