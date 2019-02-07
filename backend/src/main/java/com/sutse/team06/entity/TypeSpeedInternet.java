@@ -30,7 +30,7 @@ public class TypeSpeedInternet {
     private String typeSpeed;
 
     @NotNull
-    @Min(value = 5)
+    @Min(value = 0)
     @Max(value = 20)
     private Integer connection;
 

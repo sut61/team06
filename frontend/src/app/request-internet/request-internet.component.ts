@@ -106,7 +106,7 @@ export class RequestInternetComponent implements OnInit {
         }
       }, error => {
            console.log(error);
-           this.noti2 = false;
+           this.noti = false;
            this.notimag  = 'ความเร็วเน็ตที่ต้องการหมดเเล้ว';
           //  setTimeout(() => {
           //       this.noti2 = true;

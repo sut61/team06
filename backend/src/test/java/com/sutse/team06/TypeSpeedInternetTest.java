@@ -153,7 +153,7 @@ public class TypeSpeedInternetTest {
      public void testSetConnectionLessSize(){
         TypeSpeedInternet typespeed = new TypeSpeedInternet();
         typespeed.setTypeSpeed("10/10 Mb");
-        typespeed.setConnection(1);
+        typespeed.setConnection(-1);
         try {
             entityManager.persist(typespeed);
             entityManager.flush();
