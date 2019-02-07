@@ -40,6 +40,7 @@ import { LoginComponent } from './login/login.component';
 import { MakeReceiptComponent } from './make-receipt/make-receipt.component';
 import { CancelRentHouseComponent } from './cancel-rent-house/cancel-rent-house.component';
 import { ShowReceiptComponent } from './show-receipt/show-receipt.component';
+import { RequestInternetComponent } from './request-internet/request-internet.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { ShowReceiptComponent } from './show-receipt/show-receipt.component';
     LoginComponent,
     MakeReceiptComponent,
     CancelRentHouseComponent,
-    ShowReceiptComponent
+    ShowReceiptComponent,
+    RequestInternetComponent
 
   ],
   imports: [
