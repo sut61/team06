@@ -11,6 +11,7 @@ import { IndexComponent } from '../index/index.component';
 import {ManagePackageInComponent} from '../manage-package-in/manage-package-in.component';
 import {ManagePackageOutComponent} from '../manage-package-out/manage-package-out.component';
 import {ManagePackageStatusComponent} from '../manage-package-status/manage-package-status.component';
+import {RequestInternetComponent} from '../request-internet/request-internet.component';
 // best
 import { MakeInsuranceComponent } from '../make-insurance/make-insurance.component';
 import { MakeReceiptComponent } from '../make-receipt/make-receipt.component';
@@ -37,7 +38,8 @@ const routes: Routes = [
   { path: 'login' , component: LoginComponent},
   { path: 'receipt' , component: MakeReceiptComponent},
   { path: 'cancelrenthouse' , component: CancelRentHouseComponent},
-  { path: 'showreceipt' , component: ShowReceiptComponent}
+  { path: 'showreceipt' , component: ShowReceiptComponent},
+  { path: 'reqinternet' , component: RequestInternetComponent}
 ];
 
 @NgModule({
