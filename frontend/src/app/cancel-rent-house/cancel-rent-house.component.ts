@@ -13,6 +13,8 @@ export class CancelRentHouseComponent implements OnInit {
   clients: Array<any>;
   renthouses: Array<any>;
   canceltypes: Array<any>;
+  notimag: String;
+  noti: boolean;
 
   renthouseid: number;
   employeeid: number;
@@ -20,7 +22,7 @@ export class CancelRentHouseComponent implements OnInit {
   comment: String;
   canceltype: number;
 
-  constructor(private data: Team06Service,private httpClient: HttpClient) { }
+  constructor(private data: Team06Service,private httpClient: HttpClient) { this.noti = true; }
 
   ngOnInit() {
     this.data.EmployeeAll().subscribe(data => {this.employees = data;})
@@ -31,7 +33,14 @@ export class CancelRentHouseComponent implements OnInit {
   save(){
     if (this.renthouseid === undefined || this.employeeid === undefined
        || this.clientid === undefined || this.comment === undefined ||
-       this.canceltype === undefined ) {   alert('กรุณากรอกข้อมูลให้ครบถ้วน');   }
+       this.canceltype === undefined ) {
+        console.log('empty input');
+        this.notimag = 'empty input';
+        this.noti = false;
+        setTimeout(() => {
+          this.noti = true;
+        }, 1000);
+          }
     else{
         this.httpClient.post('http://localhost:8080/cancelrenthouse/save/'
         + this.renthouseid + '/' + this.employeeid + '/' + this.clientid + '/' + this.comment + '/' + this.canceltype,null).subscribe(
@@ -40,7 +49,7 @@ export class CancelRentHouseComponent implements OnInit {
             },
             error => {
                 console.log('------------Error----------', error);
-                //window.location.reload();
+                window.location.reload();
             }
 
       );
