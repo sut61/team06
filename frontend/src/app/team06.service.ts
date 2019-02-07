@@ -57,5 +57,7 @@ export class Team06Service {
   canceltypeAll(): Observable<any> {
     return this.http.get('//localhost:8080/canceltype');
   }
-
+  ElectricityAndWaterReceiptAll(): Observable<any> {
+    return this.http.get('//localhost:8080/ElectricityAndWaterReceipt');
+  }
 }

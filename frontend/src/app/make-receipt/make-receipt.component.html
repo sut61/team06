@@ -3,7 +3,9 @@
   <mat-card class="manage-check-form">
     <h1>ระบบ ค่าน้ำค่าไฟ</h1>
      <div class="example-container">
-
+      <span *ngIf="!noti"  >
+        <mat-card>{{notimag}}</mat-card>
+      </span>
       <mat-form-field  class="matfile">
         <input matInput placeholder="ค่าน้ำ"  [(ngModel)]="water">
       </mat-form-field>
@@ -47,6 +49,8 @@
 
         <div>
             <a    mat-raised-button  class="btn-check" (click)="save()"><b>บันทึก</b></a>
+            <br><br>
+            <button mat-raised-button class="btn-check" routerLink="/showreceipt">ดูรายการใบเสร็จ</button>
           </div>
 
     </div>

@@ -23,6 +23,7 @@ import { FoodOrderComponent } from '../food-order/food-order.component';
 import { from } from 'rxjs';
 // ...
 import {LoginComponent} from '../login/login.component';
+import { ShowReceiptComponent } from '../show-receipt/show-receipt.component';
 const routes: Routes = [
   { path: '' , component: IndexComponent },
   { path: 'manage/packagein' , component: ManagePackageInComponent},
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'repairs' , component: RepairsComponent},
   { path: 'login' , component: LoginComponent},
   { path: 'receipt' , component: MakeReceiptComponent},
-  { path: 'cancelrenthouse' , component: CancelRentHouseComponent}
+  { path: 'cancelrenthouse' , component: CancelRentHouseComponent},
+  { path: 'showreceipt' , component: ShowReceiptComponent}
 ];
 
 @NgModule({
