@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
-
+import javax.validation.constraints.*;
 @Entity
 @Data
 public class ScaleTime {
@@ -25,5 +25,7 @@ public class ScaleTime {
     @NotNull private  Long scaleTimeId;
     
     @NotNull
+    @Pattern(regexp = "(day|month|week)")
+    @Size(min = 3 , max = 5)
     private String typeScale;
 }
