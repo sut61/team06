@@ -30,7 +30,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 public class ElectricityAndWaterReceiptTest {
 	
 	@Autowired
-    private ElectricityAndWaterReceipt electricityandwaterreceiptRepository;
+    private ElectricityAndWaterReceiptRepository electricityandwaterreceiptRepository;
 
     @Autowired
     private TestEntityManager entityManager;
