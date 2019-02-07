@@ -267,7 +267,7 @@ public class Team06Application {
 				//new keng 
 				typeSpeedInternetRepository.save(new TypeSpeedInternet("10/30 Mb",10));
 				typeSpeedInternetRepository.save(new TypeSpeedInternet("30/50 Mb",10));
-				typeSpeedInternetRepository.save(new TypeSpeedInternet("50/100 Mb",1));
+				typeSpeedInternetRepository.save(new TypeSpeedInternet("50/100 Mb",5));
 				Stream.of("week","month").forEach(scaleTimeid ->{
 					ScaleTime scaleTime = new  ScaleTime();
 					scaleTime.setTypeScale(scaleTimeid);
