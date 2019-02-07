@@ -41,7 +41,7 @@ import { MakeReceiptComponent } from './make-receipt/make-receipt.component';
 import { CancelRentHouseComponent } from './cancel-rent-house/cancel-rent-house.component';
 import { ShowReceiptComponent } from './show-receipt/show-receipt.component';
 import { RequestInternetComponent } from './request-internet/request-internet.component';
-
+import { ReqInternetService } from './service/req-internet.service';
 
 @NgModule({
   declarations: [
@@ -85,7 +85,7 @@ import { RequestInternetComponent } from './request-internet/request-internet.co
 
 
   ],
-  providers: [Team06Service, MangagePackageService],
+  providers: [Team06Service, MangagePackageService, ReqInternetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
