@@ -19,7 +19,7 @@
             </div>
       </div>
       <div class="example-container" *ngIf="!state1 && state2">
-          <span *ngIf="!noti2"  >
+          <span *ngIf="!noti"  >
                 <mat-card>{{notimag}}</mat-card>
           </span>
           <mat-form-field  class="matfile">
@@ -60,6 +60,11 @@
                       <th>Time</th>
                     </tr>
                 <tr>
+                    <td>{{ detail.netuser }}</td>
+                    <td>{{detail.netpass}}</td>
+                    <td>{{detail.housenumber}}</td>
+                    <td>{{detail.typeSpeed}}</td>
+                    <td>{{detail.timeType}}</td>
                 </tr>
 
             </table>
