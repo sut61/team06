@@ -1,73 +1,75 @@
 <div class="bg-manage">
-  <div class="bodylayout">
-  <mat-card class="manage-check-form">
-    <h1>ขอใช้งานอินเตอร์เน็ต</h1>
-    <div class="example-container"  *ngIf="state1 && !state2">
-          <span *ngIf="!noti"  >
-                <mat-card></mat-card>
+    <div class="bodylayout">
+    <mat-card class="manage-check-form">
+      <h1>ขอใช้งานอินเตอร์เน็ต</h1>
+
+      <div class="example-container"  *ngIf="state1 && !state2">
+            <span *ngIf="!noti"  >
+                  <mat-card>{{notimag}}</mat-card>
+            </span>
+            <mat-form-field  class="matfile">
+              <input matInput placeholder="Rent House ID" name="rentid"  [(ngModel)]="reqinternet.rentid" #packageid>
+            </mat-form-field>
+
+            <mat-form-field  class="matfile">
+              <input matInput placeholder="House Number" name="housenumber"  [(ngModel)]="reqinternet.houseNumber"  #housenumber/>
+            </mat-form-field>
+            <div>
+                <a    mat-raised-button  class="btn-check" (click)="onCheck()"><b>ตรวจสอบ</b></a>
+            </div>
+      </div>
+      <div class="example-container" *ngIf="!state1 && state2">
+          <span *ngIf="!noti2"  >
+                <mat-card>{{notimag}}</mat-card>
           </span>
           <mat-form-field  class="matfile">
-            <input matInput placeholder="Rent House ID" name="rentid">
+            <input matInput placeholder="Net Name" name="netname"  [(ngModel)]="reqinternet.netname" #packageid>
           </mat-form-field>
 
           <mat-form-field  class="matfile">
-            <input matInput placeholder="House Number" name="housenumber"/>
+            <input matInput placeholder="Net Password" name="netpassword"  type="password" [(ngModel)]="reqinternet.netpassword"  #housenumber/>
           </mat-form-field>
-          <div>
-              <a    mat-raised-button  class="btn-check"><b>ตรวจสอบ</b></a>
-          </div>
-    </div>
-    <div class="example-container" *ngIf="!state1 && state2">
-        <span>
-              <mat-card></mat-card>
-        </span>
-        <mat-form-field  class="matfile">
-          <input matInput placeholder="Net Name" name="netname">
-        </mat-form-field>
-
-        <mat-form-field  class="matfile">
-          <input matInput placeholder="Net Password" name="netpassword"  type="password"/>
+          <mat-form-field  class="matfile">
+            <mat-select placeholder="TypeSpeed Net" [(ngModel)]="reqinternet.typeSpeedId">
+              <mat-option *ngFor="let speed of TypeSpeed" [value]="speed.typeSpeedId">
+                  {{speed.typeSpeed}}
+              </mat-option>
+            </mat-select>
         </mat-form-field>
         <mat-form-field  class="matfile">
-          <mat-select placeholder="TypeSpeed Net">
-            <mat-option>
-
+          <mat-select placeholder="How long use" [(ngModel)]="reqinternet.timeTypeId">
+            <mat-option *ngFor="let timeuse of timeType" [value]="timeuse.timeTypeId">
+                {{timeuse.time}}
             </mat-option>
           </mat-select>
-      </mat-form-field>
-      <mat-form-field  class="matfile">
-        <mat-select placeholder="How long use">
-          <mat-option>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-          <div>
-            <a    mat-raised-button  class="btn-check-1"><b>ตรวจสอบ</b></a>
-          </div>
-  </div>
-  <div *ngIf="state1 && state2">
-    <div>
-        <mat-card >
-        <div class="">
-            <table     style="width:100%">
-                <tr>
-                    <th>Net name</th>
-                    <th>Net Password</th>
-                    <th>House Number</th>
-                    <th>Speed</th>
-                    <th>Time</th>
-                  </tr>
-              <tr>
-              </tr>
-
-          </table>
+        </mat-form-field>
             <div>
-                <a    mat-raised-button  class="btn-check-3"><b>ยืนยัน</b></a>
+              <a    mat-raised-button  class="btn-check-1" (click)="speedCheck()"><b>ตรวจสอบ</b></a>
             </div>
-        </div>
-    </mat-card>
     </div>
-</div>
-  </mat-card>
-</div>
-</div>
+    <div *ngIf="state1 && state2">
+      <div>
+          <mat-card >
+          <div class="">
+              <table     style="width:100%">
+                  <tr>
+                      <th>Net name</th>
+                      <th>Net Password</th>
+                      <th>House Number</th>
+                      <th>Speed</th>
+                      <th>Time</th>
+                    </tr>
+                <tr>
+                </tr>
+
+            </table>
+              <div>
+                  <a    mat-raised-button  class="btn-check-3" (click)="onSave()"><b>ยืนยัน</b></a>
+              </div>
+          </div>
+      </mat-card>
+      </div>
+  </div>
+    </mat-card>
+  </div>
+  </div>
