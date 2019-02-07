@@ -1,20 +1,28 @@
 <div class="bg">
-<mat-card class="manage-check-form">
-  <div *ngFor="let rent of rents">
-    <mat-card-content>
-      <mat-divider></mat-divider>
-      <h3> <a>Contrack number : {{rent.rentId}}</a><br>
-         <a>House number : {{rent.house.houseNumber}}</a><br>
-      <a>Type : {{rent.rentHouseType.description}}</a></h3>
-      <mat-divider></mat-divider>
-    </mat-card-content>
-  </div>
-</mat-card>
-
-
-
-<br>
-  <div class="business_center">
-      <button mat-raised-button color="accent" routerLink="/makerenthouse">ทำสัญญาเช่า</button>
+  <div class="bodylayout">
+    <mat-card class="manage-check-form">
+      <div *ngFor="let rent of rents">
+        <div *ngIf="!rent.canceledrentHouse">
+          <mat-card-content>
+            <mat-divider></mat-divider>
+            <h3>
+              <a>Contrack number : {{ rent.rentId }}</a
+              ><br />
+              <a>House number : {{ rent.house.houseNumber }}</a
+              ><br />
+              <a>Type : {{ rent.rentHouseType.description }}</a
+              ><br />
+            </h3>
+            <mat-divider></mat-divider>
+          </mat-card-content>
+        </div>
+      </div>
+      <br />
+      <div class="business_center">
+        <button mat-raised-button color="accent" routerLink="/makerenthouse">
+          ไปหน้าทำสัญญาเช่า
+        </button>
+      </div>
+    </mat-card>
   </div>
 </div>
