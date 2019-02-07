@@ -186,7 +186,7 @@ public class Team06Application {
 			});	
 
 			//mounth
-			Stream.of("๋January","February","March","April","May","June","July",
+			Stream.of("January","February","March","April","May","June","July",
 			"August","September","October","November","December").forEach(mounth ->{
 				Mounth mounths = new Mounth();
 				mounths.setMounth(mounth);
@@ -199,7 +199,6 @@ public class Team06Application {
 			ElectricityAndWaterReceipt ew1 = new ElectricityAndWaterReceipt();
 			ew1.setElectricity(700);
 			ew1.setWater(200);
-			ew1.setWesum(900);
 			ew1.setCid(clientRepository.getOne(3L));
 			ew1.setMid(mounthRepository.getOne(1L));
 			ew1.setHouse(houseRepository.getOne(3L));
@@ -210,7 +209,6 @@ public class Team06Application {
 			ElectricityAndWaterReceipt ew2 = new ElectricityAndWaterReceipt();
 			ew2.setElectricity(850);
 			ew2.setWater(150);
-			ew2.setWesum(1000);
 			ew2.setCid(clientRepository.getOne(1L));
 			ew2.setMid(mounthRepository.getOne(1L));
 			ew2.setHouse(houseRepository.getOne(2L));
@@ -266,7 +264,7 @@ public class Team06Application {
 				//new keng 
 				typeSpeedInternetRepository.save(new TypeSpeedInternet("10/30 Mb",10));
 				typeSpeedInternetRepository.save(new TypeSpeedInternet("30/50 Mb",10));
-				typeSpeedInternetRepository.save(new TypeSpeedInternet("50/100 Mb",1));
+				typeSpeedInternetRepository.save(new TypeSpeedInternet("50/100 Mb",5));
 				Stream.of("week","month").forEach(scaleTimeid ->{
 					ScaleTime scaleTime = new  ScaleTime();
 					scaleTime.setTypeScale(scaleTimeid);

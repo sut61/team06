@@ -1,4 +1,3 @@
-//close 140
 package com.sutse.team06;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,10 +27,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class RequestInternetTest {
+public class TypeSpeedInternetTest {
 	
 	@Autowired
-    private RequestInternetRepository requestInternetRepository;
+    private TypeSpeedInternetRepository typeSpeedInternetRepository;
 
     @Autowired
     private TestEntityManager entityManager;
@@ -43,32 +42,31 @@ public class RequestInternetTest {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
     }
-    //ทดสอบ save data ปกติ
     @Test
-	public void testTestInsertDataSuccess() {
-        RequestInternet reqnet = new RequestInternet();
-        reqnet.setNetUser("name1234");
-        reqnet.setNetPassword("pass1234");
-        try {
-            entityManager.persist(reqnet);
+    public void testTestInsertDataSuccess(){
+        TypeSpeedInternet typespeed = new TypeSpeedInternet();
+        typespeed.setTypeSpeed("10/10 Mb");
+        typespeed.setConnection(10);
+         try {
+            entityManager.persist(typespeed);
             entityManager.flush();
         } catch(javax.validation.ConstraintViolationException e) {
             fail("Should not pass to this line");
         }
     }
-    @Test
-    public void testInsertNetUerNull(){
-        RequestInternet reqnet = new RequestInternet();
-        reqnet.setNetUser(null);
-        reqnet.setNetPassword("pass0000");
+     @Test
+     public void testSetTypeSpeedUerNull(){
+        TypeSpeedInternet typespeed = new TypeSpeedInternet();
+        typespeed.setTypeSpeed(null);
+        typespeed.setConnection(10);
         try {
-            entityManager.persist(reqnet);
+            entityManager.persist(typespeed);
             entityManager.flush();
             fail("Should not pass to this line");
         } catch (javax.validation.ConstraintViolationException e) {
 
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            System.out.println("2.1#######################################################################");
+            System.out.println("\n\ntestSetTypeSpeedUerNull#######################################################################");
             System.out.println(violations);
             System.out.println("\n");
             assertEquals(violations.isEmpty(), false);
@@ -76,99 +74,98 @@ public class RequestInternetTest {
         }
      }
      @Test
-     public void testInsertNetPassNull(){
-        RequestInternet reqnet = new RequestInternet();
-        reqnet.setNetUser("user1001");
-        reqnet.setNetPassword(null);
+     public void testSetTypeSpeedPattern(){
+        TypeSpeedInternet typespeed = new TypeSpeedInternet();
+        typespeed.setTypeSpeed("10/10 MM");
+        typespeed.setConnection(10);
         try {
-            entityManager.persist(reqnet);
+            entityManager.persist(typespeed);
             entityManager.flush();
             fail("Should not pass to this line");
         } catch (javax.validation.ConstraintViolationException e) {
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            System.out.println("2.1#######################################################################");
-            System.out.println(violations);
-            System.out.println("\n");
-            assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
-        }
-      }
-     @Test
-     public void testInsertCheckMoreThanSize(){
-        RequestInternet reqnet = new RequestInternet();
-        reqnet.setNetUser("user567890123456789");
-        reqnet.setNetPassword("pass10101");
-        try {
-            entityManager.persist(reqnet);
-            entityManager.flush();
-            fail("Should not pass to this line");
-        } catch (javax.validation.ConstraintViolationException e) {
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            System.out.println("2.2#######################################################################");
-            System.out.println(violations);
-            System.out.println("\n");
-            assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
-        }
-      }
-     @Test
-     public void testInsertCheckLessThanSize(){
-        RequestInternet reqnet = new RequestInternet();
-        reqnet.setNetUser("user");
-        reqnet.setNetPassword("pass10101");
-        try {
-            entityManager.persist(reqnet);
-            entityManager.flush();
-            fail("Should not pass to this line");
-        } catch (javax.validation.ConstraintViolationException e) {
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            System.out.println("2.3#######################################################################");
-            System.out.println(violations);
-            System.out.println("\n");
-            assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
-        }
-      }
-     @Test
-     public void testInsertCheckPattern(){
-        RequestInternet reqnet = new RequestInternet();
-        reqnet.setNetUser("...#####$$");
-        reqnet.setNetPassword("pass10101");
-        try {
-            entityManager.persist(reqnet);
-            entityManager.flush();
-            fail("Should not pass to this line");
-        } catch (javax.validation.ConstraintViolationException e) {
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            System.out.println("2.4#######################################################################");
-            System.out.println(violations);
-            System.out.println("\n");
-            assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
-        }
-      }
-      
-    @Test
-    public void testIdMustBeUnique() {
-        RequestInternet reqnet1 = new RequestInternet();
-        reqnet1.setNetUser("user101010");
-        reqnet1.setNetPassword("pass10101");
-        entityManager.persist(reqnet1);
-        entityManager.flush();
 
-        RequestInternet reqnet2 = new RequestInternet();
-        reqnet2.setNetUser("user101010");
-        reqnet2.setNetPassword("pass10101");
-        try {
-                 entityManager.persist(reqnet2);
-                 entityManager.flush(); 
-                 fail("Should not pass to this line");
-        } catch (PersistenceException ex) {
-                System.out.println("\n");
-                System.out.println("2.5#######################################################################");
-                System.out.println(ex);
-                System.out.println("\n");
-                System.out.println("\n");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("\n\ntestSetTypeSpeedPattern#######################################################################");
+            System.out.println(violations);
+            System.out.println("\n");
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
         }
-    }
+     }
+     @Test
+     public void testSetTypeSpeedOverSize(){
+        TypeSpeedInternet typespeed = new TypeSpeedInternet();
+        typespeed.setTypeSpeed("1000/10000 Mb");
+        typespeed.setConnection(10);
+        try {
+            entityManager.persist(typespeed);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("\n\ntestSetTypeSpeedOverSize#######################################################################");
+            System.out.println(violations);
+            System.out.println("\n");
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+     }
+     @Test
+     public void testSetConnectionNotNull(){
+        TypeSpeedInternet typespeed = new TypeSpeedInternet();
+        typespeed.setTypeSpeed("10/10 Mb");
+        typespeed.setConnection(null);
+        try {
+            entityManager.persist(typespeed);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("\n\ntestSetConnectionNotNull#######################################################################");
+            System.out.println(violations);
+            System.out.println("\n");
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+     }
+     @Test
+     public void testSetConnectionOverSize(){
+        TypeSpeedInternet typespeed = new TypeSpeedInternet();
+        typespeed.setTypeSpeed("10/10 Mb");
+        typespeed.setConnection(30);
+        try {
+            entityManager.persist(typespeed);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("\n\ntestSetConnectionOverSize#######################################################################");
+            System.out.println(violations);
+            System.out.println("\n");
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+     }
+     @Test
+     public void testSetConnectionLessSize(){
+        TypeSpeedInternet typespeed = new TypeSpeedInternet();
+        typespeed.setTypeSpeed("10/10 Mb");
+        typespeed.setConnection(1);
+        try {
+            entityManager.persist(typespeed);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("\n\ntestSetConnectionLessSize#######################################################################");
+            System.out.println(violations);
+            System.out.println("\n");
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+     }
 }

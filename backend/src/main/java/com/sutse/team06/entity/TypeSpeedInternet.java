@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
-
+import javax.validation.constraints.*;
 @Entity
 @Data
 public class TypeSpeedInternet {
@@ -25,9 +25,15 @@ public class TypeSpeedInternet {
     @NotNull private  Long typeSpeedId;
     
     @NotNull
+    @Pattern(regexp = "[0-9\\d]{2,}[/][0-9\\d]{2,}[\\s]Mb")
+    @Size(min = 6 , max = 11)
     private String typeSpeed;
+
     @NotNull
+    @Min(value = 5)
+    @Max(value = 20)
     private Integer connection;
+
     public TypeSpeedInternet(String typeSpeed,Integer connection){
         this.typeSpeed = typeSpeed;
         this.connection = connection;
