@@ -39,9 +39,6 @@ public class CanceledRentHouse {
     @JoinColumn(name = "cid")
     private Client client;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "rentId")
-    private RentHouse renthouse;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "canceltypeId")

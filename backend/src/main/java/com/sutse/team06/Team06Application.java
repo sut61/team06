@@ -251,17 +251,16 @@ public class Team06Application {
 				});
 
 				//CanceledRentHouse
-				/*CanceledRentHouse canceledrentHouse = new CanceledRentHouse();
+				CanceledRentHouse canceledrentHouse = new CanceledRentHouse();
 				canceledrentHouse.setComment("Hello");
 				canceledrentHouse.setEmployee(employeeRepository.getOne(1L));
 				canceledrentHouse.setClient(clientRepository.getOne(1L));
-				canceledrentHouse.setRenthouse(rentHouseRepository.getOne(2L));
 				canceledrentHouse.setCanceltype(cancelTypeRepository.getOne(1L));
 				canceledRentHouseRepository.save(canceledrentHouse);
 				
 				RentHouse rh = rentHouseRepository.findByRentId(2L);
 				rh.setCanceledrentHouse(canceledRentHouseRepository.findByCancelId(1L));
-				rentHouseRepository.save(rh);*/
+				rentHouseRepository.save(rh);
 
 
 				//new keng 

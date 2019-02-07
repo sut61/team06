@@ -24,6 +24,8 @@ class CanceledRentHouseController {
     private ClientRepository clientRepository;
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private RentHouseRepository rentHouseRepository;
 
     @GetMapping("/canceltype")
     public List<CancelType> canceltypeAll(){
@@ -43,15 +45,12 @@ class CanceledRentHouseController {
         cancel.setComment(comment);
         cancel.setEmployee(employeeRepository.getOne(employeeid));
         cancel.setClient(clientRepository.getOne(clientid));
-        //cancel.setRenthouse(renthousetypeRepository.getOne(renthouseid));
         cancel.setCanceltype(cancelTypeRepository.getOne(canceltype));
-        return canceledRentHouseRepository.save(cancel);
-       /*RentHouse rentHouse = new RentHouse();
-       rentHouse.setHouse(houseRepository.getOne(houseid));
-       rentHouse.setRentHouseType(renthousetypeRepository.getOne(housetypesid));
-       rentHouse.setEmployee(employeeRepository.getOne(employeeid));
-       rentHouse.setResident(client);
-       return rentHouseRepository.save(rentHouse);*/
+
+       RentHouse rentHouse = rentHouseRepository.findByRentId(renthouseid);
+       rentHouse.setCanceledrentHouse(cancel);
+       rentHouseRepository.save(rentHouse);
        
+        return canceledRentHouseRepository.save(cancel);
     }
 }
