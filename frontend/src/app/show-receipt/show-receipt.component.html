@@ -1,0 +1,21 @@
+<div class="bg">
+  <mat-card class="manage-check-form">
+    <div *ngFor="let receipt of receipts">
+      <mat-card-content>
+        <mat-divider></mat-divider>
+        <h3>
+          <a>Client name : {{receipt.cid.name}}</a><br>
+          <a>House number : {{receipt.house.houseNumber}}</a><br>
+          <a>Mounth : {{receipt.mid.mounth}}</a><br>
+          <a>ค่าน้ำ :{{receipt.water}}</a><br>
+          <a>ค่าไฟ :{{receipt.electricity}}</a><br>
+          <a>ชื่อผู้กรอกข้อมูล : {{receipt.meterchecker}}</a><br>
+          <a>slipt id : {{receipt.sliptid}}</a><br>
+        </h3>
+        <mat-divider></mat-divider>
+      </mat-card-content>
+    </div>
+  </mat-card>
+  <br>
+
+  </div>

@@ -29,7 +29,6 @@ public class ElectricityAndWaterReceipt {
 
     private @NonNull Integer electricity;
 
-    private @NonNull Integer wesum;
 
     // @Pattern(regexp = "[a-zA-Z0-9\\w]{2,20}")
     @Size(min = 2, max = 20)
