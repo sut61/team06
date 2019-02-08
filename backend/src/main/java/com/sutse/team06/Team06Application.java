@@ -38,7 +38,10 @@ public class Team06Application {
 							MounthRepository mounthRepository,
 							TypeSpeedInternetRepository typeSpeedInternetRepository,
 							TimeTypeUseRepository timeTypeUseRepository,
-							ScaleTimeRepository scaleTimeRepository
+							ScaleTimeRepository scaleTimeRepository,
+							TransportationCarRepository transportationCarRepository,
+							CarRepository carRepository,
+							PlaceRepository placeRepository
 							){
 
 		return args ->{
@@ -286,6 +289,33 @@ public class Team06Application {
 					timeuses.setScaleTime(scale2);
 					timeTypeUseRepository.save(timeuses);
 				}
+					//Car
+				Stream.of("Taxi","Hatchback","Sedan","SUV","Convertible").forEach(carType ->{
+					Car car = new Car();
+					car.setCarType(carType);
+					carRepository.save(car);
+				});
+
+				//Place
+				Stream.of("Bangkok","Rangsit","Nakornrachasima","Parkchong").forEach(placeName ->{
+					Place place = new Place();
+					place.setPlaceName(placeName);
+					placeRepository.save(place);
+				});
+
+				//TransportationCar PK
+				
+				TransportationCar transportationCar = new TransportationCar();
+				transportationCar.setCid(clientRepository.getOne(2L));
+				transportationCar.setPlaceId(placeRepository.getOne(2L));
+				transportationCar.setCarId(carRepository.getOne(1L));
+				transportationCar.setEmpId(employeeRepository.getOne(1L));
+				transportationCar.setHouseId(houseRepository.getOne(2L));
+				transportationCar.setTransportDetial("ลงใกล้ ๆ กับเซเว่น ตรงข้ามเมเจอร์รังสิตนะครับ");
+				transportationCar.setAmountPeople(4);
+				transportationCarRepository.save(transportationCar);
+
+
 		};
 	}
 	

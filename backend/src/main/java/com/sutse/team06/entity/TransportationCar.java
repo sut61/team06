@@ -17,8 +17,7 @@ public class TransportationCar{
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="transport_seq")
 	
 	private @NonNull Long transportId;
-	private @NonNull String transportDetial;
-    private @NonNull Long amountPeople;
+	
 	
 	 //with Car
 	 @ManyToOne(fetch = FetchType.EAGER)
@@ -44,6 +43,9 @@ public class TransportationCar{
 	   @ManyToOne(fetch = FetchType.EAGER)
 	   @JoinColumn(name = "empId")
 	   private Employee empId;
- 
+	   
+	   private @NonNull String transportDetial;
+	   private @NonNull int amountPeople;
+
 	
 }
