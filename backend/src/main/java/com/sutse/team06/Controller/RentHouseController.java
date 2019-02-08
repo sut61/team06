@@ -61,7 +61,6 @@ class RentHouseController {
        rentHouse.setRentHouseType(renthousetypeRepository.getOne(housetypesid));
        rentHouse.setEmployee(employeeRepository.getOne(employeeid));
        rentHouse.setResident(resident);
-       rentHouse.setClient(clientRepository.findByName(client));
        return rentHouseRepository.save(rentHouse);
        
     }
