@@ -16,8 +16,8 @@ public class TransportationCar{
 	@SequenceGenerator(name="Transport_seq",sequenceName="Transport_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Transport_seq")
 	@Column(name="TransportId",unique = true, nullable = true)
-	private @NonNull Long TransportId;
-	private @NonNull String TransportDetial;
+	private @NonNull Long transportId;
+	private @NonNull String transportDetial;
     private @NonNull Long amountPeople;
 	
 	
