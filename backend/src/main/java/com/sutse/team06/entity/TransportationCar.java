@@ -12,10 +12,10 @@ import javax.persistence.*;
 @ToString @EqualsAndHashCode
 @Table(name="TransportationCar")
 public class TransportationCar{
- @Id
-	@SequenceGenerator(name="Transport_seq",sequenceName="Transport_seq")
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Transport_seq")
-	@Column(name="TransportId",unique = true, nullable = true)
+ 	@Id
+	@SequenceGenerator(name="transport_seq",sequenceName="transport_seq")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="transport_seq")
+	
 	private @NonNull Long transportId;
 	private @NonNull String transportDetial;
     private @NonNull Long amountPeople;
