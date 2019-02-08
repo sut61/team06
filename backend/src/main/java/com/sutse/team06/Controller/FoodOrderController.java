@@ -3,13 +3,8 @@ package com.sutse.team06.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sutse.team06.Repository.ClientRepository;
 import com.sutse.team06.Repository.EmployeeRepository;
 import com.sutse.team06.Repository.FoodListRepository;
@@ -17,14 +12,8 @@ import com.sutse.team06.Repository.FoodOrderRepository;
 import com.sutse.team06.Repository.HouseRepository;
 import com.sutse.team06.entity.FoodList;
 import com.sutse.team06.entity.FoodOrder;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.io.IOException;
-import java.net.URLDecoder;
 import java.util.List;
-import java.util.Set;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
