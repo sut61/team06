@@ -2,49 +2,51 @@
   <div class="bodylayout">
     <mat-card class="manage-check-form">
       <h1>ยกเลิกสัญญาการเช่าบ้าน</h1>
-      <span *ngIf="!noti" >
-          <mat-card>{{notimag}}</mat-card>
-    </span>
-        <mat-form-field  class="matfile">
-            <mat-select placeholder="เลือกสัญญาการเช่า" [(ngModel)]="renthouseid">
-              <mat-option  *ngFor="let renthouse of renthouses" [value]="renthouse.rentId">
-                  {{renthouse.rentId}} :
-                  {{renthouse.resident}} :
-                  {{renthouse.house.houseNumber}} :
-                  {{renthouse.rentHouseType.description}}
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
+      <span *ngIf="!noti">
+        <mat-card>{{notimag}}</mat-card>
+      </span>
+      <mat-form-field class="matfile">
+        <mat-select placeholder="เลือกสัญญาการเช่า" [(ngModel)]="renthouseid">
+          <div *ngFor="let renthouse of renthouses">
+            <mat-option *ngIf="!renthouse.canceledrentHouse" [value]="renthouse.rentId">
+              {{renthouse.rentId}} :
+              {{renthouse.resident}} :
+              {{renthouse.house.houseNumber}} :
+              {{renthouse.rentHouseType.description}}
+            </mat-option>
+          </div>
+        </mat-select>
+      </mat-form-field>
       <br>
-    <mat-form-field  class="matfile">
+      <mat-form-field class="matfile">
         <mat-select placeholder="เลือกพนักงานยืนยัน" [(ngModel)]="employeeid">
-          <mat-option  *ngFor="let employee of employees" [value]="employee.empId">
-              {{employee.name}}
+          <mat-option *ngFor="let employee of employees" [value]="employee.empId">
+            {{employee.name}}
           </mat-option>
         </mat-select>
-    </mat-form-field>
-  <br>
-  <mat-form-field  class="matfile">
-      <mat-select placeholder="เลือกผู้ดำเนินการ" [(ngModel)]="clientid">
-        <mat-option  *ngFor="let client of clients" [value]="client.cid">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="matfile">
+        <mat-select placeholder="เลือกผู้ดำเนินการ" [(ngModel)]="clientid">
+          <mat-option *ngFor="let client of clients" [value]="client.cid">
             {{client.name}}
-        </mat-option>
-      </mat-select>
-  </mat-form-field>
-  <br>
-  <mat-form-field  class="matfile">
-      <mat-select placeholder="เลือกประเภทการยกเลิก" [(ngModel)]="canceltype">
-        <mat-option  *ngFor="let canceltype of canceltypes" [value]="canceltype.canceltypeId">
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="matfile">
+        <mat-select placeholder="เลือกประเภทการยกเลิก" [(ngModel)]="canceltype">
+          <mat-option *ngFor="let canceltype of canceltypes" [value]="canceltype.canceltypeId">
             {{canceltype.canceltype}}
-        </mat-option>
-      </mat-select>
-  </mat-form-field>
-  <br>
-  <mat-form-field  class="matfile">
-    <input matInput placeholder="ข้อติชม"[(ngModel)]="comment">
-  </mat-form-field>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="matfile">
+        <input matInput placeholder="ข้อติชม" [(ngModel)]="comment">
+      </mat-form-field>
       <div class="center">
-          <button mat-raised-button color="primary" (click)="save()">ยืนยัน</button>
+        <button mat-raised-button color="primary" (click)="save()">ยืนยัน</button>
         <button mat-raised-button color="accent" routerLink="/makerenthouse">กลับ</button>
       </div>
     </mat-card>
