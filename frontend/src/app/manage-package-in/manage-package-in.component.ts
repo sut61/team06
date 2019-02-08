@@ -36,12 +36,12 @@ export class ManagePackageInComponent implements OnInit {
               if ( data.success ) {
                 this.noti = false;
                 this.notimag = 'save data success';
-                // this.managepak = {};
-                 setTimeout(() => {
-                  this.noti = true;
-                  // this.router.navigateByUrl('manage/package');
-                  this.managepak = {};
-              }, 1000);
+                this.managepak = {};
+              //    setTimeout(() => {
+              //     this.noti = true;
+              //     // this.router.navigateByUrl('manage/package');
+              //     this.managepak = {};
+              // }, 1000);
               }
 
 
