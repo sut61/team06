@@ -52,15 +52,16 @@ class RentHouseController {
         return employeeRepository.findAll().stream().collect(Collectors.toList());
     }
     
-    @PostMapping("/renthouse/save/{houseid}/{housetypesid}/{employeeid}/{client}")
+    @PostMapping("/renthouse/save/{houseid}/{housetypesid}/{employeeid}/{client}/{resident}")
     public RentHouse createRentHouse(@PathVariable long houseid,@PathVariable long housetypesid,@PathVariable long employeeid,
-                                    @PathVariable String client){
+                                    @PathVariable String client,@PathVariable String resident){
 
        RentHouse rentHouse = new RentHouse();
        rentHouse.setHouse(houseRepository.getOne(houseid));
        rentHouse.setRentHouseType(renthousetypeRepository.getOne(housetypesid));
        rentHouse.setEmployee(employeeRepository.getOne(employeeid));
-       rentHouse.setResident(client);
+       rentHouse.setResident(resident);
+       rentHouse.setClient(clientRepository.findByName(client));
        return rentHouseRepository.save(rentHouse);
        
     }
