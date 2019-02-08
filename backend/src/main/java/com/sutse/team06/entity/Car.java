@@ -20,7 +20,7 @@ public class Car{
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Car_seq")
 	@Column(name="carId",unique = true, nullable = true)
 	private @NonNull Long carId;
-	private @NonNull String carName;
+	private @NonNull String carType;
     
 	
 	
