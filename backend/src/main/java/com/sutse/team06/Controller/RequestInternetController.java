@@ -103,8 +103,8 @@ public class RequestInternetController {
                 TypeSpeedInternet typeSpeed = this.typeSpeedInternetRepository.findByTypeSpeedId(speedid);
                 RequestInternet newreq = new RequestInternet(netuser,netpass,renthouse,emp,timeuse,typeSpeed);
                 typeSpeed.setConnection(typeSpeed.getConnection()-1);
-                this.typeSpeedInternetRepository.save(typeSpeed);
                 this.requestInternetRepository.save(newreq);
+                this.typeSpeedInternetRepository.save(typeSpeed);
 
                 json.put("success", true);
                 json.put("status", "saved");

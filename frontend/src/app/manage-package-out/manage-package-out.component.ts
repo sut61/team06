@@ -25,7 +25,7 @@ export class ManagePackageOutComponent implements OnInit {
     // console.log(this.managepak);
     if ( Object.keys(this.managepak).length === 3 ) {
       this.mangagePackageService.getRentHouseById(this.managepak.rentid.trim()).subscribe(rent => {
-      //  console.log(rent);
+       console.log(rent);
        if (rent != null ) {
         this.mangagePackageService.getPackageIn(this.managepak.houseNumber.trim(), this.managepak.rentid.trim()).subscribe(data => {
           // console.log(data.length !== 0);
@@ -59,10 +59,10 @@ export class ManagePackageOutComponent implements OnInit {
                 this.noti = false;
                 this.notimag = 'ID ผู้เช่าไม่ถูกต้อง';
                 this.managepak = {};
-                setTimeout(() => {
-                    this.noti = true;
-                    this.managepak = {};
-              }, 1500);
+              //   setTimeout(() => {
+              //       this.noti = true;
+              //       this.managepak = {};
+              // }, 1500);
       }
     },  error => {
               this.noti = false;
@@ -73,10 +73,10 @@ export class ManagePackageOutComponent implements OnInit {
             this.noti = false;
             this.notimag = 'empty input';
             this.managepak = {};
-            setTimeout(() => {
-            this.noti = true;
-            this.managepak = {};
-          }, 1000);
+          //   setTimeout(() => {
+          //   this.noti = true;
+          //   this.managepak = {};
+          // }, 1000);
   }
     // this.mangagePackageService.
   }
@@ -89,10 +89,11 @@ export class ManagePackageOutComponent implements OnInit {
             this.submit = true;
             this.notimag = 'พัสดุถูกนำส่ง';
             this.package = [];
-            setTimeout(() => {
-               this.noti = true;
-               this.managepak = {};
-            }, 1500);
+            this.managepak = {};
+            // setTimeout(() => {
+            //    this.noti = true;
+            //    this.managepak = {};
+            // }, 1500);
       });
       // console.log("loser");
   }
