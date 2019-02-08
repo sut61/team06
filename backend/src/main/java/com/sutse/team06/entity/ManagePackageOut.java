@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
-
+import javax.validation.constraints.*;
 @Entity
 @Data
 public class ManagePackageOut {
@@ -23,7 +23,11 @@ public class ManagePackageOut {
     @SequenceGenerator(name = "ManagePackageOut_seq", sequenceName = "ManagePackageOut_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ManagePackageOut_seq")
     @NotNull private  Long mpInOut;
+    
+    @Pattern(regexp = "[A-Za-z]{4,13}")
+    @Size(min = 4, max = 13)
     @NotNull private  String receiver;
+
     @NotNull private  Date date;
 
 
@@ -35,7 +39,7 @@ public class ManagePackageOut {
     @JoinColumn(name="mpInId")
     private ManagePackageIn mpInId;
 
-    private  ManagePackageOut(){}
+    public  ManagePackageOut(){}
 
     public ManagePackageOut(String receiver, Employee employee,ManagePackageIn managePackageIn){
         this.receiver = receiver;
