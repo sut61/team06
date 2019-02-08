@@ -49,7 +49,7 @@ export class CancelRentHouseComponent implements OnInit {
             },
             error => {
                 console.log('------------Error----------', error);
-                window.location.reload();
+                //window.location.reload();
             }
 
       );

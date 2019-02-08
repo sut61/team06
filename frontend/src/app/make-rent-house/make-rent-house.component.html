@@ -36,6 +36,10 @@
         </mat-option>
       </mat-select>
   </mat-form-field>
+  <br>
+  <mat-form-field  class="matfile">
+    <input matInput placeholder="เจ้าบ้าน"[(ngModel)]="resident">
+  </mat-form-field>
       <div class="center">
           <button mat-raised-button color="primary" (click)="save()">บันทึก</button>
         <button mat-raised-button color="accent" routerLink="/renthouse">ดูสัญญาเช่า</button>
