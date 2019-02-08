@@ -1,0 +1,35 @@
+<div class="bg-manage">
+  <div class="bodylayout">
+    <mat-card class="manage-check-form">
+      <h1>แจ้งทำความสะอาด</h1>
+      <div class="example-container">
+
+
+        <mat-form-field class="matfile">
+          <mat-select placeholder="เลือกบ้าน" [(ngModel)]="houseid">
+            <mat-option *ngFor="let house of cleanhouse" [value]="house.houseId">
+              {{house.houseNumber}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="matfile">
+          <mat-select placeholder="เลือกสัญญาการเช่า" [(ngModel)]="renthouseid">
+            <mat-option *ngFor="let housetype of repairsType" [value]="housetype.rentId">
+              {{housetype.rentId}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+       
+
+    
+    
+
+        <div>
+          <button mat-raised-button color="primary" (click)="save()">บันทึก</button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

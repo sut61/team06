@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 // yuu
 
 import { RepairsComponent } from '../repairs/repairs.component'
+import { CleanHouseComponent } from '../cleanhouse/cleanhouse.component';
 
 // keng
 import { IndexComponent } from '../index/index.component';
@@ -39,7 +40,8 @@ const routes: Routes = [
   { path: 'receipt' , component: MakeReceiptComponent},
   { path: 'cancelrenthouse' , component: CancelRentHouseComponent},
   { path: 'showreceipt' , component: ShowReceiptComponent},
-  { path: 'reqinternet' , component: RequestInternetComponent}
+  { path: 'reqinternet' , component: RequestInternetComponent},
+  { path: 'cleanhouse' , component: CleanHouseComponent}
 ];
 
 @NgModule({

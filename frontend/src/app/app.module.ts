@@ -42,6 +42,7 @@ import { CancelRentHouseComponent } from './cancel-rent-house/cancel-rent-house.
 import { ShowReceiptComponent } from './show-receipt/show-receipt.component';
 import { RequestInternetComponent } from './request-internet/request-internet.component';
 import { ReqInternetService } from './service/req-internet.service';
+import { CleanHouseComponent } from './cleanhouse/cleanhouse.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ReqInternetService } from './service/req-internet.service';
     MakeReceiptComponent,
     CancelRentHouseComponent,
     ShowReceiptComponent,
-    RequestInternetComponent
+    RequestInternetComponent,
+    CleanHouseComponent
 
   ],
   imports: [
