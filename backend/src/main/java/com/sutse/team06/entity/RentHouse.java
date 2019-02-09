@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
@@ -21,8 +22,12 @@ public class RentHouse {
     @Id
     @SequenceGenerator(name = "RentHouse_seq", sequenceName = "RentHouse_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RentHouse_seq")
-    private @NonNull Long rentId;
-    private @NonNull String resident;
+    private @NotNull Long rentId;
+
+    @Pattern(regexp = "(Mr|Ms|Mrs)[.][A-Za-z]{2,15}")
+    @Size(min = 5 , max = 19)
+    @NotNull
+    private  String resident;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="renttypeId")
