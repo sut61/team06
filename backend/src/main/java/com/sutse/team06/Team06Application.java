@@ -224,13 +224,13 @@ public class Team06Application {
 					FoodList foodList = new FoodList();
 					foodList.setFoodlistName(foodlistName);
 					if (foodlistName=="ข้าวกะเพราไก่" || foodlistName=="ข้าวกะเพราหมู"){
-						foodList.setFoodlistPrice(40L);
+						foodList.setFoodlistPrice(40);
 					}
 					else if(foodlistName=="ข้าวกะเพรากุ้ง" || foodlistName=="ข้าวกะเพราเป็ด"){
-						foodList.setFoodlistPrice(50L);
+						foodList.setFoodlistPrice(50);
 					}
 					else{
-						foodList.setFoodlistPrice(60L);
+						foodList.setFoodlistPrice(60);
 					}
 					foodListRepository.save(foodList);
 				});

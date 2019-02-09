@@ -31,11 +31,12 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 @RunWith(SpringRunner.class)
 //@SpringBootTest
 @DataJpaTest
-public class CanceledRentHouseTests {
+public class FoodlistTest {
 
     @Autowired
     private TestEntityManager entityManager;
-
+    @Autowired
+    private FoodListRepository foodListRepository;
     private Validator validator;
 
 	@Before
@@ -44,47 +45,70 @@ public class CanceledRentHouseTests {
         validator = factory.getValidator();
     }
 
-	@Test
-    public void testSuccess() {
-        CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment("zxvxz");
-
+    @Test
+	public void DataSuccess() {
+        FoodList food = new FoodList();
+        food.setFoodlistName("Bread");
+        food.setFoodlistPrice(20);
         try {
-            entityManager.persist(c);
+            
+            entityManager.persist(food);
             entityManager.flush();
 
+            
         } catch(javax.validation.ConstraintViolationException e) {
-            fail("Should not pass to this line testSuccess");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            
         }
     }
 
-    
     @Test
-    public void testTooShort() {
-        CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment("");
+    public void testPattern() {
+        FoodList food = new FoodList();
+        food.setFoodlistName("11111111");
+        food.setFoodlistPrice(40);
 
         try {
-            entityManager.persist(c);
+            entityManager.persist(food);
+            entityManager.flush();
+
+            fail("Should not pass to this line testPattern");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+
+    @Test
+    public void TooShort() {
+        FoodList food = new FoodList();
+        food.setFoodlistName("B");
+        food.setFoodlistPrice(20);
+
+        try {
+            entityManager.persist(food);
             entityManager.flush();
 
             fail("Should not pass to this line testTooShort");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
         }
     }
 
-    
-
     @Test
-    public void testPattern() {
-        CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment("$^@%@#^");
+    public void testNotnullFoodlistName() {
+        FoodList food = new FoodList();
+        food.setFoodlistName(null);
+        food.setFoodlistPrice(20);
 
         try {
-            entityManager.persist(c);
+            entityManager.persist(food);
             entityManager.flush();
 
             fail("Should not pass to this line testPattern");
@@ -96,12 +120,13 @@ public class CanceledRentHouseTests {
     }
 
     @Test
-    public void testNotnull() {
-        CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment(null);
+    public void testNotnullFoodlistPrice() {
+        FoodList food = new FoodList();
+        food.setFoodlistName("Sanwish");
+        food.setFoodlistPrice(null);
 
         try {
-            entityManager.persist(c);
+            entityManager.persist(food);
             entityManager.flush();
 
             fail("Should not pass to this line testPattern");
@@ -114,15 +139,19 @@ public class CanceledRentHouseTests {
 
     @Test
     public void testUnique() {
-        CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment("Alex");
-        entityManager.persist(c);
+        FoodList food = new FoodList();
+        food.setFoodlistName("porkball");
+        food.setFoodlistPrice(20);
+        
+        entityManager.persist(food);
         entityManager.flush();
 
-        CanceledRentHouse c1 = new CanceledRentHouse();
-        c1.setComment("Alex");
+        FoodList food1 = new FoodList();
+        food1.setFoodlistName("porkball");
+        food1.setFoodlistPrice(20);
+        
         try {
-            entityManager.persist(c1);
+            entityManager.persist(food1);
             entityManager.flush();
             fail("Should not pass to this line");
         } catch (PersistenceException ex) {
@@ -130,5 +159,10 @@ public class CanceledRentHouseTests {
         }
 
     }
+
+   
+    
+
+   
 
 }

@@ -31,7 +31,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 @RunWith(SpringRunner.class)
 //@SpringBootTest
 @DataJpaTest
-public class CanceledRentHouseTests {
+public class carTest {
 
     @Autowired
     private TestEntityManager entityManager;
@@ -45,30 +45,48 @@ public class CanceledRentHouseTests {
     }
 
 	@Test
-    public void testSuccess() {
-        CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment("zxvxz");
+    public void testSuccessful() {
+       Car car = new Car();
+       car.setCarType("Honda");
 
         try {
-            entityManager.persist(c);
+            entityManager.persist(car);
             entityManager.flush();
 
         } catch(javax.validation.ConstraintViolationException e) {
-            fail("Should not pass to this line testSuccess");
+            fail("Should not pass to this line test Success");
         }
     }
 
     
     @Test
-    public void testTooShort() {
-        CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment("");
+    public void testPattern() {
+        Car car = new Car();
+        car.setCarType("##11");
 
         try {
-            entityManager.persist(c);
+            entityManager.persist(car);
             entityManager.flush();
 
-            fail("Should not pass to this line testTooShort");
+            fail("Should not pass to this line testPattern");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+
+    @Test
+    public void TooShort() {
+        Car car = new Car();
+        car.setCarType("H");
+
+        try {
+            entityManager.persist(car);
+            entityManager.flush();
+
+            fail("Should not pass to this line test TooShort");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
@@ -76,53 +94,38 @@ public class CanceledRentHouseTests {
         }
     }
 
-    
-
-    @Test
-    public void testPattern() {
-        CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment("$^@%@#^");
-
-        try {
-            entityManager.persist(c);
-            entityManager.flush();
-
-            fail("Should not pass to this line testPattern");
-        } catch(javax.validation.ConstraintViolationException e) {
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
-        }
-    }
-
     @Test
     public void testNotnull() {
-        CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment(null);
+        Car car = new Car();
+        car.setCarType(null);
 
         try {
-            entityManager.persist(c);
+            entityManager.persist(car);
             entityManager.flush();
 
-            fail("Should not pass to this line testPattern");
+            fail("Should not pass to this line testNotnull");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
     }
+
+   
 
     @Test
     public void testUnique() {
-        CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment("Alex");
-        entityManager.persist(c);
+        Car car = new Car();
+        car.setCarType("sport");
+        
+        entityManager.persist(car);
         entityManager.flush();
 
-        CanceledRentHouse c1 = new CanceledRentHouse();
-        c1.setComment("Alex");
+        Car car1 = new Car();
+        car1.setCarType("sport");
+        
         try {
-            entityManager.persist(c1);
+            entityManager.persist(car1);
             entityManager.flush();
             fail("Should not pass to this line");
         } catch (PersistenceException ex) {
@@ -130,5 +133,10 @@ public class CanceledRentHouseTests {
         }
 
     }
+
+   
+    
+
+   
 
 }
