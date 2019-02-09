@@ -24,10 +24,9 @@ public class CanceledRentHouse {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CanceledRentHouse_seq")
     private @NonNull Long cancelId;
 
-    @NonNull
-    /*@Pattern(regexp = "\\w{2,5}")
-    @Size(min = 2, max = 10)
-    @Column(unique = true)*/
+    @Pattern(regexp = "[A-Za-z]{2,}")
+    @Size(min = 2)
+    @NotNull
     private String comment;
    
 

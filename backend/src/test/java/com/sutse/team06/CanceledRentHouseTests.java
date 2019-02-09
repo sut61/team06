@@ -57,10 +57,10 @@ public class CanceledRentHouseTests {
         }
     }
 
-    /*@Test
+    @Test
     public void testTooShort() {
         CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment("k");
+        c.setComment("");
 
         try {
             entityManager.persist(c);
@@ -70,31 +70,16 @@ public class CanceledRentHouseTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
         }
     }
 
-    /*@Test
-    public void testTooLong() {
-        CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment("dfgh");
-
-        try {
-            entityManager.persist(c);
-            entityManager.flush();
-
-            fail("Should not pass to this line testTooLong");
-        } catch(javax.validation.ConstraintViolationException e) {
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
-        }
-    }
+    
 
     @Test
     public void testPattern() {
         CanceledRentHouse c = new CanceledRentHouse();
-        c.setComment("gfhj");
+        c.setComment("$^@%@#^");
 
         try {
             entityManager.persist(c);
@@ -108,22 +93,22 @@ public class CanceledRentHouseTests {
         }
     }
 
-    @Test(expected=javax.persistence.PersistenceException.class)
-    public void testMustBeUnique() {
-        CanceledRentHouse c1 = new CanceledRentHouse();
-        c1.setComment("eiei");
+    @Test
+    public void testNotnull() {
+        CanceledRentHouse c = new CanceledRentHouse();
+        c.setComment(null);
 
-        entityManager.persist(c1);
-        entityManager.flush();
+        try {
+            entityManager.persist(c);
+            entityManager.flush();
 
-        CanceledRentHouse c2 = new CanceledRentHouse();
-        c2.setComment("eiei");
-
-        entityManager.persist(c2);
-        entityManager.flush();
-
-        fail("Should not pass to this line testMustBeUnique");
-    }*/
+            fail("Should not pass to this line testPattern");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
 
 }
 
