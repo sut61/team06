@@ -257,11 +257,12 @@ public class Team06Application {
 				canceledrentHouse.setEmployee(employeeRepository.getOne(1L));
 				canceledrentHouse.setClient(clientRepository.getOne(1L));
 				canceledrentHouse.setCanceltype(cancelTypeRepository.getOne(1L));
+				canceledrentHouse.setRentHouse(rentHouseRepository.getOne(1L));
 				canceledRentHouseRepository.save(canceledrentHouse);
 				
-				RentHouse rh = rentHouseRepository.findByRentId(2L);
+				/*RentHouse rh = rentHouseRepository.findByRentId(1L);
 				rh.setCanceledrentHouse(canceledRentHouseRepository.findByCancelId(1L));
-				rentHouseRepository.save(rh);
+				rentHouseRepository.save(rh);*/
 
 
 				//new keng 

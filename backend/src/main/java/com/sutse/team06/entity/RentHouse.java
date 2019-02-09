@@ -40,7 +40,7 @@ public class RentHouse {
     @JoinColumn(name="requestInternet")
     private RequestInternet requestInternet;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cancelId")
     private CanceledRentHouse canceledrentHouse;
 
