@@ -29,10 +29,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class ElectricityAndWaterReceiptTest {
+public class InsuranceTest {
 	
 	@Autowired
-    private ElectricityAndWaterReceiptRepository electricityandwaterreceiptRepository;
+    private InsuranceRepository insuranceRepository;
 
     @Autowired
     private TestEntityManager entityManager;
@@ -47,14 +47,12 @@ public class ElectricityAndWaterReceiptTest {
     //ทดสอบ save data ปกติ
     @Test
 	public void testTestInsertDataSuccess() {
-        ElectricityAndWaterReceipt ewr = new ElectricityAndWaterReceipt();
-        ewr.setMeterchecker("june");
-        ewr.setSliptid("R12345");
-        ewr.setWater(200);
-        ewr.setElectricity(500);
+        Insurance insu = new Insurance();
+        insu.setInsuname("best");
+        insu.setEmail("best@hotmail.com");
         try {
             
-            entityManager.persist(ewr);
+            entityManager.persist(insu);
             entityManager.flush();
 
             
@@ -65,59 +63,55 @@ public class ElectricityAndWaterReceiptTest {
             
         }
     }
-    
+
     @Test 
-   public void testTestTooLongData() {
-        ElectricityAndWaterReceipt ew = new ElectricityAndWaterReceipt();
-        ew.setMeterchecker("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        ew.setSliptid("R22222");
-        ew.setWater(200);
-        ew.setElectricity(500);
-        try {
-            
-            entityManager.persist(ew);
-            entityManager.flush();
+    public void testTestTooLongData() {
+        Insurance insu1 = new Insurance();
+        insu1.setInsuname("GOKUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
+        insu1.setEmail("goku@hotmail.com");
+         try {
+             
+             entityManager.persist(insu1);
+             entityManager.flush();
+ 
+             fail("Should not pass to this line");
+         } catch(javax.validation.ConstraintViolationException e) {
+             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+             assertEquals(violations.isEmpty(), false);
+             assertEquals(violations.size(), 2);
+             System.out.println("\n\n\n\n\n ===============> error too long");
+             System.out.println("\n");
+             
+         }
+     }
 
-            fail("Should not pass to this line");
-        } catch(javax.validation.ConstraintViolationException e) {
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
-            System.out.println("\n\n\n\n\n ===============> error too long");
-            System.out.println("\n");
-            
-        }
-    }
-    @Test
-    public void testTestTooShortData() {
-        ElectricityAndWaterReceipt ew1 = new ElectricityAndWaterReceipt();
-        ew1.setMeterchecker("B");
-        ew1.setSliptid("R33333");
-        ew1.setWater(200);
-        ew1.setElectricity(500);
-        try {
-            entityManager.persist(ew1);
-            entityManager.flush();
+     @Test
+     public void testTestTooShortData() {
+        Insurance insu2 = new Insurance();
+        insu2.setInsuname("V");
+        insu2.setEmail("v@hotmail.com");
+         try {
+             entityManager.persist(insu2);
+             entityManager.flush();
+ 
+             fail("Should not pass to this line");
+         } catch(javax.validation.ConstraintViolationException e) {
+             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+             assertEquals(violations.isEmpty(), false);
+             assertEquals(violations.size(), 2);
+             System.out.println("\n\n\n\n\n ===============> error too short");
+             System.out.println("\n");
+         }
+     }
 
-            fail("Should not pass to this line");
-        } catch(javax.validation.ConstraintViolationException e) {
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
-            System.out.println("\n\n\n\n\n ===============> error too short");
-            System.out.println("\n");
-        }
-    }
-    @Test
+     @Test
     public void testTestPatternIncorrect() {
-        ElectricityAndWaterReceipt ew2 = new ElectricityAndWaterReceipt();
-        ew2.setMeterchecker("Dom");
-        ew2.setSliptid("G44444");
-        ew2.setWater(200);
-        ew2.setElectricity(500);
+        Insurance insu3 = new Insurance();
+        insu3.setInsuname("asf561165");
+        insu3.setEmail("as@fhotmail.com");
         try {
             
-            entityManager.persist(ew2);
+            entityManager.persist(insu3);
             entityManager.flush();
 
             fail("Should not pass to this line");
@@ -129,24 +123,22 @@ public class ElectricityAndWaterReceiptTest {
             System.out.println("\n");
         }
     }
-
+     
     @Test
     public void testMustBeUnique() {
-        ElectricityAndWaterReceipt ew3 = new ElectricityAndWaterReceipt();
-        ew3.setSliptid("R44444");
-        ew3.setMeterchecker("aaaa");
-        ew3.setWater(200);
-        ew3.setElectricity(500);
-        entityManager.persist(ew3);
+        Insurance insu4 = new Insurance();
+        insu4.setInsuname("Vegeta");
+        insu4.setEmail("vegeta@fhotmail.com");
+        entityManager.persist(insu4);
         entityManager.flush();
 
         ElectricityAndWaterReceipt ew4 = new ElectricityAndWaterReceipt();
-        ew4.setSliptid("R44444");
-        ew4.setMeterchecker("bbb");
-        ew4.setWater(200);
-        ew4.setElectricity(500);
+        Insurance insu5 = new Insurance();
+        insu5.setInsuname("Bluma");
+        insu5.setEmail("vegeta@fhotmail.com");
+        entityManager.persist(insu4);
         try {
-                 entityManager.persist(ew4);
+                 entityManager.persist(insu5);
                  entityManager.flush(); 
                  fail("Should not pass to this line");
         } catch (PersistenceException ex) {
@@ -160,14 +152,12 @@ public class ElectricityAndWaterReceiptTest {
 
     @Test
     public void testTestNotnull() {
-        ElectricityAndWaterReceipt ew4 = new ElectricityAndWaterReceipt();
-        ew4.setMeterchecker(null);
-        ew4.setSliptid("R65478");
-        ew4.setWater(200);
-        ew4.setElectricity(500);
+        Insurance insu6 = new Insurance();
+        insu6.setInsuname(null);
+        insu6.setEmail("null@hotmail.com");
         try {
             
-            entityManager.persist(ew4);
+            entityManager.persist(insu6);
             entityManager.flush();
 
             fail("Should not pass to this line");
@@ -181,3 +171,4 @@ public class ElectricityAndWaterReceiptTest {
     }
 
 }
+    

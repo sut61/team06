@@ -28,11 +28,6 @@ public class InsuranceController {
     @Autowired private InsurancePriceRepository insurancePriceRepository;
     @Autowired private InsuranceTypeRepository insuranceTypeRepository;
 
-// insurance
-    @GetMapping("/insurance/{iid}")
-    public  Insurance getInsuranceById(@PathVariable("iid") Long iid){
-     return this.insuranceRepository.findByIid(iid);
-    }
 // Client    
     @GetMapping("/client/{cid}")
     public  Client getClientByCid(@PathVariable("cid") Long cid){
@@ -44,9 +39,9 @@ public class InsuranceController {
     }
 
 
-    @PostMapping("/insurance/save/{name}/{type}/{price}/{insuname}")
+    @PostMapping("/insurance/save/{name}/{type}/{price}/{insuname}/{email}")
     public ResponseEntity<Map<String, Object>> insurance(@PathVariable Long name,@PathVariable Long type,
-    @PathVariable Long price,@PathVariable String insuname){
+    @PathVariable Long price,@PathVariable String insuname,@PathVariable String email){
 
         try{
         Insurance insurance = new Insurance();
@@ -55,6 +50,7 @@ public class InsuranceController {
         insurance.setClient(clientRepository.getOne(name));        
         insurance.setType(insuranceTypeRepository.getOne(type));
         insurance.setPrice(insurancePriceRepository.getOne(price));
+        insurance.setEmail(email);
         insuranceRepository.save(insurance);
 
         json.put("success", true);

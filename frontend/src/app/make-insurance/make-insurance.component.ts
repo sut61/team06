@@ -18,6 +18,7 @@ export class MakeInsuranceComponent implements OnInit {
   cid: '';
   noti: boolean;
   notimag: String;
+  email: '';
   constructor(private data: Team06Service,private httpClient: HttpClient) { }
 
   ngOnInit() {
@@ -42,13 +43,15 @@ export class MakeInsuranceComponent implements OnInit {
         this.notimag = 'บันทึกไม่สำเร็จ(กรุณากรอกข้อมูลให้ครบ)'   }
     else{
         this.httpClient.post('http://localhost:8080/insurance/save/'
-        + this.cid + '/' + this.type + '/' + this.price + '/' + this.insuname, null).subscribe(
+        + this.cid + '/' + this.type + '/' + this.price + '/' + this.insuname + '/' + this.email, null).subscribe(
         data => {
           console.log('PUT Code and repairs is successful', data);
           this.noti = false;
           this.notimag = 'บันทึกสำเร็จ';
             },
             error => {
+                this.noti = false;
+              this.notimag = 'ไม่สำเร็จกรุณาใส่ข้อมูลให้ถูกต้อง';
                 console.log('------------Error----------', error);
                 //window.location.reload();
             }
