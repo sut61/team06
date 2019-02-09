@@ -22,10 +22,11 @@ import { RentHouseComponent } from '../rent-house/rent-house.component';
 import { CancelRentHouseComponent } from '../cancel-rent-house/cancel-rent-house.component';
 // pheekay
 import { FoodOrderComponent } from '../food-order/food-order.component';
-import { from } from 'rxjs';
+import { TransportCarComponent } from '../transport-car/transport-car.component';
 // ...
 import {LoginComponent} from '../login/login.component';
 import { ShowReceiptComponent } from '../show-receipt/show-receipt.component';
+import { from } from 'rxjs';
 const routes: Routes = [
   { path: '' , component: IndexComponent },
   { path: 'manage/packagein' , component: ManagePackageInComponent},
@@ -41,7 +42,8 @@ const routes: Routes = [
   { path: 'cancelrenthouse' , component: CancelRentHouseComponent},
   { path: 'showreceipt' , component: ShowReceiptComponent},
   { path: 'reqinternet' , component: RequestInternetComponent},
-  { path: 'cleanhouse' , component: CleanHouseComponent}
+  { path: 'cleanhouse' , component: CleanHouseComponent},
+  { path: 'transportcar' , component: TransportCarComponent}
 ];
 
 @NgModule({

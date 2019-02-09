@@ -43,6 +43,7 @@ import { ShowReceiptComponent } from './show-receipt/show-receipt.component';
 import { RequestInternetComponent } from './request-internet/request-internet.component';
 import { ReqInternetService } from './service/req-internet.service';
 import { CleanHouseComponent } from './cleanhouse/cleanhouse.component';
+import { TransportCarComponent } from './transport-car/transport-car.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { CleanHouseComponent } from './cleanhouse/cleanhouse.component';
     CancelRentHouseComponent,
     ShowReceiptComponent,
     RequestInternetComponent,
-    CleanHouseComponent
+    CleanHouseComponent,
+    TransportCarComponent
 
   ],
   imports: [

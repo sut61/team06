@@ -1,0 +1,50 @@
+<div class="bg">
+  <div class="bodylayout">
+    <mat-card class="manage-check-form">
+      <h1>บริการเรียกรถรับส่ง</h1>
+      <span *ngIf="!noti" >
+          <mat-card>{{notimag}}</mat-card>
+      </span>
+        <mat-form-field  class="matfile">
+            <mat-select placeholder="บ้านเลขที่" [(ngModel)]="houseid">
+              <mat-option  *ngFor="let house of houses" [value]="house.houseId">
+                  {{house.houseNumber}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+      <br>
+      <mat-form-field  class="matfile">
+          <mat-select placeholder="ระบุชื่อลูกค้า" [(ngModel)]="housetypesid">
+            <mat-option  *ngFor="let housetype of housetypes" [value]="housetype.renttypeId">
+                {{housetype.description}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+    <br>
+    <mat-form-field  class="matfile">
+       <input matInput placeholder="ระบุสถานที่ที่ต้องการไป" >
+    </mat-form-field>
+  <br>
+    <mat-form-field  class="matfile">
+       <input matInput placeholder="ระบุจำนวนคน" >
+    </mat-form-field>
+  <br>
+  <mat-form-field  class="matfile">
+          <mat-select placeholder="เลือกประเภทรถ" [(ngModel)]="housetypesid">
+            <mat-option  *ngFor="let housetype of housetypes" [value]="housetype.renttypeId">
+                {{housetype.description}}
+            </mat-option>
+          </mat-select>
+  </mat-form-field>
+  <br>
+    <mat-form-field  class="matfile">
+       <textarea matInput placeholder="ระบุความต้องการเพิ่มเติม"></textarea>
+    </mat-form-field>
+    <br>
+      <div class="center">
+          <button mat-raised-button color="primary" (click)="save()">บันทึก</button>
+
+      </div>
+    </mat-card>
+  </div>
+</div>
