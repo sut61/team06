@@ -3,6 +3,9 @@ package com.sutse.team06.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 
 @Data
@@ -16,9 +19,15 @@ public class TransportationCar{
 	@SequenceGenerator(name="transport_seq",sequenceName="transport_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="transport_seq")
 	
-	private @NonNull Long transportId;
+	private @NotNull Long transportId;
 	
-	
+	   @Pattern(regexp ="[^\\d]{5,100}")
+       @Size(min = 5 , max = 100)
+       @NotNull
+       @Column(unique = true)
+	   private String transportDetial;
+
+	   private @NotNull Integer amountPeople;
 	 //with Car
 	 @ManyToOne(fetch = FetchType.EAGER)
 	 @JoinColumn(name = "carId")
@@ -44,8 +53,7 @@ public class TransportationCar{
 	   @JoinColumn(name = "empId")
 	   private Employee empId;
 	   
-	   private @NonNull String transportDetial;
-	   private @NonNull Long amountPeople;
+       
 
 	
 }
