@@ -71,6 +71,7 @@ public class DeliveryCompanyTest {
         }
          
     }
+    @Test
     public void testSetNameOverSize() {  
          DeliveryCompany com = new DeliveryCompany();
          com.setName("thai postttttttttttttttttttt");
@@ -88,6 +89,7 @@ public class DeliveryCompanyTest {
         }
          
     }
+    @Test
      public void testSetNameLessSize() {  
          DeliveryCompany com = new DeliveryCompany();
          com.setName("ei");
@@ -105,6 +107,7 @@ public class DeliveryCompanyTest {
         }
          
     }
+    @Test
     public void testSetNameMustNotNull() {  
          DeliveryCompany com = new DeliveryCompany();
          com.setName(null);
@@ -118,7 +121,7 @@ public class DeliveryCompanyTest {
             System.out.println(violations);
             System.out.println("\n");
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
         }  
     }
 }
