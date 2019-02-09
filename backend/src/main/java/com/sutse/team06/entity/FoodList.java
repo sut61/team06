@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Data
 @Entity
@@ -19,12 +22,18 @@ public class FoodList{
 	@SequenceGenerator(name="foodlist_seq",sequenceName="foodlist_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="foodlist_seq")
 	@Column(name="foodlistId",unique = true, nullable = true)
-	private @NonNull Long foodlistId;
-	private @NonNull String foodlistName;
-    private @NonNull Long foodlistPrice;
+	private @NotNull Long foodlistId;
+
+	@Pattern(regexp = "[^0-9]*")
+    @Size(min = 2 , max = 50)
+    @NotNull
+    @Column(unique = true)
+	private String foodlistName;
+	
+   
+    @NotNull
+	private Integer foodlistPrice;
 	
 	
-	// @ManyToOne(fetch = FetchType.LAZY)  
-	// @JoinColumn(name= "foodOrderId")      
-	// private FoodOrder foodOrder;
+	
 }
