@@ -62,5 +62,9 @@ export class Team06Service {
   cancelrenthouseAll(): Observable<any> {
     return this.http.get('//localhost:8080/cancelrenthouse');
   }
+  transportcarAll(): Observable<any> {
+    return this.http.get('//localhost:8080/TransportationCar');
+  }
+
 
 }
