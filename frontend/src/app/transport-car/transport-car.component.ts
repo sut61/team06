@@ -40,25 +40,27 @@ export class TransportCarComponent implements OnInit {
     this.data.TransportationCarAll().subscribe(data => {this.transportcars = data; });
   }
   save() {
+    this.employeeid = JSON.parse(localStorage.getItem('employee')).empId;
     if (this.houseid === undefined || this.client === undefined
        || this.carId === undefined || this.place === undefined
        || this.amount === undefined || this.Detail === undefined
        || this.employeeid === undefined ) {
-         console.log('กรุณากรอกข้อมูลให้ครบ');
-       this.notimag = 'กรุณากรอกข้อมูลให้ครบ';
-       this.noti = false;
-       setTimeout(() => {
-         this.noti = true;
-       }, 1000);   } else {
+        this.noti = false;
+        this.notimag = 'บันทึกไม่สำเร็จ';
+       } else {
         this.httpClient.post('http://localhost:8080/TransportationCar/save/'
         + this.houseid + '/' + this.client + '/' + this.carId + '/'
         + this.place + '/' + this.amount + '/' + this.Detail + '/' + this.employeeid, null).subscribe(
         data => {
                 console.log('PUT Code and TransportationCar is successful', data);
+                this.noti = false;
+                this.notimag = 'บันทึกสำเร็จ';
             },
             error => {
                 console.log('------------Error----------', error);
-                window.location.reload();
+                this.noti = false;
+                this.notimag = 'ไม่สำเร็จกรุณาใส่ข้อมูลให้ถูกต้อง';
+                //window.location.reload();
               }
 
       );

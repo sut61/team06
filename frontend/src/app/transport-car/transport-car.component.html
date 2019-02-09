@@ -40,13 +40,7 @@
        <textarea matInput placeholder="ระบุความต้องการเพิ่มเติม" [(ngModel)]="Detail"></textarea>
     </mat-form-field>
     <br>
-     <mat-form-field  class="matfile">
-          <mat-select placeholder="ระบุชื่อผู้รับรายการ" [(ngModel)]="employeeid">
-          <mat-option  *ngFor="let employee of employees" [value]="employee.empId">
-              {{employee.name}}
-          </mat-option>
-        </mat-select>
-  </mat-form-field>
+
   <br>
       <div class="center">
           <button mat-raised-button color="primary" (click)="save()">บันทึก</button>

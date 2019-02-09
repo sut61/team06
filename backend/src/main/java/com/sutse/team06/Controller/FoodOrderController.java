@@ -13,7 +13,14 @@ import com.sutse.team06.Repository.HouseRepository;
 import com.sutse.team06.entity.FoodList;
 import com.sutse.team06.entity.FoodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
@@ -31,15 +38,27 @@ class FoodOrderController {
     private HouseRepository houseRepository;
 
     @PostMapping("/FoodOrder/save/{employeeid}/{foodlist}/{client}/{house}")
-    public FoodOrder createFoodOrder(@PathVariable long employeeid,@PathVariable long foodlist,@PathVariable Long client,
+    public ResponseEntity<Map<String, Object>> createFoodOrder(@PathVariable long employeeid,@PathVariable long foodlist,@PathVariable Long client,
                                     @PathVariable long house){
-
-       FoodOrder foodOrder = new FoodOrder();
+                                    try{
+        FoodOrder foodOrder = new FoodOrder();
+        Map<String, Object> json = new HashMap<String, Object>();
+       
         foodOrder.setHouseId(houseRepository.getOne(house));
         foodOrder.setCid(clientRepository.getOne(client));
         foodOrder.setFoodlistId(foodListRepository.getOne(foodlist));
-       foodOrder.setEmpId(employeeRepository.getOne(employeeid));
-       return foodOrderRepository.save(foodOrder);
+        foodOrder.setEmpId(employeeRepository.getOne(employeeid));
+        foodOrderRepository.save(foodOrder);
+         HttpHeaders headers = new HttpHeaders();
+         headers.add("Content-Type", "application/json; charset=UTF-8");
+         return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.OK));
+         }
+         catch(Exception e) {
+             Map<String, Object> json = new HashMap<String, Object>();
+              json.put("success", false);
+              json.put("status", "saved fail");
+             return  (new ResponseEntity<Map<String, Object>>(json, null, HttpStatus.INTERNAL_SERVER_ERROR));
+        }
 
     }
     @GetMapping("/FoodOrder")

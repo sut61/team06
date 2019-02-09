@@ -28,6 +28,7 @@ export class FoodOrderComponent implements OnInit {
   }
 
   save() {
+    this.employeeid = JSON.parse(localStorage.getItem('employee')).empId;
      if (this.employeeid === undefined
      || this.foodlist === undefined || this.client === undefined
      || this.house === undefined )  {
@@ -40,11 +41,15 @@ export class FoodOrderComponent implements OnInit {
         this.httpClient.post('http://localhost:8080/FoodOrder/save/'
         + this.employeeid + '/' + this.foodlist + '/' + this.client + '/' + this.house, null).subscribe(
         data => {
-                console.log('PUT Code and renthouse is successful', data);
+                console.log('PUT Code and FoodOrder is successful', data);
+                this.noti = false;
+                this.notimag = 'บันทึกสำเร็จ';
             },
             error => {
                 console.log('------------Error----------', error);
-                window.location.reload();
+                this.noti = false;
+                this.notimag = 'ไม่สำเร็จกรุณาใส่ข้อมูลให้ถูกต้อง';
+               // window.location.reload();
             }
 
       );

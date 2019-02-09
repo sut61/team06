@@ -1,30 +1,17 @@
 package com.sutse.team06.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.stream.Collectors;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sutse.team06.Repository.CarRepository;
-import com.sutse.team06.Repository.ClientRepository;
-import com.sutse.team06.Repository.EmployeeRepository;
-import com.sutse.team06.Repository.HouseRepository;
-import com.sutse.team06.Repository.PlaceRepository;
-import com.sutse.team06.Repository.TransportationCarRepository;
-import com.sutse.team06.entity.Car;
-import com.sutse.team06.entity.Place;
-import com.sutse.team06.entity.TransportationCar;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import java.io.IOException;
-import java.net.URLDecoder;
-import java.util.List;
-import java.util.Set;
+import org.springframework.http.*;
 
+import com.sutse.team06.Repository.*;
+import com.sutse.team06.entity.*;
+
+import java.util.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
@@ -60,10 +47,12 @@ class TransportationCarController {
     }
 
       @PostMapping("/TransportationCar/save/{houseid}/{client}/{carId}/{place}/{amount}/{Detail}/{employeeid}")
-    public TransportationCar createTransportationCar(@PathVariable long houseid,@PathVariable Long client,@PathVariable long carId,
+    public ResponseEntity<Map<String, Object>> createTransportationCar(@PathVariable long houseid,@PathVariable Long client,@PathVariable long carId,
                                     @PathVariable String place,@PathVariable long amount,@PathVariable String Detail,@PathVariable long employeeid){
-
-        Place p = new Place();
+        try{
+            Place p = new Place();
+        Map<String, Object> json = new HashMap<String, Object>();
+        
         p.setPlaceName(place);
         placeRepository.save(p);
        
@@ -72,11 +61,20 @@ class TransportationCarController {
         transport.setCid(clientRepository.getOne(client));
         transport.setCarId(carRepository.getOne(carId));
         transport.setPlaceId(placeRepository.findByPlaceName(place));
-        transport.setAmountPeople(amount);
+        transport.setAmountPeople((int) amount);
         transport.setTransportDetial(Detail);
         transport.setEmpId(employeeRepository.getOne(employeeid));
-       
-       return transportationCarRepository.save(transport);
+        transportationCarRepository.save(transport);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=UTF-8");
+        return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.OK));
+        }
+        catch(Exception e) {
+            Map<String, Object> json = new HashMap<String, Object>();
+             json.put("success", false);
+             json.put("status", "saved fail");
+            return  (new ResponseEntity<Map<String, Object>>(json, null, HttpStatus.INTERNAL_SERVER_ERROR));
+       }
        
     }
    
