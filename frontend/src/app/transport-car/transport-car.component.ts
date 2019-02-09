@@ -30,14 +30,14 @@ export class TransportCarComponent implements OnInit {
 
 
 
-  constructor(private data: Team06Service,private httpClient: HttpClient) { this.noti = true; }
+  constructor(private data: Team06Service, private httpClient: HttpClient) { this.noti = true; }
 
   ngOnInit() {
-    this.data.HouseAll().subscribe(data => {this.houses = data;})
-    this.data.ClientAll().subscribe(data => {this.clients = data;})
-    this.data.EmployeeAll().subscribe(data => {this.employees = data;})
-    this.data.CarAll().subscribe(data => {this.cars = data;})
-    this.data.TransportationCarAll().subscribe(data => {this.transportcars = data;})
+    this.data.HouseAll().subscribe(data => {this.houses = data; });
+    this.data.ClientAll().subscribe(data => {this.clients = data; });
+    this.data.EmployeeAll().subscribe(data => {this.employees = data; });
+    this.data.CarAll().subscribe(data => {this.cars = data; });
+    this.data.TransportationCarAll().subscribe(data => {this.transportcars = data; });
   }
   save() {
     if (this.houseid === undefined || this.client === undefined
