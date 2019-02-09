@@ -31,7 +31,7 @@ class RentHouseController {
     public List<House> HouseAll(){
         return houseRepository.findAll().stream().collect(Collectors.toList());
     }
-    
+
     @GetMapping("/renthouse")
     public List<RentHouse> RentHouseAll(){
         return rentHouseRepository.findAll().stream().collect(Collectors.toList());
@@ -51,7 +51,7 @@ class RentHouseController {
     public List<Employee> EmployeeAll(){
         return employeeRepository.findAll().stream().collect(Collectors.toList());
     }
-    
+
     @PostMapping("/renthouse/save/{houseid}/{housetypesid}/{employeeid}/{client}/{resident}")
     public RentHouse createRentHouse(@PathVariable long houseid,@PathVariable long housetypesid,@PathVariable long employeeid,
                                     @PathVariable String client,@PathVariable String resident){
@@ -62,6 +62,6 @@ class RentHouseController {
        rentHouse.setEmployee(employeeRepository.getOne(employeeid));
        rentHouse.setResident(resident);
        return rentHouseRepository.save(rentHouse);
-       
+
     }
 }

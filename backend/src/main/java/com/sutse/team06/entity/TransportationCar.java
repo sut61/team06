@@ -45,7 +45,7 @@ public class TransportationCar{
 	   private Employee empId;
 	   
 	   private @NonNull String transportDetial;
-	   private @NonNull int amountPeople;
+	   private @NonNull Long amountPeople;
 
 	
 }

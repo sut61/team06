@@ -58,6 +58,27 @@ class TransportationCarController {
     public List<Place> Place(){
         return placeRepository.findAll().stream().collect(Collectors.toList());
     }
+
+      @PostMapping("/TransportationCar/save/{houseid}/{client}/{carId}/{place}/{amount}/{Detail}/{employeeid}")
+    public TransportationCar createTransportationCar(@PathVariable long houseid,@PathVariable Long client,@PathVariable long carId,
+                                    @PathVariable String place,@PathVariable long amount,@PathVariable String Detail,@PathVariable long employeeid){
+
+        Place p = new Place();
+        p.setPlaceName(place);
+        placeRepository.save(p);
+       
+        TransportationCar transport = new TransportationCar();
+        transport.setHouseId(houseRepository.getOne(houseid));
+        transport.setCid(clientRepository.getOne(client));
+        transport.setCarId(carRepository.getOne(carId));
+        transport.setPlaceId(placeRepository.findByPlaceName(place));
+        transport.setAmountPeople(amount);
+        transport.setTransportDetial(Detail);
+        transport.setEmpId(employeeRepository.getOne(employeeid));
+       
+       return transportationCarRepository.save(transport);
+       
+    }
    
     
 }
