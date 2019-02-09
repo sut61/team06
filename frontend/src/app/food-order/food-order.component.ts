@@ -33,11 +33,10 @@ export class FoodOrderComponent implements OnInit {
      || this.foodlist === undefined || this.client === undefined
      || this.house === undefined )  {
       console.log('กรุณากรอกข้อมูลให้ครบ');
-    this.notimag = 'กรุณากรอกข้อมูลให้ครบ';
-    this.noti = false;
-    setTimeout(() => {
-      this.noti = true;
-    }, 1000);   } else {
+      this.noti = false;
+      this.notimag = 'กรุณากรอกข้อมูลให้ครบ';
+
+     } else {
         this.httpClient.post('http://localhost:8080/FoodOrder/save/'
         + this.employeeid + '/' + this.foodlist + '/' + this.client + '/' + this.house, null).subscribe(
         data => {
