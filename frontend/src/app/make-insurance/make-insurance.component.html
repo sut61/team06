@@ -26,11 +26,17 @@
               </mat-option >
           </mat-select>
       </mat-form-field>
-        <div>
-          <a    mat-raised-button  class="btn-check" (click)="save()"><b>บันทึก</b></a>
-        </div>
 
-    </div>
-  </mat-card>
+      <mat-form-field  class="matfile">
+        <input matInput placeholder="email ของผู้ทำประกัน "  [(ngModel)]="email">
+      </mat-form-field>
+
+
+      <div>
+        <a    mat-raised-button  class="btn-check" (click)="save()"><b>บันทึก</b></a>
+      </div>
+
+</div>
+</mat-card>
 </div>
 </div>
