@@ -16,7 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
+import {MatMenuModule} from '@angular/material/menu';
 // import rourting
 import {RoutingMainModule} from './routing-main/routing-main.module';
 import { IndexComponent } from './index/index.component';
@@ -83,7 +83,8 @@ import { CleanHouseComponent } from './cleanhouse/cleanhouse.component';
     MatIconModule,
     MatDialogModule,
     MatTabsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatMenuModule
 
 
   ],
