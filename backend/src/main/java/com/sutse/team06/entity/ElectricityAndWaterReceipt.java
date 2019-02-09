@@ -22,20 +22,21 @@ public class ElectricityAndWaterReceipt {
     @Id
     @SequenceGenerator(name = "ElctricityAndWaterReceipt_seq", sequenceName = "ElctricityAndWaterReceipt_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ElctricityAndWaterReceipt_seq")
-    private @NonNull Long ewid;
+    private @NotNull Long ewid;
     
     
-    private @NonNull Integer water;
+    private @NotNull Integer water;
 
-    private @NonNull Integer electricity;
+    private @NotNull Integer electricity;
 
 
-    // @Pattern(regexp = "[a-zA-Z0-9\\w]{2,20}")
+    @Pattern(regexp = "[a-zA-Z]{2,20}")
     @Size(min = 2, max = 20)
+    @NotNull
     private String meterchecker;
     
-    // @Pattern(regexp = "[a-zA-Z0-9\\w]{2,20}")
-    @Size(min = 2, max = 20)
+    @Pattern(regexp = "R\\d{5}")
+    @NotNull
     @Column( unique = true)
     private String sliptid;
 

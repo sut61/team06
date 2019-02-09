@@ -35,7 +35,7 @@ export class MakeReceiptComponent implements OnInit {
     || this.electricity === undefined || this.mounths === undefined || this.clientname === undefined || this.houses === undefined
     || this.meterchecker === undefined
     || this.sliptid === undefined) {  this.noti = false;
-      this.notimag = 'บันทึกไม่สำเร็จ(กรุณากรอกข้อมูลให้ครบ)'   }
+      this.notimag = 'บันทึกไม่สำเร็จ(ค่าต้องไม่เป็น null)'   }
     else {
        this.httpClient.post('http://localhost:8080/electricityandwater/save/'
        + this.water + '/' + this.electricity + '/' + this.mid + '/' + this.cid + '/' + this.house + '/'  + this.meterchecker
@@ -46,6 +46,8 @@ export class MakeReceiptComponent implements OnInit {
           this.notimag = 'บันทึกสำเร็จ';
             },
             error => {
+              this.noti = false;
+              this.notimag = 'ไม่สำเร็จกรุณาใส่ข้อมูลให้ถูกต้อง';
                 console.log('------------Error----------', error);
                 //window.location.reload();
             }
