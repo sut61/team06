@@ -44,21 +44,8 @@
 </div>
 
 </mat-tab>
-  <mat-tab label="ระบุชื่อผู้รับรายการ">
-  <div class="example-container">
-  <mat-form-field  class="matfile">
-        <mat-select placeholder="ระบุชื่อผู้รับรายการ" [(ngModel)]="employeeid">
-          <mat-option  *ngFor="let employee of employees" [value]="employee.empId">
-              {{employee.name}}
-          </mat-option>
-        </mat-select>
 
-    </mat-form-field>
-
-</div>
-
-</mat-tab>
-  <mat-tab label="บันทึกรายการ">
+<mat-tab label="บันทึกรายการ">
 <div class="example-button-row"><br><br><br><br>
 <button mat-raised-button color="primary"(click)="save()" >Save</button>
 
