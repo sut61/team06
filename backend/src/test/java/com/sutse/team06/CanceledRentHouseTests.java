@@ -16,6 +16,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import javax.persistence.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -110,5 +111,23 @@ public class CanceledRentHouseTests {
         }
     }
 
-}
+    @Test
+    public void testUnique() {
+        CanceledRentHouse c = new CanceledRentHouse();
+        c.setComment("Alex");
+        entityManager.persist(c);
+        entityManager.flush();
 
+        CanceledRentHouse c1 = new CanceledRentHouse();
+        c1.setComment("Alex");
+        try {
+            entityManager.persist(c1);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (PersistenceException ex) {
+            System.out.println(ex);
+        }
+
+    }
+
+}
