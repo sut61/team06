@@ -63,7 +63,9 @@
 <button mat-raised-button color="primary"(click)="save()" >Save</button>
 
 </div>
-
+      <span *ngIf="!noti" >
+          <mat-card>{{notimag}}</mat-card>
+      </span>
 </mat-tab>
 
   </mat-tab-group>

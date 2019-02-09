@@ -12,6 +12,8 @@ export class FoodOrderComponent implements OnInit {
   clients: Array<any>;
   foodlists: Array<any>;
   FoodOrders: Array<any>;
+  notimag: String;
+  noti: boolean;
   employeeid: number;
   client: number;
   foodlist: String;
@@ -27,8 +29,14 @@ export class FoodOrderComponent implements OnInit {
 
   save() {
      if (this.employeeid === undefined
-     || this.foodlist === undefined || this.client === undefined || this.house === undefined ) {alert('กรุณากรอกข้อมูลให้ครบถ้วน');}
-     else {
+     || this.foodlist === undefined || this.client === undefined
+     || this.house === undefined )  {
+      console.log('กรุณากรอกข้อมูลให้ครบ');
+    this.notimag = 'กรุณากรอกข้อมูลให้ครบ';
+    this.noti = false;
+    setTimeout(() => {
+      this.noti = true;
+    }, 1000);   } else {
         this.httpClient.post('http://localhost:8080/FoodOrder/save/'
         + this.employeeid + '/' + this.foodlist + '/' + this.client + '/' + this.house, null).subscribe(
         data => {
