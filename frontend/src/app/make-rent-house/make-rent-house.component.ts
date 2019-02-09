@@ -19,7 +19,7 @@ export class MakeRentHouseComponent implements OnInit {
 
   houseid: number;
   housetypesid: number;
-  employeeid: number;
+  employeeid: '';
   client: String;
   resident: String;
 
@@ -33,8 +33,8 @@ export class MakeRentHouseComponent implements OnInit {
   }
 
   save(){
-    if (this.houseid === undefined || this.housetypesid === undefined
-       || this.employeeid === undefined || this.client === undefined || this.resident === undefined ) {
+    this.employeeid = JSON.parse(localStorage.getItem('employee')).employeeid;
+    if (this.houseid === undefined || this.housetypesid === undefined || this.client === undefined || this.resident === undefined ) {
          console.log('empty input');
        this.notimag = 'empty input';
        this.noti = false;
@@ -49,7 +49,7 @@ export class MakeRentHouseComponent implements OnInit {
             },
             error => {
                 console.log('------------Error----------', error);
-                window.location.reload();
+                //window.location.reload();
               }
 
       );

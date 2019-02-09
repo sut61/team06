@@ -43,9 +43,9 @@ public class CanceledRentHouse {
     @JoinColumn(name = "canceltypeId")
     private CancelType canceltype;
 
-    @OneToOne(fetch = FetchType.LAZY)
+   /*@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rentId")
-    private RentHouse rentHouse;
+    private RentHouse rentHouse; */
 
 
 }

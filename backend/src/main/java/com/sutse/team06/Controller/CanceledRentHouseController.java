@@ -50,7 +50,7 @@ class CanceledRentHouseController {
 
        /*RentHouse rentHouse = rentHouseRepository.findByRentId(renthouseid);
        rentHouse.setCanceledrentHouse(cancel);
-       rentHouseRepository.save(rentHouse);*/
+       rentHouseRepository.save(rentHouse);*/     
        
         return canceledRentHouseRepository.save(cancel);
     }
