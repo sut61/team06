@@ -8,6 +8,7 @@ import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
@@ -19,7 +20,11 @@ public class House {
     @SequenceGenerator(name = "House_seq", sequenceName = "House_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "House_seq")
     private @NotNull Long houseId;
-    private @NotNull Integer  houseNumber;
+    @NotNull 
+    @Min(value = 1000)
+    @Max(value = 9999)
+    @Column(unique = true)
+    private Integer  houseNumber;
 
     
 
