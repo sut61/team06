@@ -104,6 +104,21 @@ public class TestManagePackageIn {
             assertEquals(violations.size(), 2);
         }
     }
+    @Test
+	public void testTestDateNotnull() {
+        ManagePackageIn mag = new ManagePackageIn();
+        mag.setPackageId("123456789TH");
+        mag.setDate(null);
+        try {
+            entityManager.persist(mag);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
     
 
 	
