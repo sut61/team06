@@ -11,9 +11,11 @@ import { Observable, from } from 'rxjs';
 export class RentHouseComponent implements OnInit {
 
   rents: Array<any>;
+  cancels: Array<any>;
   constructor(private data: Team06Service) { }
   ngOnInit() {
     this.data.RentHouseAll().subscribe(data => {this.rents = data;})
+    this.data.cancelrenthouseAll().subscribe(data => {this.cancels = data;})
   }
 
 }
