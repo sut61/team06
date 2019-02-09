@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.FetchType;
 
 
@@ -24,7 +25,11 @@ public class RentHouseType {
     @SequenceGenerator(name = "RentHouseType_seq", sequenceName = "RentHouseType_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RentHouseType_seq")
     private @NotNull Long renttypeId;
-    private @NotNull String description;
+    @NotNull
+    @Pattern(regexp = "[0-9\\d]{1,2}[\\s](day|month|days|months)")
+    @Size(min = 4 , max = 9)
+    @Column(unique = true)
+    private String description;
 
     
 
