@@ -2,9 +2,7 @@
   <div class="bodylayout">
     <mat-card class="manage-check-form">
       <h1>บริการเรียกรถรับส่ง</h1>
-      <span *ngIf="!noti" >
-          <mat-card>{{notimag}}</mat-card>
-      </span>
+     
         <mat-form-field  class="matfile">
             <mat-select placeholder="บ้านเลขที่" [(ngModel)]="houseid">
               <mat-option  *ngFor="let house of houses" [value]="house.houseId">
@@ -14,13 +12,21 @@
         </mat-form-field>
       <br>
       <mat-form-field  class="matfile">
-          <mat-select placeholder="ระบุชื่อลูกค้า" [(ngModel)]="housetypesid">
-            <mat-option  *ngFor="let housetype of housetypes" [value]="housetype.renttypeId">
-                {{housetype.description}}
+          <mat-select placeholder="ระบุชื่อลูกค้า" [(ngModel)]="client">
+            <mat-option  *ngFor="let client of clients" [value]="client.cid">
+            {{client.name}}
             </mat-option>
           </mat-select>
       </mat-form-field>
     <br>
+     <mat-form-field  class="matfile">
+          <mat-select placeholder="เลือกประเภทรถ" [(ngModel)]="carId">
+            <mat-option  *ngFor="let car of cars " [value]="car.carId">
+                {{car.carType}}
+            </mat-option>
+          </mat-select>
+  </mat-form-field>
+  <br>
     <mat-form-field  class="matfile">
        <input matInput placeholder="ระบุสถานที่ที่ต้องการไป" >
     </mat-form-field>
@@ -29,22 +35,48 @@
        <input matInput placeholder="ระบุจำนวนคน" >
     </mat-form-field>
   <br>
-  <mat-form-field  class="matfile">
-          <mat-select placeholder="เลือกประเภทรถ" [(ngModel)]="housetypesid">
-            <mat-option  *ngFor="let housetype of housetypes" [value]="housetype.renttypeId">
-                {{housetype.description}}
-            </mat-option>
-          </mat-select>
-  </mat-form-field>
-  <br>
+
     <mat-form-field  class="matfile">
        <textarea matInput placeholder="ระบุความต้องการเพิ่มเติม"></textarea>
     </mat-form-field>
     <br>
+     <mat-form-field  class="matfile">
+          <mat-select placeholder="ระบุชื่อผู้รับรายการ" [(ngModel)]="employeeid">
+          <mat-option  *ngFor="let employee of employees" [value]="employee.empId">
+              {{employee.name}}
+          </mat-option>
+        </mat-select>
+  </mat-form-field>
+  <br>
       <div class="center">
           <button mat-raised-button color="primary" (click)="save()">บันทึก</button>
-
       </div>
+       <span *ngIf="!noti" >
+          <mat-card>{{notimag}}</mat-card>
+      </span>
     </mat-card>
   </div>
+  <mat-card class="manage-check-form">
+
+<mat-card-title><p>รายการที่ถูกบันทึก</p></mat-card-title>
+    <mat-list>
+      <div *ngFor="let transportcar of transportcars">
+        <mat-card-content>
+          <mat-divider></mat-divider><br>
+          <p>รายการที่ :&nbsp;{{transportcar.transportId}}<br> 
+          บ้านเลขที่ :&nbsp;{{transportcar.houseId.houseNumber}}<br> 
+          ชื่อลูกค้า : &nbsp;{{transportcar.cid.name}}<br> 
+          ประเภทรถ :&nbsp;{{transportcar.carId.carType}}<br> 
+          สถานที่ : &nbsp;{{transportcar.placeId.placeName}}<br> 
+          จำนวนคน : &nbsp;{{transportcar.amountPeople}}<br> 
+          ความต้องการเพิ่มเติม : &nbsp;{{transportcar.transportDetial}}<br> 
+          ผู้รับรายการ : &nbsp;{{transportcar.empId.name}}<br> 
+          
+          <mat-divider></mat-divider><br> 
+  </mat-card-content>
+      </div>
+    </mat-list>
+
+</mat-card>
+
 </div>
