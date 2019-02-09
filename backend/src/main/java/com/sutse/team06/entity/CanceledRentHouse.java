@@ -22,11 +22,12 @@ public class CanceledRentHouse {
     @Id
     @SequenceGenerator(name = "CanceledRentHouse_seq", sequenceName = "CanceledRentHouse_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CanceledRentHouse_seq")
-    private @NonNull Long cancelId;
+    private @NotNull Long cancelId;
 
     @Pattern(regexp = "[A-Za-z]{2,}")
     @Size(min = 2)
     @NotNull
+    @Column(unique = true)
     private String comment;
    
 

@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.validation.constraints.*;
 
 @Entity
 @Getter @Setter
@@ -20,7 +21,7 @@ public class CancelType {
     @Id
     @SequenceGenerator(name = "CancelType_seq", sequenceName = "CancelType_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CancelType_seq")
-    private @NonNull Long canceltypeId;
-    private @NonNull String canceltype;
+    private @NotNull Long canceltypeId;
+    private @NotNull String canceltype;
 
 }
