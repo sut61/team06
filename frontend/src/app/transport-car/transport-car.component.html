@@ -2,7 +2,7 @@
   <div class="bodylayout">
     <mat-card class="manage-check-form">
       <h1>บริการเรียกรถรับส่ง</h1>
-     
+
         <mat-form-field  class="matfile">
             <mat-select placeholder="บ้านเลขที่" [(ngModel)]="houseid">
               <mat-option  *ngFor="let house of houses" [value]="house.houseId">
@@ -28,16 +28,16 @@
   </mat-form-field>
   <br>
     <mat-form-field  class="matfile">
-       <input matInput placeholder="ระบุสถานที่ที่ต้องการไป" >
+       <input matInput placeholder="ระบุสถานที่ที่ต้องการไป" [(ngModel)]="place">
     </mat-form-field>
   <br>
     <mat-form-field  class="matfile">
-       <input matInput placeholder="ระบุจำนวนคน" >
+       <input matInput placeholder="ระบุจำนวนคน" [(ngModel)]="amount">
     </mat-form-field>
   <br>
 
     <mat-form-field  class="matfile">
-       <textarea matInput placeholder="ระบุความต้องการเพิ่มเติม"></textarea>
+       <textarea matInput placeholder="ระบุความต้องการเพิ่มเติม" [(ngModel)]="Detail"></textarea>
     </mat-form-field>
     <br>
      <mat-form-field  class="matfile">
@@ -63,16 +63,16 @@
       <div *ngFor="let transportcar of transportcars">
         <mat-card-content>
           <mat-divider></mat-divider><br>
-          <p>รายการที่ :&nbsp;{{transportcar.transportId}}<br> 
-          บ้านเลขที่ :&nbsp;{{transportcar.houseId.houseNumber}}<br> 
-          ชื่อลูกค้า : &nbsp;{{transportcar.cid.name}}<br> 
-          ประเภทรถ :&nbsp;{{transportcar.carId.carType}}<br> 
-          สถานที่ : &nbsp;{{transportcar.placeId.placeName}}<br> 
-          จำนวนคน : &nbsp;{{transportcar.amountPeople}}<br> 
-          ความต้องการเพิ่มเติม : &nbsp;{{transportcar.transportDetial}}<br> 
-          ผู้รับรายการ : &nbsp;{{transportcar.empId.name}}<br> 
-          
-          <mat-divider></mat-divider><br> 
+          <p>รายการที่ :&nbsp;{{transportcar.transportId}}<br>
+          บ้านเลขที่ :&nbsp;{{transportcar.houseId.houseNumber}}<br>
+          ชื่อลูกค้า : &nbsp;{{transportcar.cid.name}}<br>
+          ประเภทรถ :&nbsp;{{transportcar.carId.carType}}<br>
+          สถานที่ : &nbsp;{{transportcar.placeId.placeName}}<br>
+          จำนวนคน : &nbsp;{{transportcar.amountPeople}}<br>
+          ความต้องการเพิ่มเติม : &nbsp;{{transportcar.transportDetial}}<br>
+          ผู้รับรายการ : &nbsp;{{transportcar.empId.name}}<br>
+
+          <mat-divider></mat-divider><br>
   </mat-card-content>
       </div>
     </mat-list>

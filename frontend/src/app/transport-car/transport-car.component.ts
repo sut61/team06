@@ -39,21 +39,20 @@ export class TransportCarComponent implements OnInit {
     this.data.CarAll().subscribe(data => {this.cars = data;})
     this.data.TransportationCarAll().subscribe(data => {this.transportcars = data;})
   }
-  save(){
+  save() {
     if (this.houseid === undefined || this.client === undefined
        || this.carId === undefined || this.place === undefined
-       || this.amount === undefined || this.Detail === undefined 
+       || this.amount === undefined || this.Detail === undefined
        || this.employeeid === undefined ) {
          console.log('กรุณากรอกข้อมูลให้ครบ');
        this.notimag = 'กรุณากรอกข้อมูลให้ครบ';
        this.noti = false;
        setTimeout(() => {
          this.noti = true;
-       }, 1000);   }
-    else{
+       }, 1000);   } else {
         this.httpClient.post('http://localhost:8080/TransportationCar/save/'
         + this.houseid + '/' + this.client + '/' + this.carId + '/'
-        + this.place + '/' + this.amount+ '/' + this.Detail'/' + this.employeeid,null).subscribe(
+        + this.place + '/' + this.amount + '/' + this.Detail + '/' + this.employeeid, null).subscribe(
         data => {
                 console.log('PUT Code and TransportationCar is successful', data);
             },
