@@ -313,7 +313,7 @@ public class Team06Application {
 				transportationCar.setEmpId(employeeRepository.getOne(1L));
 				transportationCar.setHouseId(houseRepository.getOne(2L));
 				transportationCar.setTransportDetial("ลงใกล้ ๆ กับเซเว่น ตรงข้ามเมเจอร์รังสิตนะครับ");
-				transportationCar.setAmountPeople(4L);
+				transportationCar.setAmountPeople(4);
 				transportationCarRepository.save(transportationCar);
 
 
