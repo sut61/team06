@@ -46,11 +46,11 @@ class CanceledRentHouseController {
         cancel.setEmployee(employeeRepository.getOne(employeeid));
         cancel.setClient(clientRepository.getOne(clientid));
         cancel.setCanceltype(cancelTypeRepository.getOne(canceltype));
-        cancel.setRentHouse(rentHouseRepository.getOne(renthouseid));
+        //cancel.setRentHouse(rentHouseRepository.getOne(renthouseid));
 
-       /*RentHouse rentHouse = rentHouseRepository.findByRentId(renthouseid);
+       RentHouse rentHouse = rentHouseRepository.findByRentId(renthouseid);
        rentHouse.setCanceledrentHouse(cancel);
-       rentHouseRepository.save(rentHouse);*/     
+       rentHouseRepository.save(rentHouse);   
        
         return canceledRentHouseRepository.save(cancel);
     }
