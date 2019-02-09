@@ -34,21 +34,20 @@ export class CancelRentHouseComponent implements OnInit {
     this.employeeid = JSON.parse(localStorage.getItem('employee')).empId;
     if (this.renthouseid === undefined || this.employeeid === undefined
        || this.comment === undefined || this.canceltype === undefined ) {
-        console.log('empty input');
-        this.notimag = 'empty input';
         this.noti = false;
-        setTimeout(() => {
-          this.noti = true;
-        }, 1000);
-          }
+      this.notimag = 'บันทึกไม่สำเร็จ'  }
     else{
         this.httpClient.post('http://localhost:8080/cancelrenthouse/save/'
         + this.renthouseid + '/' + this.employeeid + '/' + this.comment + '/' + this.canceltype,null).subscribe(
         data => {
                 console.log('Cancel RentHouse is successful', data);
-            },
+                this.noti = false;
+                this.notimag = 'บันทึกสำเร็จ';
+              },
             error => {
                 console.log('------------Error----------', error);
+                this.noti = false;
+              this.notimag = 'ไม่สำเร็จกรุณาใส่ข้อมูลให้ถูกต้อง';
                 //window.location.reload();
             }
 

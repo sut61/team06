@@ -35,20 +35,20 @@ export class MakeRentHouseComponent implements OnInit {
   save(){
     this.employeeid = JSON.parse(localStorage.getItem('employee')).empId;
     if (this.houseid === undefined || this.housetypesid === undefined || this.resident === undefined ) {
-         console.log('empty input');
-       this.notimag = 'empty input';
-       this.noti = false;
-       setTimeout(() => {
-         this.noti = true;
-       }, 1000);   }
+      this.noti = false;
+      this.notimag = 'บันทึกไม่สำเร็จ'  }
     else{
         this.httpClient.post('http://localhost:8080/renthouse/save/'
         + this.houseid + '/' + this.housetypesid + '/' + this.employeeid + '/'  + this.resident,null).subscribe(
         data => {
                 console.log('PUT Code and renthouse is successful', data);
+                this.noti = false;
+          this.notimag = 'บันทึกสำเร็จ';
             },
             error => {
                 console.log('------------Error----------', error);
+                this.noti = false;
+              this.notimag = 'ไม่สำเร็จกรุณาใส่ข้อมูลให้ถูกต้อง';
                 //window.location.reload();
               }
 
