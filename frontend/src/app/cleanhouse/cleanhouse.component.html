@@ -4,9 +4,11 @@
       <h1>แจ้งทำความสะอาด</h1>
       <div class="example-container">
 
-
+        <span *ngIf="!noti"  >
+            <mat-card>{{notimag}}</mat-card>
+        </span>
         <mat-form-field class="matfile">
-          <mat-select placeholder="เลือกบ้าน" [(ngModel)]="houseid">
+          <mat-select placeholder="เลือกบ้าน" [(ngModel)]="cleanhousedata.houseid">
             <mat-option *ngFor="let house of cleanhouse" [value]="house.houseId">
               {{house.houseNumber}}
             </mat-option>
@@ -14,18 +16,36 @@
         </mat-form-field>
 
         <mat-form-field class="matfile">
-          <mat-select placeholder="เลือกสัญญาการเช่า" [(ngModel)]="renthouseid">
-            <mat-option *ngFor="let housetype of repairsType" [value]="housetype.rentId">
+          <mat-select placeholder="เลือกสัญญาการเช่า" [(ngModel)]="cleanhousedata.rentId">
+            <mat-option *ngFor="let housetype of cleanhouseType" [value]="housetype.rentId">
               {{housetype.rentId}}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
-       
+        <mat-form-field class="matfile">
+          <mat-select placeholder="เลือกประเภทเเม่บ้าน" [(ngModel)]="cleanhousedata.typeKeeperid">
+            <mat-option *ngFor="let typekeeper of typeKeeper" [value]="typekeeper.typehouseKeeperId">
+              {{typekeeper.typehouseKeeper}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+    <!-- <mat-form-field  class="matfile">
+      <input matInput placeholder="ID แม่บ้าน"  [(ngModel)]="cleanhousedata.housekeeperid">
+    </mat-form-field> -->
+        
+      <mat-form-field  class="matfile">
+        <input matInput placeholder="ชื่อแม่บ้าน"  [(ngModel)]="cleanhousedata.housekeepername">
+    </mat-form-field>
 
     
-    
+  
 
+  
+    <mat-form-field  class="matfile">
+      <input matInput placeholder="เบอร์โทรแม่บ้าน"  [(ngModel)]="cleanhousedata.housekeepertel">
+    </mat-form-field>
         <div>
           <button mat-raised-button color="primary" (click)="save()">บันทึก</button>
         </div>

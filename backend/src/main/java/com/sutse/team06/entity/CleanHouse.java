@@ -20,23 +20,40 @@ public class CleanHouse {
 
     private @NonNull Long cleanhouseId;
 
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="renttypeId")
-    private RentHouseType rentHouseType;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="houseId")
+    @NotNull
     private House house;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="rentId")
+    @NotNull
+    private RentHouse rentHouse;
     
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="typehouseKeeperId")
+     @NotNull
+    private TypeHouseKeeper typeHouseKeeper;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="housekeeperId")
-    private HouseKeeper housekeeper;
+    private HouseKeeper HouseKeeper;
+    
+
+    
+    // @ManyToOne(fetch = FetchType.EAGER)
+    // @JoinColumn(name="housekeeperName")
+    // private HouseKeeper housekeeper;
 
     // @ManyToOne(fetch = FetchType.EAGER)
-    // @JoinColumn(name="houseKeeperId")
-    // private HouseKeeper HouseKeeper;
+    // @JoinColumn(name="housekeeperId")
+    // private HouseKeeper housekeeper;
+
+    // @ManyToOne(fetch = FetchType.EAGER)
+    // @JoinColumn(name="housekeeperTel")
+    // private HouseKeeper housekeeper;
+
+   
 
 
 

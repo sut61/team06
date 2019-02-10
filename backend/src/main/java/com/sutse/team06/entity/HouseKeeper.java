@@ -17,27 +17,16 @@ public class HouseKeeper {
     @Id
     @SequenceGenerator(name = "HouseKeeper_seq", sequenceName = "HouseKeeper_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "HouseKeeper_seq")
-
     private @NonNull Long housekeeperId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="houseId")
-    private House house;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="renttypeId")
-    private RentHouseType rentHouseType;
+    @NotNull
+    @Pattern(regexp="[A-Za-z]{5,10}")
+    private String housekeeperName;
+    @NotNull 
+    @Pattern(regexp="(08|09|06)[0-9]{8}")
+    private String housekeeperTel;
 
     
-
-  
-
-    // @ManyToOne(fetch = FetchType.EAGER)
-    // @JoinColumn(name="houseKeeperId")
-    // private HouseKeeper HouseKeeper;
-
-
-
     public HouseKeeper(){
         
     }
