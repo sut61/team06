@@ -8,5 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
 public interface HouseKeeperRepository extends JpaRepository<HouseKeeper, Long> {
+     HouseKeeper findByHousekeeperName(String housekeeperName);
      HouseKeeper findByHousekeeperId(Long housekeeperId);
+     HouseKeeper findByHousekeeperTel(Long housekeeperTel);
 }

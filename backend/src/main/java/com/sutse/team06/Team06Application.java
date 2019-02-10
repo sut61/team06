@@ -41,7 +41,8 @@ public class Team06Application {
 							ScaleTimeRepository scaleTimeRepository,
 							TransportationCarRepository transportationCarRepository,
 							CarRepository carRepository,
-							PlaceRepository placeRepository
+							PlaceRepository placeRepository,
+							TypeHouseKeeperRepository typeHouseKeeperRepository
 							){
 
 		return args ->{
@@ -290,6 +291,11 @@ public class Team06Application {
 					timeuses.setScaleTime(scale2);
 					timeTypeUseRepository.save(timeuses);
 				}
+					Stream.of("Male","Female").forEach(keeper ->{
+						TypeHouseKeeper keepers = new TypeHouseKeeper();
+						keepers.setTypehouseKeeper(keeper);
+						typeHouseKeeperRepository.save(keepers);
+				});
 					//Car
 				Stream.of("Taxi","Hatchback","Sedan","SUV","Convertible").forEach(carType ->{
 					Car car = new Car();

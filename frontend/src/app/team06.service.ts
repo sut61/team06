@@ -68,5 +68,8 @@ export class Team06Service {
   CarAll(): Observable<any> {
     return this.http.get('//localhost:8080/Car');
   }
+  getTypeKeeperAll(): Observable<any> {
+    return this.http.get('//localhost:8080/api/house-keeper-type');
+ }
 
 }
