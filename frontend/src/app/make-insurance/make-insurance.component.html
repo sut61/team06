@@ -10,13 +10,13 @@
                 <input matInput placeholder="ชื่อและนามสุกลของเจ้าของประกัน"  [(ngModel)]="insuname">
               </mat-form-field>
 
-
       <mat-form-field  class="matfile">
         <mat-select placeholder="Type of insurance" [(ngModel)]="type" (change)="selectChange()">
             <mat-option  *ngFor="let insutypeloop of insu" [value]="insutypeloop.tid">
                 {{insutypeloop.type}}
             </mat-option >
 
+            
         </mat-select>
     </mat-form-field>
       <mat-form-field  class="matfile">
