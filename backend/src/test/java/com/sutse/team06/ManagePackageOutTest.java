@@ -33,6 +33,12 @@ public class ManagePackageOutTest {
     private ManagePackageOutRepository managePackageOutTestRepository;
 
     @Autowired
+    private ManagePackageInRepository managePackageInTestRepository;
+    
+    @Autowired
+    private EmployeeRepository employeeTestRepository;
+
+    @Autowired
     private TestEntityManager entityManager;
 
     private Validator validator;
@@ -44,9 +50,13 @@ public class ManagePackageOutTest {
     }
     @Test
     public void testTestInsertDataSuccess(){
+        ManagePackageIn mag = this.managePackageInTestRepository.findByMpInId(1L);
+        Employee emp =  this.employeeTestRepository.findByEmpId(1L);
         ManagePackageOut mout = new ManagePackageOut();
         mout.setReceiver("user");
         mout.setDate(new Date());
+        mout.setEmployee(emp);
+        mout.setMpInId(mag);
          try {
             entityManager.persist(mout);
             entityManager.flush();
@@ -56,9 +66,13 @@ public class ManagePackageOutTest {
     }
     @Test
     public void testTestInsertReceiverPattern(){
+        ManagePackageIn mag = this.managePackageInTestRepository.findByMpInId(1L);
+        Employee emp =  this.employeeTestRepository.findByEmpId(1L);
         ManagePackageOut mout = new ManagePackageOut();
         mout.setReceiver("user1");
         mout.setDate(new Date());
+        mout.setEmployee(emp);
+        mout.setMpInId(mag);
          try {
             entityManager.persist(mout);
             entityManager.flush();
@@ -74,9 +88,13 @@ public class ManagePackageOutTest {
     }
     @Test
     public void testTestInsertReceiverOverSize(){
+        ManagePackageIn mag = this.managePackageInTestRepository.findByMpInId(1L);
+        Employee emp =  this.employeeTestRepository.findByEmpId(1L);
         ManagePackageOut mout = new ManagePackageOut();
         mout.setReceiver("useruseruseruser");
         mout.setDate(new Date());
+        mout.setEmployee(emp);
+        mout.setMpInId(mag);
          try {
             entityManager.persist(mout);
             entityManager.flush();
@@ -92,9 +110,13 @@ public class ManagePackageOutTest {
     }
      @Test
     public void testTestInsertReceiverLessSize(){
+        ManagePackageIn mag = this.managePackageInTestRepository.findByMpInId(1L);
+        Employee emp =  this.employeeTestRepository.findByEmpId(1L);
         ManagePackageOut mout = new ManagePackageOut();
         mout.setReceiver("us");
         mout.setDate(new Date());
+        mout.setEmployee(emp);
+        mout.setMpInId(mag);
          try {
             entityManager.persist(mout);
             entityManager.flush();
@@ -110,9 +132,13 @@ public class ManagePackageOutTest {
     }
     @Test
     public void testTestInsertReceiverMustNotnull(){
+        ManagePackageIn mag = this.managePackageInTestRepository.findByMpInId(1L);
+        Employee emp =  this.employeeTestRepository.findByEmpId(1L);
         ManagePackageOut mout = new ManagePackageOut();
         mout.setReceiver(null);
         mout.setDate(new Date());
+        mout.setEmployee(emp);
+        mout.setMpInId(mag);
          try {
             entityManager.persist(mout);
             entityManager.flush();
@@ -128,9 +154,57 @@ public class ManagePackageOutTest {
     }
     @Test
     public void testTestInsertDateMustNotnull(){
+        ManagePackageIn mag = this.managePackageInTestRepository.findByMpInId(1L);
+        Employee emp =  this.employeeTestRepository.findByEmpId(1L);
         ManagePackageOut mout = new ManagePackageOut();
         mout.setReceiver("user");
         mout.setDate(null);
+        mout.setEmployee(emp);
+        mout.setMpInId(mag);
+         try {
+            entityManager.persist(mout);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("\n\ntestTestInsertDateMustNotnull #######################################################################");
+            System.out.println(violations);
+            System.out.println("\n");
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+    @Test
+    public void testTestEmployeeNotnull(){
+        ManagePackageIn mag = this.managePackageInTestRepository.findByMpInId(1L);
+        Employee emp =  this.employeeTestRepository.findByEmpId(1L);
+        ManagePackageOut mout = new ManagePackageOut();
+        mout.setReceiver("user");
+        mout.setDate(new Date());
+        mout.setEmployee(null);
+        mout.setMpInId(mag);
+         try {
+            entityManager.persist(mout);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("\n\ntestTestInsertDateMustNotnull #######################################################################");
+            System.out.println(violations);
+            System.out.println("\n");
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+    @Test
+    public void testTestManagePackageInNotnull(){
+        ManagePackageIn mag = this.managePackageInTestRepository.findByMpInId(1L);
+        Employee emp =  this.employeeTestRepository.findByEmpId(1L);
+        ManagePackageOut mout = new ManagePackageOut();
+        mout.setReceiver("user");
+        mout.setDate(new Date());
+        mout.setEmployee(emp);
+        mout.setMpInId(null);
          try {
             entityManager.persist(mout);
             entityManager.flush();

@@ -33,19 +33,23 @@ public class ManagePackageIn {
     @NotNull 
     private  Date date;
 
-    @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
+    @NotNull(message="house id not null")
+    @ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name="houseId")
     private House house;
 
-    @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
+    @NotNull(message="empId id not null")
+    @ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name="empId")
     private Employee employee;
 
-    @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
+    @NotNull(message="empId id not null")
+    @ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name="rentId")
     private RentHouse rentHouse;
 
-    @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
+    @NotNull(message="empId id not null")
+    @ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name="deliComId")
     private DeliveryCompany deliveryCompany;
 
