@@ -32,10 +32,12 @@ public class ManagePackageOut {
 
 
     @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
+    @NotNull
     @JoinColumn(name="empId")
     private Employee employee;
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @NotNull
     @JoinColumn(name="mpInId")
     private ManagePackageIn mpInId;
 

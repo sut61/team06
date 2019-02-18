@@ -11,11 +11,12 @@ import com.sutse.team06.Repository.*;
 import com.sutse.team06.entity.*;
 
 import java.util.stream.Stream;
-
+import java.util.*;
 import org.springframework.boot.ApplicationRunner;
 
 @SpringBootApplication
 public class Team06Application {
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(Team06Application.class, args);
@@ -42,7 +43,8 @@ public class Team06Application {
 							TransportationCarRepository transportationCarRepository,
 							CarRepository carRepository,
 							PlaceRepository placeRepository,
-							TypeHouseKeeperRepository typeHouseKeeperRepository
+							TypeHouseKeeperRepository typeHouseKeeperRepository,
+							ManagePackageInRepository managePackageInRepository
 							){
 
 		return args ->{
@@ -322,6 +324,19 @@ public class Team06Application {
 				transportationCar.setAmountPeople(4);
 				transportationCarRepository.save(transportationCar);
 
+				Employee empid =  employeeRepository.findByEmpId(1L);
+				House house = houseRepository.findByHouseId(1L);
+				RentHouse rent =rentHouseRepository.findByRentId(1L); 
+				DeliveryCompany devi = deliveryCompanyRepository.findByDeliComId(1L);
+				ManagePackageIn mag = new ManagePackageIn();
+				mag.setPackageId("123456789TH");
+				mag.setDate(new Date());
+				mag.setEmployee(empid);
+				mag.setRentHouse(rent);
+				mag.setDeliveryCompany(devi);
+				mag.setHouse(house);
+				mag.setManagePackageOut(null);
+				managePackageInRepository.save(mag);
 
 		};
 	}
