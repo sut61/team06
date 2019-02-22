@@ -30,6 +30,9 @@ public class RentHouseType {
     @Size(min = 4 , max = 9)
     @Column(unique = true)
     private String description;
+    
+    @Size(max = 25)
+    private String additional;
 
     
 

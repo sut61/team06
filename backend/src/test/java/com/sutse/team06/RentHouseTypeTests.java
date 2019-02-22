@@ -48,6 +48,7 @@ public class RentHouseTypeTests {
     public void testSuccess() {
         RentHouseType rt = new RentHouseType();
         rt.setDescription("5 days");
+        rt.setAdditional("xxx");
 
         try {
             entityManager.persist(rt);
@@ -62,6 +63,7 @@ public class RentHouseTypeTests {
     public void testTooShort() {
         RentHouseType rt = new RentHouseType();
         rt.setDescription("7 d");
+        rt.setAdditional("xxx");
 
         try {
             entityManager.persist(rt);
@@ -79,6 +81,7 @@ public class RentHouseTypeTests {
     public void testTooLong() {
         RentHouseType rt = new RentHouseType();
         rt.setDescription("123 monthssss");
+        rt.setAdditional("xxx");
 
         try {
             entityManager.persist(rt);
@@ -96,6 +99,7 @@ public class RentHouseTypeTests {
     public void testPattern() {
         RentHouseType rt = new RentHouseType();
         rt.setDescription("2 years");
+        rt.setAdditional("xxx");
 
         try {
             entityManager.persist(rt);
@@ -113,6 +117,25 @@ public class RentHouseTypeTests {
     public void testNotnull() {
         RentHouseType rt = new RentHouseType();
         rt.setDescription(null);
+        rt.setAdditional("xxx");
+
+        try {
+            entityManager.persist(rt);
+            entityManager.flush();
+
+            fail("Should not pass to this line testPattern");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1); 
+        }
+    }
+
+    @Test
+    public void testSizeAdditional() {
+        RentHouseType rt = new RentHouseType();
+        rt.setDescription("5 days");
+        rt.setAdditional("xxxxxxxxxxxxxxxxxxxxxxxxxx");
 
         try {
             entityManager.persist(rt);
@@ -126,15 +149,18 @@ public class RentHouseTypeTests {
         }
     }
 
+
     @Test
     public void testUnique() {
         RentHouseType rt = new RentHouseType();
         rt.setDescription("7 days");
+        rt.setAdditional("xxx");
         entityManager.persist(rt);
         entityManager.flush();
 
         RentHouseType rt1 = new RentHouseType();
         rt1.setDescription("7 days");
+        rt1.setAdditional("xxx");
         try {
             entityManager.persist(rt1);
             entityManager.flush();
