@@ -41,6 +41,10 @@ public class Repairs {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="empId")
     private Employee employee;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="RepairsmanId")
+    private Repairsman repairsman;
      
     public Repairs(){}
    
