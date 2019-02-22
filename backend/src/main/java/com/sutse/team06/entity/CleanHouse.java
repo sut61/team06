@@ -38,6 +38,11 @@ public class CleanHouse {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="housekeeperId")
     private HouseKeeper HouseKeeper;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="empId")
+    private Employee employee;
+
     
 
     
