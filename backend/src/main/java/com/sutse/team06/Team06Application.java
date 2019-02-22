@@ -132,19 +132,49 @@ public class Team06Application {
 				employeeRepository.save(emp);
 			
 				//House
-				
-				Stream.of(1111,2222,3333,4444).forEach(houseNumber ->{
-					House house = new House();	
-					house.setHouseNumber(houseNumber);
-					houseRepository.save(house);
-				});
+				//Stream.of(1111,2222,3333,4444).forEach(houseNumber ->{
+				House house4 = new House();	
+					house4.setHouseNumber(1111);
+					house4.setStyle("ใหญ่โต");
+					houseRepository.save(house4);
+
+					House house1 = new House();	
+					house1.setHouseNumber(2222);
+					house1.setStyle("อลังการ");
+					houseRepository.save(house1);
+
+					House house2 = new House();	
+					house2.setHouseNumber(3333);
+					house2.setStyle("กระท่อม");
+					houseRepository.save(house2);
+
+					House house3 = new House();	
+					house3.setHouseNumber(4444);
+					house3.setStyle("ธรรมชาติ");
+					houseRepository.save(house3);
 
 				//RentHouseType
-				Stream.of("1 day","3 days","1 month","3 months").forEach(description ->{
-					RentHouseType rentHouseType = new RentHouseType();
-					rentHouseType.setDescription(description);
-					rentHouseTypeRepository.save(rentHouseType);
-				});
+				//Stream.of("1 day","3 days","1 month","3 months").forEach(description ->{
+					RentHouseType rentHouseType1 = new RentHouseType();
+					rentHouseType1.setDescription("1 day");
+					rentHouseType1.setAdditional("none");
+					rentHouseTypeRepository.save(rentHouseType1);
+
+					RentHouseType rentHouseType2 = new RentHouseType();
+					rentHouseType2.setDescription("3 days");
+					rentHouseType2.setAdditional("welcome drink");
+					rentHouseTypeRepository.save(rentHouseType2);
+
+					RentHouseType rentHouseType3 = new RentHouseType();
+					rentHouseType3.setDescription("1 month");
+					rentHouseType3.setAdditional("free 1 meal");
+					rentHouseTypeRepository.save(rentHouseType3);
+
+					RentHouseType rentHouseType4 = new RentHouseType();
+					rentHouseType4.setDescription("3 months");
+					rentHouseType4.setAdditional("10 packs of candies");
+					rentHouseTypeRepository.save(rentHouseType4);
+				
 
 				//RentHouse
 					RentHouse rentHouse = new RentHouse();

@@ -48,6 +48,7 @@ public class HouseTests {
     public void testSuccess() {
         House h = new House();
         h.setHouseNumber(1234);
+        h.setStyle("xxx");
 
         try {
             entityManager.persist(h);
@@ -62,6 +63,7 @@ public class HouseTests {
     public void testLessThan() {
         House h = new House();
         h.setHouseNumber(999);
+        h.setStyle("xxx");
 
         try {
             entityManager.persist(h);
@@ -78,6 +80,7 @@ public class HouseTests {
     public void testTooLong() {
         House h = new House();
         h.setHouseNumber(10000);
+        h.setStyle("xxx");
 
         try {
             entityManager.persist(h);
@@ -94,6 +97,24 @@ public class HouseTests {
     public void testNotnull() {
         House h = new House();
         h.setHouseNumber(null);
+        h.setStyle("xxx");
+
+        try {
+            entityManager.persist(h);
+            entityManager.flush();
+            fail("Should not pass to this line testSuccess");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testSizeStyle() {
+        House h = new House();
+        h.setHouseNumber(1234);
+        h.setStyle("xxxxxxxxxxxxxxxxxxxxxxxxxx");
 
         try {
             entityManager.persist(h);
@@ -110,11 +131,13 @@ public class HouseTests {
     public void testUnique() {
         House h = new House();
         h.setHouseNumber(5555);
+        h.setStyle("xxx");
         entityManager.persist(h);
         entityManager.flush();
 
         House h1 = new House();
         h1.setHouseNumber(5555);
+        h1.setStyle("xxx");
         try {
             entityManager.persist(h1);
             entityManager.flush();

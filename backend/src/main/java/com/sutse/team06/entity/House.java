@@ -25,7 +25,8 @@ public class House {
     @Max(value = 9999)
     @Column(unique = true)
     private Integer  houseNumber;
-
+    @Size( max = 25)
+    private String style;
     
 
 }
