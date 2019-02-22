@@ -151,7 +151,7 @@ public class Team06Application {
 					House house3 = new House();	
 					house3.setHouseNumber(4444);
 					house3.setStyle("ธรรมชาติ");
-					houseRepository.save(house3);
+					houseRepository.save(house3); 
 
 				//RentHouseType
 				//Stream.of("1 day","3 days","1 month","3 months").forEach(description ->{
