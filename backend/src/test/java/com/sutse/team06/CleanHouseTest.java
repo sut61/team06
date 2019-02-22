@@ -29,7 +29,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 @DataJpaTest
 public class CleanHouseTest {
 	
-	@Autowired private HouseRepository     houseRepository;
+    @Autowired private HouseRepository     houseRepository;
     @Autowired private RentHouseRepository rentHouseRepository;
     @Autowired private CleanHouseRepository cleanHouseRepository;
     @Autowired private HouseKeeperRepository houseKeeperRepository;

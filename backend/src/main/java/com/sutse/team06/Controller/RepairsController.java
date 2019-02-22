@@ -11,6 +11,7 @@ import com.sutse.team06.Repository.RentHouseRepository;
 import com.sutse.team06.Repository.RepairsRepository;
 import com.sutse.team06.Repository.EquipmentRepository;
 import com.sutse.team06.Repository.EmployeeRepository;
+import com.sutse.team06.Repository.RepairsmanRepository;
 import com.sutse.team06.entity.*;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,6 +27,15 @@ public class RepairsController {
     @Autowired private EquipmentRepository equipmentRepository;
     @Autowired private RepairsRepository repairsRepository;
     @Autowired private EmployeeRepository employeeRepository;
+    @Autowired private RepairsmanRepository repairsmanRepository;
+
+     public RepairsController (HouseRepository houseRepository, RentHouseRepository rentHouseRepository, EquipmentRepository equipmentRepository, RepairsmanRepository repairsmanRepository){
+        this.houseRepository = houseRepository;
+        this.rentHouseRepository = rentHouseRepository;
+        this.equipmentRepository = equipmentRepository;
+        this.repairsmanRepository = repairsmanRepository;
+    }
+
  
 
       @GetMapping("/house")
@@ -44,15 +54,43 @@ public class RepairsController {
         return equipmentRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping("/repair/save/{houseid}/{renthouseid}/{employeeid}/{equipmentid}")
-    public Repairs createRepairs(@PathVariable long houseid,@PathVariable long renthouseid,
-                                    @PathVariable long employeeid,@PathVariable long equipmentid){
+    @GetMapping("/repairsman")
+    public List<Repairsman> RepairsmanAll(){
+        return repairsmanRepository.findAll().stream().collect(Collectors.toList());
+    }
+
+    @PostMapping("/repair/save/{houseid}/{renthouseid}/{employeeid}/{equipmentid}/{repairsmanname}/{repairsmannumid}/{repairsmantel}/{repairsmantel2}/{repairsmanemail}")
+    public Repairs createRepairs(   @PathVariable long houseid,
+                                    @PathVariable long renthouseid,
+                                    @PathVariable long employeeid,
+                                    @PathVariable long equipmentid,
+                                    @PathVariable String repairsmanname,
+                                    @PathVariable String repairsmannumid,
+                                    @PathVariable String repairsmantel, 
+                                    @PathVariable String repairsmantel2,
+                                    @PathVariable String repairsmanemail){
+                                        
 
       Repairs repairs = new Repairs();
-      repairs.setHouse(houseRepository.getOne(houseid));
-      repairs.setRentHouse(rentHouseRepository.getOne(renthouseid));
-      repairs.setEmployee(employeeRepository.getOne(employeeid));
-      repairs.setEquipment(equipmentRepository.getOne(equipmentid));
+      Employee emp  = this.employeeRepository.findByEmpId(employeeid);
+      House house = this.houseRepository.findByHouseId(houseid);
+      RentHouse renthouse = this.rentHouseRepository.findByRentId(renthouseid);
+      Equipment eqi = this.equipmentRepository.findByEquipmentId(equipmentid);
+      repairs.setHouse(house);
+      repairs.setRentHouse(renthouse);
+      repairs.setEmployee(emp);
+      repairs.setEquipment(eqi);
+
+      Repairsman repairsman = new Repairsman();
+      
+    
+      repairsman.setRepairsmanName(repairsmanname);
+      repairsman.setRepairsmanNumid(repairsmannumid);
+      repairsman.setRepairsmanTel(repairsmantel);
+      repairsman.setRepairsmanTel2(repairsmantel2);
+      repairsman.setRepairsmanEmail(repairsmanemail);
+      Repairsman rman = this.repairsmanRepository.save(repairsman);
+      repairs.setRepairsman(rman);
       return repairsRepository.save(repairs);
        
     }
