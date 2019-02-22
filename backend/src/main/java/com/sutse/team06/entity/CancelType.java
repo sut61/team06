@@ -28,4 +28,18 @@ public class CancelType {
     @Column(unique = true)
     private String canceltype;
 
+    @NotNull
+    @Size(max = 25)
+    private String description;
+
+    @NotNull
+    @Pattern(regexp="[0-9\\d]{2,}[-][0-9\\d]{2,}[\\s]bath")
+    private String finerate;
+
+    @NotNull
+    @Max(value = 7)
+    private Integer tax;
+    
+    @Size(max = 25)
+    private String message;
 }

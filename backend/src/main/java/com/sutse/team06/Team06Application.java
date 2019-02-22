@@ -248,24 +248,39 @@ public class Team06Application {
 				});
 
 				//CancelType
-				Stream.of("ครบสัญญา","ค้างชำระ","ยกเลิกก่อนกำหนด","อื่นๆ").forEach(cancelt ->{
+				//("ครบสัญญา","ค้างชำระ","ยกเลิกก่อนกำหนด","อื่นๆ")
 					CancelType cancel = new CancelType();
-					cancel.setCanceltype(cancelt);
+					cancel.setCanceltype("ครบสัญญา");
+					cancel.setDescription("หมดสัญญาตามเวลา");
+					cancel.setFinerate("10-25 bath");
+					cancel.setTax(5);
+					cancel.setMessage("Thank you");
 					cancelTypeRepository.save(cancel);
-				});
 
-				//CanceledRentHouse
-				/*CanceledRentHouse canceledrentHouse = new CanceledRentHouse();
-				canceledrentHouse.setComment("Hello");
-				canceledrentHouse.setEmployee(employeeRepository.getOne(1L));
-				canceledrentHouse.setClient(clientRepository.getOne(1L));
-				canceledrentHouse.setCanceltype(cancelTypeRepository.getOne(1L));
-				canceledrentHouse.setRentHouse(rentHouseRepository.getOne(1L));
-				canceledRentHouseRepository.save(canceledrentHouse);*/
-				
-				/*RentHouse rh = rentHouseRepository.findByRentId(1L);
-				rh.setCanceledrentHouse(canceledRentHouseRepository.findByCancelId(1L));
-				rentHouseRepository.save(rh);*/
+					CancelType cancel1 = new CancelType();
+					cancel1.setCanceltype("ค้างชำระ");
+					cancel1.setDescription("มียอดค้างชำระเกินกำหนด");
+					cancel1.setFinerate("80-95 bath");
+					cancel1.setTax(7);
+					cancel1.setMessage("pls be on time");
+					cancelTypeRepository.save(cancel1);
+
+					CancelType cancel2 = new CancelType();
+					cancel2.setCanceltype("ยกเลิกก่อนกำหนด");
+					cancel2.setDescription("ยุติสัญญาก่อนหมดอายุ");
+					cancel2.setFinerate("20-25 bath");
+					cancel2.setTax(5);
+					cancel2.setMessage("Thanks");
+					cancelTypeRepository.save(cancel2);
+
+					CancelType cancel3 = new CancelType();
+					cancel3.setCanceltype("อื่นๆ");
+					cancel3.setDescription("นอกเหนือกรณีที่มีอยู่");
+					cancel3.setFinerate("50-65 bath");
+					cancel3.setTax(4);
+					cancel3.setMessage("Thank you very much");
+					cancelTypeRepository.save(cancel3);
+
 
 
 				//new keng 
