@@ -53,9 +53,10 @@ export class CleanHouseComponent implements OnInit {
     }
     else{
       // const {houseId, typehouseKeeperId,housekeepername,housekeepertel,rentId} = this.cleanhousedata;
+      const empid  = JSON.parse(localStorage.getItem('employee')).empId;
         this.httpClient.post(api
         + this.cleanhousedata.houseid + '/' + this.cleanhousedata.rentId + '/' + this.cleanhousedata.housekeepername + '/' + this.cleanhousedata.typeKeeperid + '/' 
-        + this.cleanhousedata.housekeepertel ,null).subscribe(
+        + this.cleanhousedata.housekeepertel +'/' + empid ,null).subscribe(
         data => {
                 console.log('PUT Code and repairs is successful', data);
                 this.noti = false;

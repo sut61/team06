@@ -11,7 +11,7 @@ import com.sutse.team06.Repository.RentHouseRepository;
 import com.sutse.team06.Repository.CleanHouseRepository;
 import com.sutse.team06.Repository.HouseKeeperRepository;
 import com.sutse.team06.Repository.TypeHouseKeeperRepository;
-//import com.sutse.team06.Repository.EmployeeRepository;
+import com.sutse.team06.Repository.EmployeeRepository;
 import com.sutse.team06.entity.*;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,6 +27,7 @@ public class CleanHouseController {
     @Autowired private CleanHouseRepository cleanHouseRepository;
     @Autowired private HouseKeeperRepository houseKeeperRepository;
     @Autowired private TypeHouseKeeperRepository typeHouseKeeperRepository;
+    @Autowired private EmployeeRepository employeeRepository;
     
     public CleanHouseController (HouseRepository houseRepository, RentHouseRepository rentHouseRepository,  CleanHouseRepository cleanHouseRepository, HouseKeeperRepository houseKeeperRepository){
         this.houseRepository = houseRepository;
@@ -44,17 +45,19 @@ public class CleanHouseController {
         return typeHouseKeeperRepository.findAll().stream().collect(Collectors.toList());
     }
     // {houseid: 4, renttypeId: 3, housekeepername: "sadas", housekeeperid: "sadas", housekeepertel: "asd"}
-    @PostMapping("/houseKeeper/save/{houseid}/{renthouse}/{housekeepername}/{housekeepertype}/{housekeepertel}")
+    @PostMapping("/houseKeeper/save/{houseid}/{renthouse}/{housekeepername}/{housekeepertype}/{housekeepertel}/{empid}")
     public CleanHouse createHouseKeeper(@PathVariable("housekeepername") String housekeepername, 
                                         @PathVariable("housekeepertype") Long housekeepertype, 
                                         @PathVariable("housekeepertel") String housekeepertel,
                                         @PathVariable("houseid")  Long houseid,
-                                        @PathVariable("renthouse") Long renthouse){
+                                        @PathVariable("renthouse") Long renthouse,
+                                        @PathVariable("empid") Long empid){
     //  RentHouse findByRentId(Long rentId);
             HouseKeeper housekeeper = new HouseKeeper();
             RentHouse renthouses = rentHouseRepository.findByRentId(renthouse);
             House  house = houseRepository.findByHouseId(houseid);
             TypeHouseKeeper keeper = typeHouseKeeperRepository.findByTypehouseKeeperId(housekeepertype);
+            Employee emp  = this.employeeRepository.findByEmpId(empid);
             CleanHouse clean = new CleanHouse();
             housekeeper.setHousekeeperName(housekeepername);
             housekeeper.setHousekeeperTel(housekeepertel);
@@ -64,7 +67,7 @@ public class CleanHouseController {
             clean.setHouse(house);
             clean.setTypeHouseKeeper(keeper);
             clean.setHouseKeeper(keepered);
-            
+            clean.setEmployee(emp);
             return cleanHouseRepository.save(clean);
             
     
