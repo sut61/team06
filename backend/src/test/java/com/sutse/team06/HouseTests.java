@@ -113,7 +113,7 @@ public class HouseTests {
     @Test
     public void testSizeStyle() {
         House h = new House();
-        h.setHouseNumber(1234);
+        h.setHouseNumber(1234); 
         h.setStyle("xxxxxxxxxxxxxxxxxxxxxxxxxx");
 
         try {
