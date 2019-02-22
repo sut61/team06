@@ -4,7 +4,9 @@
       <h1>แจ้งซ่อม</h1>
       <div class="example-container">
 
-
+        <span *ngIf="!noti"  >
+          <mat-card>{{notimag}}</mat-card>
+        </span>
         <mat-form-field class="matfile">
           <mat-select placeholder="เลือกบ้าน" [(ngModel)]="houseid">
             <mat-option *ngFor="let house of repairs" [value]="house.houseId">
@@ -21,21 +23,31 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="matfile">
-          <mat-select placeholder="เลือกพนักงาน" [(ngModel)]="employeeid">
-            <mat-option *ngFor="let employee of employees" [value]="employee.empId">
-              {{employee.name}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
 
         <mat-form-field class="matfile">
-          <mat-select placeholder="เลือกฟอร์นิเจอร์ที่ต้องการซ่อม" [(ngModel)]="equipmentid">
+          <mat-select placeholder="เลือกอุปกรณ์ของใช้ต้องการซ่อม" [(ngModel)]="equipmentid">
             <mat-option *ngFor="let equipment of equipments" [value]="equipment.equipmentId">
               {{equipment.equipmentName}}
             </mat-option>
           </mat-select>
         </mat-form-field>
+        
+        <mat-form-field  class="matfile">
+          <input matInput placeholder="RepairsMan Name" [(ngModel)]="repairsManName"  >
+        </mat-form-field>
+        <mat-form-field  class="matfile">
+          <input matInput placeholder="RepairsMan ID" [(ngModel)]="repairsManNumid"  >
+        </mat-form-field>
+        <mat-form-field  class="matfile">
+          <input matInput placeholder="RepairsMan Tel" [(ngModel)]="repairsManTel"  >
+        </mat-form-field>
+        <mat-form-field  class="matfile">
+          <input matInput placeholder="RepairsMan Tel2" [(ngModel)]="repairsManTel2"  >
+        </mat-form-field>
+        <mat-form-field  class="matfile">
+          <input matInput placeholder="RepairsMan Email" [(ngModel)]="repairsManEmail"  >
+        </mat-form-field>
+        
 
     
 
